@@ -1,4 +1,9 @@
 #include <stdio.h>
+#include <string.h>
+#include <unistd.h> 
+#include <sys/socket.h> 
+#include <netinet/in.h> 
+#include <signal.h> 
 typedef struct { 
     char method[16]; 
     char path[512]; 

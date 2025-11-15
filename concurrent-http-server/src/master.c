@@ -10,6 +10,7 @@
 volatile sig_atomic_t keep_running = 1; 
  
 void signal_handler(int signum) { 
+    printf("Signum: %d", signum);
     keep_running = 0; 
 } 
  
@@ -38,8 +39,7 @@ int create_server_socket(int port) {
     return sockfd; 
 } 
  
-void enqueue_connection(shared_data_t* data, semaphores_t* sems, int 
-client_fd) { 
+void enqueue_connection(shared_data_t* data, semaphores_t* sems, int client_fd) { 
     sem_wait(sems->empty_slots); 
     sem_wait(sems->queue_mutex); 
      
