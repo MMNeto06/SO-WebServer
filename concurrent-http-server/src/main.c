@@ -6,6 +6,7 @@
 #include "config.h"
 #include "master.h"
 
+//usa este response se não quiseres usar index.html
 /*const char* response =  
     "HTTP/1.1 200 OK\r\n" 
     "Content-Type: text/html\r\n" 
@@ -69,6 +70,7 @@ int main() {
         recv(client_fd, buffer, sizeof(buffer), 0); 
          
         send_file(client_fd, "../tests/index.html"); //DÁ RUN DENTRO DE SRC SE NÃO QUERES ALTERAR ISTO
+        //send(client_fd, response, strlen(response), 0); //usa isto se não quiseres o index.html
         close(client_fd); 
     } 
     return 0; 
