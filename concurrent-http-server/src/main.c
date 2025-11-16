@@ -1,14 +1,23 @@
 #include <stdio.h> 
-#include <stdlib.h> 
-#include <string.h>
+#include <string.h> 
 #include <unistd.h> 
 #include <sys/socket.h> 
 #include <netinet/in.h> 
-#include <signal.h> 
-#include "master.h"
 #include "config.h"
+#include "master.h"
 
-void send_file(int client_fd, const char* path) { 
+/*const char* response =  
+    "HTTP/1.1 200 OK\r\n" 
+    "Content-Type: text/html\r\n" 
+    "\r\n" 
+    "<html><body><h1>Hello, World!</h1></body></html>"; 
+*/
+
+//forma de compilar neste momento: gcc main.c config.c master.c semaphores.c shared_mem.c -o main
+//estou a compilar em ./concurrent-http-server/src
+//neste momento está a enviar index.html, fiz um simples
+
+void send_file(int client_fd, const char* path) { //esta função enviat html, está no pdf 05
     // Open file 
     FILE* file = fopen(path, "rb"); 
     if (!file) { 
@@ -45,19 +54,21 @@ void send_file(int client_fd, const char* path) {
     fclose(file); 
 }
 
-int main(){
+int main() { 
     server_config_t config;
-    load_config("/concurrent-http-server/server.conf", &config);
-    printf("Load config passed");
-    int server_fd = create_server_socket(config.port);
-    printf("A correr em http://localhost:8080");
+    load_config("../server.conf", &config); //DÁ RUN DENTRO DE SRC SE NÃO QUERES ALTERAR ISTO
+
+    int server_fd = create_server_socket(config.port); //está no master.c, inicializa a socket, pode não ficar aqui? idk
+ 
+    printf("HTTP server running on http://localhost:%d\n", config.port); 
+ 
     while (1) { 
         int client_fd = accept(server_fd, NULL, NULL); 
          
         char buffer[4096]; 
         recv(client_fd, buffer, sizeof(buffer), 0); 
          
-        send_file(client_fd, config.document_root);
+        send_file(client_fd, "../tests/index.html"); //DÁ RUN DENTRO DE SRC SE NÃO QUERES ALTERAR ISTO
         close(client_fd); 
     } 
     return 0; 
