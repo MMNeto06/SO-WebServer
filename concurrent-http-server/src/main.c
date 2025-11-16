@@ -62,16 +62,32 @@ int main() {
     int server_fd = create_server_socket(config.port); //está no master.c, inicializa a socket, pode não ficar aqui? idk
  
     printf("HTTP server running on http://localhost:%d\n", config.port); 
+
+    shared_data_t* shm = create_shared_memory();
+    if (!shm) {
+        perror("Create Shared Memory");
+        return 1;
+    }
+
+    semaphores_t sems;
+    if (init_semaphores(&sems, config.max_queue_size) != 0) {
+        perror("init_semaphores");
+        return 1;
+    }
+
+    create_workers(config.num_workers, server_fd, shm, &sems);
  
     while (1) { 
         int client_fd = accept(server_fd, NULL, NULL); 
          
         char buffer[4096]; 
         recv(client_fd, buffer, sizeof(buffer), 0); 
+        enqueue_connection(shm, &sems, client_fd);
          
         send_file(client_fd, "../tests/index.html"); //DÁ RUN DENTRO DE SRC SE NÃO QUERES ALTERAR ISTO
         //send(client_fd, response, strlen(response), 0); //usa isto se não quiseres o index.html
         close(client_fd); 
     } 
+
     return 0; 
 }

@@ -6,6 +6,7 @@
 #include <signal.h> 
 #include "shared_mem.h"
 #include "semaphores.h"
+#include "worker.h"
  
 volatile sig_atomic_t keep_running = 1; 
  
@@ -49,4 +50,24 @@ void enqueue_connection(shared_data_t* data, semaphores_t* sems, int client_fd) 
      
     sem_post(sems->queue_mutex); 
     sem_post(sems->filled_slots); 
+}
+
+void create_workers(int num_workers, int server_fd, shared_data_t* shm, semaphores_t* sems){
+    int i; 
+
+    for (i = 0; i < num_workers; i++){
+        pid_t pid = fork(); 
+
+        if (pid < 0){
+            perror("fork");
+            exit(1);
+        }
+
+        if (pid == 0){
+            worker_loop(i, server_fd);
+            exit(0);
+        }
+
+        printf("[master] Worker %d created with PID %d\n", i, pid);
+    }
 }
