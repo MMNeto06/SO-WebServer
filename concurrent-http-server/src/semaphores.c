@@ -1,5 +1,8 @@
 #include "semaphores.h" 
 #include <fcntl.h> 
+#include <stdio.h>
+#include <stdlib.h>
+#include <errno.h>
  
 int init_semaphores(semaphores_t* sems, int queue_size) { 
     sems->empty_slots = sem_open("/ws_empty", O_CREAT, 0666, queue_size); 
@@ -28,4 +31,31 @@ void destroy_semaphores(semaphores_t* sems) {
     sem_unlink("/ws_queue_mutex"); 
     sem_unlink("/ws_stats_mutex"); 
     sem_unlink("/ws_log_mutex"); 
+}
+
+semaphores_t* open_semaphores() {
+    semaphores_t* sems = malloc(sizeof(semaphores_t));
+
+    if (sems == NULL){
+        perror("malloc");
+        exit(1);    
+    }
+
+    sems->empty_slots  = sem_open("/ws_empty", 0);
+    sems->filled_slots = sem_open("/ws_filled", 0);
+    sems->queue_mutex  = sem_open("/ws_queue_mutex", 0);
+    sems->stats_mutex  = sem_open("/ws_stats_mutex", 0);
+    sems->log_mutex    = sem_open("/ws_log_mutex", 0);
+
+    if (sems->empty_slots == SEM_FAILED ||
+        sems->filled_slots == SEM_FAILED ||
+        sems->queue_mutex == SEM_FAILED ||
+        sems->stats_mutex == SEM_FAILED ||
+        sems->log_mutex == SEM_FAILED) {
+
+        perror("sem_open worker");
+        exit(1);
+    }
+
+    return sems;
 }

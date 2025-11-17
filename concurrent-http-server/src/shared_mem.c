@@ -3,6 +3,9 @@
 #include <fcntl.h> 
 #include <unistd.h> 
 #include <string.h> 
+#include <stdlib.h>
+#include <errno.h>
+#include <stdio.h>
  
 #define SHM_NAME "/webserver_shm" 
  
@@ -29,4 +32,23 @@ shared_data_t* create_shared_memory() {
 void destroy_shared_memory(shared_data_t* data) { 
     munmap(data, sizeof(shared_data_t)); 
     shm_unlink(SHM_NAME); 
+}
+
+shared_data_t* open_shared_memory(){
+    int shm_fd = shm_open(SHM_NAME, O_RDWR, 0666);
+
+    if (shm_fd == -1){
+        perror("shm_open worker");
+        exit(1);
+    }
+
+    shared_data_t* data = mmap(NULL, sizeof(shared_data_t), PROT_READ | PROT_WRITE, MAP_SHARED, shm_fd, 0);
+    close(shm_fd);
+
+    if (data == MAP_FAILED){
+        perror("mmap worker");
+        exit(1);
+    }
+
+    return data;    
 }

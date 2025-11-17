@@ -38,7 +38,7 @@ clean: cleanobj
 #master.o: master.c semaphores.o shared_mem.o
 #	cc -Wall -c master.c -o master.o
 #
-#sempahores.o: sempahores.c
+#semaphores.o: sempahores.c
 #	cc -Wall -c semaphores.c -o semaphores.o
 #
 #shared_mem.o: shared_mem.c

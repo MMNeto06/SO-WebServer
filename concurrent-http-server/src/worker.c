@@ -13,26 +13,29 @@
 
 #define SHM_NAME "/webserver_shm"   
 
-const char* response =  
+/*const char* response =  
     "HTTP/1.1 200 OK\r\n" 
     "Content-Type: text/html\r\n" 
     "\r\n" 
-    "<html><body><h1>Hello, World!</h1></body></html>"; 
+    "<html><body><h1>Hello, World!</h1></body></html>"; */
 
 void send_file(int client_fd, const char* path) { //esta função enviat html, está no pdf 05
     // Open file 
     FILE* file = fopen(path, "rb"); 
-    if (!file) { 
-        // Send 404 
-        const char* response = 
-            "HTTP/1.1 404 Not Found\r\n" 
-            "Content-Type: text/html\r\n" 
-            "\r\n" 
-            "<h1>404 Not Found</h1>"; 
-        send(client_fd, response, strlen(response), 0); 
+    /*if (!file) { 
+        const char* not_found =
+            "HTTP/1.1 404 Not Found\r\n"
+            "Content-Type: text/html\r\n"
+            "Content-Length: 22\r\n"
+            "Connection: close\r\n"
+            "\r\n"
+            "<h1>404 Not Found</h1>";
+        send(client_fd, not_found, strlen(not_found), 0); 
         return; 
-    } 
+    } */
  
+    printf("DEBUG: Tou no send_file?\n");
+
     // Get file size 
     fseek(file, 0, SEEK_END); 
     long file_size = ftell(file); 
@@ -56,71 +59,31 @@ void send_file(int client_fd, const char* path) { //esta função enviat html, e
     fclose(file); 
 }
 
+void worker_loop(int worker_id) {
+    shared_data_t* shm = open_shared_memory(); 
+    semaphores_t* sems = open_semaphores(); 
 
-shared_data_t* open_shared_memory(){
-    int shm_fd = shm_open(SHM_NAME, O_RDWR, 0666);
-
-    if (shm_fd == -1){
-        perror("shm_open worker");
-        exit(1);
-    }
-
-    shared_data_t* data = mmap(NULL, sizeof(shared_data_t), PROT_READ | PROT_WRITE, MAP_SHARED, shm_fd, 0);
-    close(shm_fd);
-
-    if (data == MAP_FAILED){
-        perror("mmap worker");
-        exit(1);
-    }
-
-    return data;    
-}
-
-semaphores_t* open_semaphores() {
-    semaphores_t* sems = malloc(sizeof(semaphores_t));
-
-    if (sems == NULL){
-        perror("malloc");
-        exit(1);    
-    }
-
-    sems->empty_slots  = sem_open("/ws_empty", 0);
-    sems->filled_slots = sem_open("/ws_filled", 0);
-    sems->queue_mutex  = sem_open("/ws_queue_mutex", 0);
-    sems->stats_mutex  = sem_open("/ws_stats_mutex", 0);
-    sems->log_mutex    = sem_open("/ws_log_mutex", 0);
-
-    if (sems->empty_slots == SEM_FAILED ||
-        sems->filled_slots == SEM_FAILED ||
-        sems->queue_mutex == SEM_FAILED ||
-        sems->stats_mutex == SEM_FAILED ||
-        sems->log_mutex == SEM_FAILED) {
-
-        perror("sem_open worker");
-        exit(1);
-    }
-
-    return sems;
-}
-
-void worker_loop(int worker_id, shared_data_t* shm, semaphores_t* sems) {
     while (1) {
+        printf("[WORKER %d] Esperando semáforo...\n", worker_id);
         sem_wait(sems->filled_slots);
+        printf("[WORKER %d] Acordei!\n", worker_id);
         sem_wait(sems->queue_mutex);
 
         int client_fd = shm->queue.sockets[shm->queue.front];
         shm->queue.front = (shm->queue.front + 1) % MAX_QUEUE_SIZE;
         shm->queue.count--;
 
+        printf("[worker %d] got fd=%d\n", worker_id, client_fd);
+
         sem_post(sems->queue_mutex);
         sem_post(sems->empty_slots);
         printf("DEBUG: TOU AQUI\n");
 
-        //char buffer[4096]; 
-        //recv(client_fd, buffer, sizeof(buffer), MSG_DONTWAIT);    
+        //char buffer[4096];
+        //recv(client_fd, buffer, sizeof(buffer), 0);  
         printf("DEBUG: Ainda estou aqui?\n");      
-        //send_file(client_fd, "../tests/index.html"); //DÁ RUN DENTRO DE SRC SE NÃO QUERES ALTERAR ISTO
-        send(client_fd, response, strlen(response), 0); //usa isto se não quiseres o index.html
+        send_file(client_fd, "../tests/index.html"); //DÁ RUN DENTRO DE SRC SE NÃO QUERES ALTERAR ISTO
+        //send(client_fd, response, strlen(response), MSG_DONTWAIT); //usa isto se não quiseres o index.html
         printf("DEBUG: Devia ter dado load?\n");
         close(client_fd); 
     }

@@ -11,15 +11,6 @@ int main() {
     server_config_t config;
     load_config("../server.conf", &config); //DÁ RUN DENTRO DE SRC SE NÃO QUERES ALTERAR ISTO
 
-    int server_fd = create_server_socket(config.port); //está no master.c, inicializa a socket, pode não ficar aqui? idk
-    
-    if (server_fd < 0) {
-        perror("create_server_socket");
-        return 1;
-    }
- 
-    printf("HTTP server running on http://localhost:%d\n", config.port); 
-
     shared_data_t* shm = create_shared_memory();
     if (!shm) {
         perror("Create Shared Memory");
@@ -31,10 +22,23 @@ int main() {
         perror("init_semaphores");
         return 1;
     }
+    
+    create_workers(config.num_workers);
 
-    create_workers(config.num_workers, shm, &sems);
+    int server_fd = create_server_socket(config.port); //está no master.c, inicializa a socket, pode não ficar aqui? idk
+    
+    if (server_fd < 0) {
+        perror("create_server_socket");
+        return 1;
+    }
+ 
+    printf("HTTP server running on http://localhost:%d\n", config.port); 
  
     master_loop(server_fd, shm, &sems);
+
+    close(server_fd);
+    destroy_semaphores(&sems);
+    destroy_shared_memory(shm);
 
     return 0; 
 }

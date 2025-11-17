@@ -13,5 +13,6 @@ typedef struct {
  
 int init_semaphores(semaphores_t* sems, int queue_size); 
 void destroy_semaphores(semaphores_t* sems); 
+semaphores_t* open_semaphores();
  
 #endif 
