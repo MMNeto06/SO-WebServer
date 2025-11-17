@@ -6,17 +6,18 @@
 #include <string.h>  
 #include <sys/socket.h> 
 #include <netinet/in.h> 
+#include <signal.h> 
 
 #include "shared_mem.h"
 #include "semaphores.h"
 
 #define SHM_NAME "/webserver_shm"   
 
-/*const char* response =  
+const char* response =  
     "HTTP/1.1 200 OK\r\n" 
     "Content-Type: text/html\r\n" 
     "\r\n" 
-    "<html><body><h1>Hello, World!</h1></body></html>";*/ 
+    "<html><body><h1>Hello, World!</h1></body></html>"; 
 
 void send_file(int client_fd, const char* path) { //esta função enviat html, está no pdf 05
     // Open file 
@@ -102,10 +103,7 @@ semaphores_t* open_semaphores() {
     return sems;
 }
 
-void worker_loop(int worker_id) {
-    shared_data_t* shm = open_shared_memory(); 
-    semaphores_t* sems = open_semaphores(); 
-
+void worker_loop(int worker_id, shared_data_t* shm, semaphores_t* sems) {
     while (1) {
         sem_wait(sems->filled_slots);
         sem_wait(sems->queue_mutex);
@@ -116,11 +114,14 @@ void worker_loop(int worker_id) {
 
         sem_post(sems->queue_mutex);
         sem_post(sems->empty_slots);
+        printf("DEBUG: TOU AQUI\n");
 
-        char buffer[4096]; 
-        recv(client_fd, buffer, sizeof(buffer), 0);   
-        send_file(client_fd, "../tests/index.html"); //DÁ RUN DENTRO DE SRC SE NÃO QUERES ALTERAR ISTO
-        //send(client_fd, response, strlen(response), 0); //usa isto se não quiseres o index.html
+        //char buffer[4096]; 
+        //recv(client_fd, buffer, sizeof(buffer), MSG_DONTWAIT);    
+        printf("DEBUG: Ainda estou aqui?\n");      
+        //send_file(client_fd, "../tests/index.html"); //DÁ RUN DENTRO DE SRC SE NÃO QUERES ALTERAR ISTO
+        send(client_fd, response, strlen(response), 0); //usa isto se não quiseres o index.html
+        printf("DEBUG: Devia ter dado load?\n");
         close(client_fd); 
     }
 }

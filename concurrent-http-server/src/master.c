@@ -37,6 +37,8 @@ int create_server_socket(int port) {
         close(sockfd); 
         return -1; 
     } 
+
+    printf("DEBUG: Socket Created, %d\n", sockfd);
      
     return sockfd; 
 } 
@@ -51,6 +53,8 @@ void enqueue_connection(shared_data_t* data, semaphores_t* sems, int client_fd) 
      
     sem_post(sems->queue_mutex); 
     sem_post(sems->filled_slots); 
+
+    printf("DEBUG: connection queued.\n");
 }
 
 void create_workers(int num_workers, shared_data_t* shm, semaphores_t* sems){
@@ -65,7 +69,7 @@ void create_workers(int num_workers, shared_data_t* shm, semaphores_t* sems){
         }
 
         if (pid == 0){
-            worker_loop(i);
+            worker_loop(i, shm, sems);
             exit(0);
         }
 
@@ -74,8 +78,7 @@ void create_workers(int num_workers, shared_data_t* shm, semaphores_t* sems){
 }
 
 void master_loop(int server_fd, shared_data_t* shm, semaphores_t* sems){
-    
-    while (1){
+    while (keep_running){
         int client_fd = accept(server_fd, NULL, NULL);
 
         if (client_fd < 0){
