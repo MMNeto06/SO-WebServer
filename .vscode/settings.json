@@ -61,6 +61,7 @@
     "stdio.h": "c",
     "signal.h": "c",
     "master.h": "c",
-    "config.h": "c"
+    "config.h": "c",
+    "semaphores.h": "c"
   }
 }

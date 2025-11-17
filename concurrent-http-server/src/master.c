@@ -1,5 +1,6 @@
 #include <stdio.h> 
 #include <stdlib.h> 
+#include <string.h> 
 #include <unistd.h> 
 #include <sys/socket.h> 
 #include <netinet/in.h> 
@@ -52,7 +53,7 @@ void enqueue_connection(shared_data_t* data, semaphores_t* sems, int client_fd) 
     sem_post(sems->filled_slots); 
 }
 
-void create_workers(int num_workers, int server_fd, shared_data_t* shm, semaphores_t* sems){
+void create_workers(int num_workers, shared_data_t* shm, semaphores_t* sems){
     int i; 
 
     for (i = 0; i < num_workers; i++){
@@ -64,10 +65,24 @@ void create_workers(int num_workers, int server_fd, shared_data_t* shm, semaphor
         }
 
         if (pid == 0){
-            worker_loop(i, server_fd);
+            worker_loop(i);
             exit(0);
         }
 
         printf("[master] Worker %d created with PID %d\n", i, pid);
+    }
+}
+
+void master_loop(int server_fd, shared_data_t* shm, semaphores_t* sems){
+    
+    while (1){
+        int client_fd = accept(server_fd, NULL, NULL);
+
+        if (client_fd < 0){
+            perror("accept");
+            continue;
+        }
+
+        enqueue_connection(shm, sems, client_fd);
     }
 }
