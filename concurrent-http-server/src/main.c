@@ -23,8 +23,6 @@ int main() {
         return 1;
     }
     
-    create_workers(config.num_workers);
-
     int server_fd = create_server_socket(config.port); //está no master.c, inicializa a socket, pode não ficar aqui? idk
     
     if (server_fd < 0) {
@@ -33,8 +31,12 @@ int main() {
     }
  
     printf("HTTP server running on http://localhost:%d\n", config.port); 
+
+    create_workers(config.num_workers, server_fd);
  
     master_loop(server_fd, shm, &sems);
+
+    printf("DEBUG: Acabou?\n");
 
     close(server_fd);
     destroy_semaphores(&sems);

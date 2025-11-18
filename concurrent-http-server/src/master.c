@@ -57,10 +57,10 @@ void enqueue_connection(shared_data_t* data, semaphores_t* sems, int client_fd) 
     printf("DEBUG: connection queued.\n");
 }
 
-void create_workers(int num_workers){
+void create_workers(int num_workers, int server_fd){
     int i; 
 
-    for (i = 0; i < num_workers; i++){
+    for (i = 0; i < 1; i++){
         pid_t pid = fork(); 
 
         if (pid < 0){
@@ -81,12 +81,12 @@ void master_loop(int server_fd, shared_data_t* shm, semaphores_t* sems){
     while (keep_running){
         int client_fd = accept(server_fd, NULL, NULL);
 
-        printf("DEBUG: Accepted fd=%d\n", client_fd);
-
         if (client_fd < 0){
             perror("accept");
             continue;
         }
+        
+        printf("DEBUG: Accepted fd=%d\n", client_fd);
 
         enqueue_connection(shm, sems, client_fd);
     }
