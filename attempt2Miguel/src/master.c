@@ -58,6 +58,17 @@ void enqueue_connection(shared_data_t* data, semaphores_t* sems, int client_fd) 
 }
 
 int main(void){
+    struct sigaction sigact;
+
+    /* altera a rotina de atendimento ao ^C */
+    sigact.sa_handler = signal_handler;
+    sigemptyset (&sigact.sa_mask);
+    sigact.sa_flags = 0;
+    if (sigaction(SIGINT, &sigact, NULL) < 0) { 
+        perror("Rotina de atendimento não instalada\n");
+        return EXIT_FAILURE;
+    }
+
     server_config_t config;
     load_config("../server.conf", &config); //DÁ RUN DENTRO DE SRC SE NÃO QUERES ALTERAR ISTO
     

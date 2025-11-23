@@ -43,7 +43,6 @@ void send_file(void* arg) { //, const char* path
 
     
     const char* path = strcat(config.document_root, "/index.html"); //talvez é suposto buscar isto ao config file, na variável document root, não sei
-    printf("path: %s", path);
     FILE* file = fopen(path, "rb"); 
     if (!file) { 
         // Send 404 
