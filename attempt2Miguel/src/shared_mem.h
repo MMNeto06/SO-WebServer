@@ -10,6 +10,7 @@ typedef struct {
     long status_404; 
     long status_500; 
     int active_connections; 
+    int keep_running;
 } server_stats_t; 
  
 typedef struct { 
@@ -25,6 +26,7 @@ typedef struct {
 } shared_data_t; 
  
 shared_data_t* create_shared_memory(); 
+shared_data_t* open_shared_memory();
 void destroy_shared_memory(shared_data_t* data); 
 //shared_data_t* open_shared_memory();
  

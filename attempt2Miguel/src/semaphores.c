@@ -18,6 +18,23 @@ int init_semaphores(semaphores_t* sems, int queue_size) {
     } 
     return 0; 
 } 
+
+semaphores_t* open_semaphores(){
+    semaphores_t* sems = malloc(sizeof(semaphores_t)); 
+    sems->empty_slots = sem_open("/ws_empty", 0);
+    sems->filled_slots = sem_open("/ws_filled", 0);
+    sems->queue_mutex = sem_open("/ws_queue_mutex", 0);
+    sems->stats_mutex = sem_open("/ws_stats_mutex", 0);
+    sems->log_mutex = sem_open("/ws_log_mutex", 0);
+
+    if (sems->empty_slots == SEM_FAILED || sems->filled_slots == SEM_FAILED 
+        || sems->queue_mutex == SEM_FAILED || sems->stats_mutex == SEM_FAILED 
+        || sems->log_mutex == SEM_FAILED) { 
+        return NULL; 
+    }
+
+    return sems; 
+}
  
 void destroy_semaphores(semaphores_t* sems) { 
     sem_close(sems->empty_slots); 

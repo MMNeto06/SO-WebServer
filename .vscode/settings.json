@@ -62,6 +62,7 @@
     "signal.h": "c",
     "master.h": "c",
     "config.h": "c",
-    "semaphores.h": "c"
+    "semaphores.h": "c",
+    "stdlib.h": "c"
   }
 }
