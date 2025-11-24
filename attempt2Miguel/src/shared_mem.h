@@ -26,8 +26,6 @@ typedef struct {
 } shared_data_t; 
  
 shared_data_t* create_shared_memory(); 
-shared_data_t* open_shared_memory();
 void destroy_shared_memory(shared_data_t* data); 
-//shared_data_t* open_shared_memory();
  
 #endif 
