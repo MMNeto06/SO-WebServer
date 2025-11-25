@@ -7,7 +7,8 @@
 #define SHM_NAME "/webserver_shm"
 
 typedef struct worker {
-    int id;                
+    int id;         
+    int uds_socket;       
     shared_data_t* shm;
     semaphores_t* sems;
 } worker_t;

@@ -6,6 +6,7 @@
 #include <netinet/in.h> 
 #include <signal.h> 
 #include <pthread.h>
+#include <sys/un.h>
 
 #include "config.h"
 #include "shared_mem.h"
@@ -15,6 +16,7 @@
 volatile sig_atomic_t keep_running = 1; 
 semaphores_t* sems; 
 shared_data_t* shm;
+worker_t* workers;
  
 void master_signal_handler(int signum) { 
     printf("Signum: %d", signum);
@@ -50,37 +52,87 @@ int create_server_socket(int port) {
      
     return sockfd; 
 } 
+
+void send_fd(int socket, int fd_to_send) {
+    struct msghdr msg = {0};
+    struct iovec iov;
+    char buf[1] = {0};
+    iov.iov_base = buf;
+    iov.iov_len = sizeof(buf);
+    msg.msg_iov = &iov;
+    msg.msg_iovlen = 1;
+
+    char cbuf[CMSG_SPACE(sizeof(int))];
+    msg.msg_control = cbuf;
+    msg.msg_controllen = sizeof(cbuf);
+
+    struct cmsghdr *cmsg = CMSG_FIRSTHDR(&msg);
+    cmsg->cmsg_level = SOL_SOCKET;
+    cmsg->cmsg_type = SCM_RIGHTS;
+    cmsg->cmsg_len = CMSG_LEN(sizeof(int));
+    memcpy(CMSG_DATA(cmsg), &fd_to_send, sizeof(int));
+
+    if (sendmsg(socket, &msg, 0) < 0) {
+        perror("sendmsg");
+        return;
+    }
+}
  
-void enqueue_connection(shared_data_t* data, semaphores_t* sems, int client_fd) { 
+/*void enqueue_connection(semaphores_t* sems, int client_fd, int round_robin) { 
+
     sem_wait(sems->empty_slots); 
     sem_wait(sems->queue_mutex); 
      
-    data->queue.sockets[data->queue.rear] = client_fd; 
-    data->queue.rear = (data->queue.rear + 1) % MAX_QUEUE_SIZE; 
-    data->queue.count++; 
+
      
     sem_post(sems->queue_mutex); 
     sem_post(sems->filled_slots); 
 
-}
+}*/
 
 void create_workers(int num_workers){
     int i;
 
-    worker_t* workers = malloc(sizeof(worker_t)*num_workers);
+    workers = malloc(sizeof(worker_t)*num_workers);
+
+    // 1️⃣ Inicializa workers
     for (i = 0; i < num_workers; i++) {
         workers[i].id = i;
         workers[i].shm = shm;
         workers[i].sems = sems;
+
+        // Criar socket UDS de listening para este worker
+        char path[108];
+        snprintf(path, sizeof(path), "/tmp/worker_socket_%d", i);
+
+        int sock = socket(AF_UNIX, SOCK_STREAM, 0);
+        if (sock < 0) { perror("socket"); exit(1); }
+
+        struct sockaddr_un addr;
+        memset(&addr, 0, sizeof(addr));
+        addr.sun_family = AF_UNIX;
+        strncpy(addr.sun_path, path, sizeof(addr.sun_path)-1);
+
+        unlink(path); // garante que não existe socket antigo
+        if (bind(sock, (struct sockaddr*)&addr, sizeof(addr)) < 0) {
+            perror("bind"); exit(1);
+        }
+
+        if (listen(sock, 1) < 0) {
+            perror("listen"); exit(1);
+        }
+
+        workers[i].uds_socket = sock; // temporário
     }
 
+    // 2️⃣ Fork dos workers
     for (i = 0; i < num_workers; i++){
         switch (fork())
         {
         case -1:
             perror("fork");
             continue;
-        
+
         case 0: 
             worker_main(workers[i]);
             exit(0);
@@ -90,8 +142,17 @@ void create_workers(int num_workers){
         }
     }
 
-    free(workers);
+    // 3️⃣ Aceitar a conexão de cada worker
+    for (i = 0; i < num_workers; i++) {
+        int conn_fd = accept(workers[i].uds_socket, NULL, NULL);
+        if (conn_fd < 0) { perror("accept"); exit(1); }
+
+        close(workers[i].uds_socket);
+        workers[i].uds_socket = conn_fd;      // socket para enviar FDs
+          // listening socket não é mais necessário
+    }
 }
+
 
 void master_cleanup(void){
     destroy_semaphores(sems);
@@ -121,22 +182,38 @@ int master_init(server_config_t config){
         return -1;
     }
 
+    create_workers(config.num_workers);
+
     return server_fd;
 }
 
 void master_accept_loop(int listen_fd){
     server_config_t config;
     load_config("../server.conf", &config);
+    int round_robin = 0; 
     while (keep_running) { 
         int client_fd = accept(listen_fd, NULL, NULL); 
         printf("DEBUG: Accepted client_fd = %d\n", client_fd);
         if (client_fd < 0){
             continue;
         }
-        enqueue_connection(shm, sems, client_fd);
-        create_workers(config.num_workers);
-    }  
+        
+        
+        int worker_idx = round_robin % config.num_workers;
 
+            // Envia FD do cliente para o worker
+        send_fd(workers[worker_idx].uds_socket, client_fd);
+        round_robin++;
+
+        // Atualiza estatísticas em shared memory
+        /*sem_wait(sems->stats_mutex);
+        shm->stats.total_connections++;
+        sem_post(sems->stats_mutex);*/
+
+        // Fecha FD local, worker agora é dono dele
+        close(client_fd);
+        
+    }  
     master_cleanup();
     if (listen_fd >= 0) close(listen_fd);
 }

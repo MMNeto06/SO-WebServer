@@ -11,9 +11,9 @@ PROGS = master
 # Default rule: make all programs
 all: $(PROGS)
 
-master: config.o semaphores.o shared_mem.o thread_pool.o worker.o master.o 
+master: config.o semaphores.o shared_mem.o thread_pool.o worker.o http.o master.o 
 
-main.o: config.h semaphores.h shared_mem.h thread_pool.h worker.h master.c 
+main.o: config.h semaphores.h shared_mem.h thread_pool.h worker.h http.h master.c 
 
 # Rule to make any .o file dependent upon corresponding .h file
 %.o: %.h

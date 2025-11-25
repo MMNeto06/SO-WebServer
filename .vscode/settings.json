@@ -63,6 +63,8 @@
     "master.h": "c",
     "config.h": "c",
     "semaphores.h": "c",
-    "stdlib.h": "c"
+    "stdlib.h": "c",
+    "socket.h": "c",
+    "http.h": "c"
   }
 }

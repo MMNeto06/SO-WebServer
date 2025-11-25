@@ -8,12 +8,14 @@
 #include <netinet/in.h> 
 #include <signal.h> 
 #include <pthread.h>
+#include <sys/un.h>
 
 #include "config.h"
 #include "shared_mem.h"
 #include "semaphores.h"
 #include "thread_pool.h"
 #include "worker.h"
+#include "http.h"
 
 #define SHM_NAME "/webserver_shm"   
 
@@ -109,11 +111,59 @@ int dequeue_connection(shared_data_t* shm, semaphores_t* sems){
     return client_fd;
 }
 
-/*void worker_process_request(int client_fd){
-    int* fd_copy = malloc(sizeof(int));
-    *fd_copy = client_fd;
-    add_task(pool, (void*)send_file, fd_copy);
-}*/
+int recv_fd(int uds_sock) {
+    struct msghdr msg = {0};
+    struct iovec iov;
+    char buf[1];  // byte dummy
+    iov.iov_base = buf;
+    iov.iov_len = sizeof(buf);
+    msg.msg_iov = &iov;
+    msg.msg_iovlen = 1;
+
+    char cbuf[CMSG_SPACE(sizeof(int))];
+    msg.msg_control = cbuf;
+    msg.msg_controllen = sizeof(cbuf);
+
+    if (recvmsg(uds_sock, &msg, 0) < 0) {
+        perror("recvmsg");
+        return -1;
+    }
+
+    struct cmsghdr *cmsg = CMSG_FIRSTHDR(&msg);
+    if (cmsg == NULL || cmsg->cmsg_type != SCM_RIGHTS) {
+        fprintf(stderr, "No FD received\n");
+        return -1;
+    }
+
+    int client_fd;
+    memcpy(&client_fd, CMSG_DATA(cmsg), sizeof(int));
+    return client_fd;
+}
+
+
+void worker_process_request(int client_fd){
+    char buffer[4096];
+
+    int bytes = recv(client_fd, buffer, sizeof(buffer)-1, 0);
+    if (bytes <= 0){
+        perror("recv");
+        return; 
+    }
+
+    buffer[bytes] = '\0';
+
+    http_request_t* req = http_parse_request(buffer);
+
+    size_t response_size;
+    int status_code; 
+    char* response = http_build_response(req, &status_code, &response_size);
+
+    if (response != NULL)
+        http_send_response(client_fd, response, response_size);
+    
+    free(response);
+    free(req);
+}
 
 void* worker_thread(void* arg) {
     thread_pool_t* pool = (thread_pool_t*)arg;
@@ -144,25 +194,46 @@ void* worker_thread(void* arg) {
 }
 
 void worker_main(worker_t worker){
-    /*shared_data_t* shm = worker->shm;
-    semaphores_t* sems = worker->sems;*/
     printf("Worker ID: %d\n", worker.id);
 
     server_config_t config;
     load_config("../server.conf", &config);
 
+    // Thread pool
     thread_pool_t* pool = create_thread_pool(config.threads_per_worker);
 
+    // Socket UDS para receber FDs do master
+    int uds_sock = socket(AF_UNIX, SOCK_STREAM, 0);
+    if (uds_sock < 0) { perror("socket"); exit(1); }
+    worker.uds_socket = uds_sock;
+
+    struct sockaddr_un addr;
+    memset(&addr, 0, sizeof(addr));
+    addr.sun_family = AF_UNIX;
+    sprintf(addr.sun_path, "/tmp/worker_socket_%d", worker.id);
+
+    if (connect(uds_sock, (struct sockaddr*)&addr, sizeof(addr)) < 0) {
+        perror("connect");
+        exit(1);
+    }
+    printf("Worker %d conectado ao master via UDS\n", worker.id);
+
+    // Loop principal: receber FDs e adicionar tasks
     while (worker.shm->stats.keep_running){
-        int client_fd = dequeue_connection(worker.shm, worker.sems);
-        printf("DEBUG: client_fd = %d\n", client_fd);
+        //dequeue_connection(worker.shm, worker.sems);
+        int client_fd = recv_fd(uds_sock);
+        if (client_fd < 0) continue;
+
         int* fd_copy = malloc(sizeof(int));
         *fd_copy = client_fd;
+
         add_task(pool, (void*)send_file, fd_copy);
     }
 
     destroy_thread_pool(pool);
+    close(uds_sock);
 }
+
 
 /*void worker_main(int worker_id){ 
     while (1){
