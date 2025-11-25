@@ -97,20 +97,6 @@ void send_file(void* arg) { //, const char* path
     return;
 }
 
-int dequeue_connection(shared_data_t* shm, semaphores_t* sems){
-    sem_wait(sems->filled_slots);
-    sem_wait(sems->queue_mutex);
-
-    int client_fd = shm->queue.sockets[shm->queue.front];
-    shm->queue.front = (shm->queue.front + 1) % MAX_QUEUE_SIZE;
-    shm->queue.count--;
-
-    sem_post(sems->queue_mutex);
-    sem_post(sems->empty_slots);
-
-    return client_fd;
-}
-
 int recv_fd(int uds_sock) {
     struct msghdr msg = {0};
     struct iovec iov;
@@ -163,6 +149,13 @@ void worker_process_request(int client_fd){
     
     free(response);
     free(req);
+    close(client_fd);
+}
+
+void worker_process_request_wrapper(void* arg){
+    int client_fd = *(int*)arg;
+    free(arg);
+    worker_process_request(client_fd);
 }
 
 void* worker_thread(void* arg) {
@@ -199,10 +192,8 @@ void worker_main(worker_t worker){
     server_config_t config;
     load_config("../server.conf", &config);
 
-    // Thread pool
     thread_pool_t* pool = create_thread_pool(config.threads_per_worker);
 
-    // Socket UDS para receber FDs do master
     int uds_sock = socket(AF_UNIX, SOCK_STREAM, 0);
     if (uds_sock < 0) { perror("socket"); exit(1); }
     worker.uds_socket = uds_sock;
@@ -218,59 +209,17 @@ void worker_main(worker_t worker){
     }
     printf("Worker %d conectado ao master via UDS\n", worker.id);
 
-    // Loop principal: receber FDs e adicionar tasks
     while (worker.shm->stats.keep_running){
-        //dequeue_connection(worker.shm, worker.sems);
         int client_fd = recv_fd(uds_sock);
         if (client_fd < 0) continue;
 
         int* fd_copy = malloc(sizeof(int));
         *fd_copy = client_fd;
 
-        add_task(pool, (void*)send_file, fd_copy);
+        add_task(pool, worker_process_request_wrapper, fd_copy);
     }
 
     destroy_thread_pool(pool);
     close(uds_sock);
 }
 
-
-/*void worker_main(int worker_id){ 
-    while (1){
-        printf("worker%d", worker_id);
-        server_config_t config;
-        load_config("../server.conf", &config);
-
-        shared_data_t* shm = open_shared_memory();
-        if (shm == NULL){
-            perror("open_shared_memory");
-            return;
-        }
-
-        semaphores_t* sems = open_semaphores();
-        if (sems == NULL){
-            perror("open_semaphores");
-            return;
-        }
-
-        //sem_wait(sems->filled_slots);
-        //sem_wait(sems->queue_mutex);
-
-        int* client_fd = malloc(sizeof(int));
-        *client_fd = dequeue_connection(shm, sems);
-
-        static thread_pool_t *pool = NULL;
-
-        if (pool == NULL) {
-            pool = create_thread_pool(config.threads_per_worker);
-        }
-
-        int *fd_copy = malloc(sizeof(int));
-        *fd_copy = *client_fd;
-
-        add_task(pool, (void*)send_file, fd_copy);
-
-        //sem_post(sems->queue_mutex);
-        //sem_post(sems->empty_slots);
-    }
-}*/
