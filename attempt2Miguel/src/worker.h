@@ -13,10 +13,16 @@ typedef struct worker {
     semaphores_t* sems;
 } worker_t;
 
+typedef struct {
+    int client_fd;
+    shared_data_t* shm; 
+    semaphores_t* sems;
+} worker_task_args_t;
+
 void send_file(void* arg);
 int dequeue_connection(shared_data_t* shm, semaphores_t* sems);
 void* worker_thread(void *arg);
-void worker_process_request(int client_fd);
+void worker_process_request(int client_fd, shared_data_t* shm, semaphores_t* sems);
 void worker_main(worker_t worker);
 
 

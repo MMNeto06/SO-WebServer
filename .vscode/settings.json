@@ -65,6 +65,8 @@
     "semaphores.h": "c",
     "stdlib.h": "c",
     "socket.h": "c",
-    "http.h": "c"
+    "http.h": "c",
+    "shared_mem.h": "c",
+    "thread_pool.h": "c"
   }
 }

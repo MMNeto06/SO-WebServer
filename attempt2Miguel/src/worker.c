@@ -9,6 +9,7 @@
 #include <signal.h> 
 #include <pthread.h>
 #include <sys/un.h>
+#include <time.h>
 
 #include "config.h"
 #include "shared_mem.h"
@@ -16,86 +17,7 @@
 #include "thread_pool.h"
 #include "worker.h"
 #include "http.h"
-
-#define SHM_NAME "/webserver_shm"   
-
-/*void* handle_client(void* arg) { 
-    printf("handle_client called on thread %lu\n", pthread_self());
-    int client_fd = *(int*)arg; 
-    free(arg); 
- 
-    // Read request, send response 
-    char buffer[4096]; 
-    recv(client_fd, buffer, sizeof(buffer), 0); 
-     
-    const char* response = "HTTP/1.1 200 OK\r\n\r\n<h1>Hello</h1>"; 
-    send(client_fd, response, strlen(response), 0); 
-     
-    close(client_fd); 
-    return NULL; 
-} */
-
-void send_file(void* arg) { //, const char* path
-    // Open file 
-    printf("send_file called on thread %lu\n", pthread_self());
-    fflush(stdout);
-    int client_fd = *(int*)arg; 
-    printf("DEBUG: client_fd = %d\n", client_fd);
-    free(arg); 
-
-    server_config_t config;
-    load_config("../server.conf", &config);
-
-    const char* path = strcat(config.document_root, "/index.html"); //talvez é suposto buscar isto ao config file, na variável document root, não sei
-    FILE* file = fopen(path, "rb"); 
-    if (!file) { 
-        // Send 404 
-        printf("DEBUG: 404?\n");
-        const char* response = 
-            "HTTP/1.1 404 Not Found\r\n" 
-            "Content-Type: text/html\r\n" 
-            "\r\n" 
-            "<h1>404 Not Found</h1>"; 
-        send(client_fd, response, strlen(response), 0); 
-        return; 
-    } 
- 
-    // Get file size 
-    fseek(file, 0, SEEK_END); 
-    long file_size = ftell(file); 
-    printf("DEBUG: File size: %lu\n", file_size);
-    fseek(file, 0, SEEK_SET); 
-
-    printf("DEBUG: Antes do header!\n");
- 
-    // Send headers 
-    char header[512]; 
-    snprintf(header, sizeof(header), 
-        "HTTP/1.1 200 OK\r\n" 
-        "Content-Type: text/html\r\n" 
-        "Content-Length: %ld\r\n" 
-        "\r\n", file_size); 
-    if (send(client_fd, header, strlen(header), 0) == -1){
-        perror("send");
-        return;
-    }
-
-    printf("DEBUG: Header sent?\n");
- 
-    // Send file content 
-    char buffer[4096]; 
-    size_t bytes; 
-    while ((bytes = fread(buffer, 1, sizeof(buffer), file)) > 0) { 
-        if (send(client_fd, buffer, bytes, 0) == -1){
-            perror("send");
-            return;
-        }
-    }
-    printf("DEBUG: Cheguei aqui?\n");
-    fclose(file); 
-    close(client_fd);
-    return;
-}
+#include "stats.h"
 
 int recv_fd(int uds_sock) {
     struct msghdr msg = {0};
@@ -127,7 +49,8 @@ int recv_fd(int uds_sock) {
 }
 
 
-void worker_process_request(int client_fd){
+void worker_process_request(int client_fd, shared_data_t* shm, semaphores_t* sems){
+    clock_t start = clock();
     char buffer[4096];
 
     int bytes = recv(client_fd, buffer, sizeof(buffer)-1, 0);
@@ -138,24 +61,31 @@ void worker_process_request(int client_fd){
 
     buffer[bytes] = '\0';
 
+    update_active_connection(shm, sems);
+
     http_request_t* req = http_parse_request(buffer);
 
-    size_t response_size;
+    long response_size;
     int status_code; 
     char* response = http_build_response(req, &status_code, &response_size);
 
     if (response != NULL)
         http_send_response(client_fd, response, response_size);
+
+    clock_t end = clock(); 
+    long response_time = (long) (end-start) / CLOCKS_PER_SEC;
+    update_atomic_stats(shm, sems, response_size, status_code, response_time);
     
+    close(client_fd);
     free(response);
     free(req);
-    close(client_fd);
+    update_connection_terminated(shm, sems);
 }
 
 void worker_process_request_wrapper(void* arg){
-    int client_fd = *(int*)arg;
-    free(arg);
-    worker_process_request(client_fd);
+    worker_task_args_t* args = (worker_task_args_t*) arg;
+    worker_process_request(args->client_fd, args->shm, args->sems);
+    free(args);
 }
 
 void* worker_thread(void* arg) {
@@ -213,10 +143,12 @@ void worker_main(worker_t worker){
         int client_fd = recv_fd(uds_sock);
         if (client_fd < 0) continue;
 
-        int* fd_copy = malloc(sizeof(int));
-        *fd_copy = client_fd;
+        worker_task_args_t* args = malloc(sizeof(worker_task_args_t));
+        args->client_fd = client_fd;
+        args->shm = worker.shm;
+        args->sems = worker.sems;
 
-        add_task(pool, worker_process_request_wrapper, fd_copy);
+        add_task(pool, worker_process_request_wrapper, args);
     }
 
     destroy_thread_pool(pool);

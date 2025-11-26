@@ -9,6 +9,7 @@ typedef struct {
     long status_200; 
     long status_404; 
     long status_500; 
+    long total_response_time;
     int active_connections; 
     int keep_running;
 } server_stats_t; 

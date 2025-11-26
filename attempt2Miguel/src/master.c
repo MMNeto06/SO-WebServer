@@ -7,20 +7,21 @@
 #include <signal.h> 
 #include <pthread.h>
 #include <sys/un.h>
+#include <fcntl.h>
+#include <errno.h>
 
 #include "config.h"
 #include "shared_mem.h"
 #include "semaphores.h"
 #include "worker.h"
+#include "stats.h"
  
-volatile sig_atomic_t keep_running = 1; 
 semaphores_t* sems; 
 shared_data_t* shm;
 worker_t* workers;
  
 void master_signal_handler(int signum) { 
     printf("Signum: %d", signum);
-    keep_running = 0; 
     shm->stats.keep_running = 0;
 } 
  
@@ -49,7 +50,7 @@ int create_server_socket(int port) {
         close(sockfd); 
         return -1; 
     } 
-     
+ 
     return sockfd; 
 } 
 
@@ -104,7 +105,7 @@ void create_workers(int num_workers){
             perror("bind"); exit(1);
         }
 
-        if (listen(sock, 1) < 0) {
+        if (listen(sock, 10) < 0) {
             perror("listen"); exit(1);
         }
 
@@ -132,10 +133,9 @@ void create_workers(int num_workers){
         if (conn_fd < 0) { perror("accept"); exit(1); }
 
         close(workers[i].uds_socket);
-        workers[i].uds_socket = conn_fd;     
+        workers[i].uds_socket = conn_fd;
     }
 }
-
 
 void master_cleanup(void){
     destroy_semaphores(sems);
@@ -173,21 +173,32 @@ int master_init(server_config_t config){
 void master_accept_loop(int listen_fd){
     server_config_t config;
     load_config("../server.conf", &config);
-    int round_robin = 0; 
-    while (keep_running) { 
+    int flags = fcntl(listen_fd, F_GETFL, 0);
+    fcntl(listen_fd, F_SETFL, flags | O_NONBLOCK);
+    int next_worker = 0; 
+    time_t last_stats = time(NULL);
+    while (shm->stats.keep_running) { 
         int client_fd = accept(listen_fd, NULL, NULL); 
-        printf("DEBUG: Accepted client_fd = %d\n", client_fd);
-        if (client_fd < 0){
-            continue;
-        }
         
-        int worker_idx = round_robin % config.num_workers;
+        if (client_fd >= 0){
+            printf("DEBUG: Accepted client_fd = %d\n", client_fd);
+            int worker_idx = next_worker % config.num_workers;
+            send_fd(workers[worker_idx].uds_socket, client_fd);
+            next_worker++;    
+            close(client_fd);
+        }else {
+            if (errno != EAGAIN && errno != EWOULDBLOCK)
+                perror("accept");
+        }
 
-        send_fd(workers[worker_idx].uds_socket, client_fd);
-        round_robin++;        
+        time_t now = time(NULL);
+        if (now - last_stats >= 30){
+            print_stats(shm,sems);
+            last_stats = now;
+        }
     }  
     master_cleanup();
-    if (listen_fd >= 0) close(listen_fd);
+    close(listen_fd);
 }
 
 int main(void){

@@ -9,7 +9,7 @@ typedef struct {
  
 const char* get_mime_type(const char *filename);
 http_request_t* http_parse_request(char *buffer);
-char* http_build_response(http_request_t *req, int *status_code, size_t *out_size);
-void http_send_response(int fd, char *response, size_t size);
+char* http_build_response(http_request_t *req, int *status_code, long *out_size);
+void http_send_response(int fd, char *response, long size);
 
 #endif 

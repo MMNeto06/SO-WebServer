@@ -68,7 +68,7 @@ http_request_t* http_parse_request(char *buffer) {
     return http_request;
 } 
 
-char* http_build_response(http_request_t *req, int *status_code, size_t *out_size) { 
+char* http_build_response(http_request_t *req, int *status_code, long *out_size) { 
     server_config_t config;
     load_config("../server.conf", &config);
     char filepath[512];
@@ -127,10 +127,10 @@ char* http_build_response(http_request_t *req, int *status_code, size_t *out_siz
     }
 }
 
-void http_send_response(int fd, char *response, size_t size){
-    size_t sent = 0;
+void http_send_response(int fd, char *response, long size){
+    long sent = 0;
     while (sent < size){
-        size_t n = send(fd, response, size, 0);
+        long n = send(fd, response, size, 0);
         if (n<=0){
             perror("send");
             return;
