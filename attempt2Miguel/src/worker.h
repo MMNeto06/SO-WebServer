@@ -19,6 +19,8 @@ typedef struct {
     semaphores_t* sems;
 } worker_task_args_t;
 
+//void send_file(void* arg);
+//int dequeue_connection(shared_data_t* shm, semaphores_t* sems);
 void* worker_thread(void *arg);
 void worker_process_request(void* arg);
 void worker_main(worker_t worker);
