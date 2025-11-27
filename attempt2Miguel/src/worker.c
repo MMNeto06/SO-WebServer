@@ -87,25 +87,9 @@ void* worker_thread(void* arg) {
     thread_pool_t* pool = (thread_pool_t*)arg;
 
     while (1) {
-        pthread_mutex_lock(&pool->mutex);
-
-        while (!pool->shutdown && pool->head == NULL) {
-            pthread_cond_wait(&pool->cond, &pool->mutex);
-        }
-
-        if (pool->shutdown) {
-            pthread_mutex_unlock(&pool->mutex);
+        if(thread_pool_dequeue(pool) == 0){
             break;
         }
-
-        task_t* task = pool->head;
-        pool->head = task->next;
-        if (pool->head == NULL) pool->tail = NULL;
-
-        pthread_mutex_unlock(&pool->mutex);
-
-        task->function(task->arg);
-        free(task);
     }
 
     return NULL;

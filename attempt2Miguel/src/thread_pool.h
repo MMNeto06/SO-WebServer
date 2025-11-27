@@ -23,6 +23,7 @@ typedef struct {
 
 thread_pool_t* create_thread_pool(int num_threads);
 void add_task(thread_pool_t* pool, void (*function)(void*), void* arg);
+int thread_pool_dequeue(thread_pool_t* pool);
 void destroy_thread_pool(thread_pool_t* pool);
 
 #endif

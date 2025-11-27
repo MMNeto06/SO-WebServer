@@ -39,6 +39,29 @@ void add_task(thread_pool_t* pool, void (*function)(void*), void* arg) {
     pthread_mutex_unlock(&pool->mutex);
 }
 
+int thread_pool_dequeue(thread_pool_t* pool){
+    pthread_mutex_lock(&pool->mutex);
+
+    while (!pool->shutdown && pool->head == NULL) {
+        pthread_cond_wait(&pool->cond, &pool->mutex);
+    }
+
+    if (pool->shutdown) {
+        pthread_mutex_unlock(&pool->mutex);
+        return 0;
+    }
+    
+    task_t* task = pool->head;
+    pool->head = task->next;
+    if (pool->head == NULL) pool->tail = NULL;
+    
+    pthread_mutex_unlock(&pool->mutex);
+
+    task->function(task->arg);
+    free(task);
+    return 1;
+}
+
 void destroy_thread_pool(thread_pool_t* pool) {
     pthread_mutex_lock(&pool->mutex);
     pool->shutdown = 1;
