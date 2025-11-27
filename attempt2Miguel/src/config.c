@@ -28,8 +28,6 @@ int load_config(const char* filename, server_config_t* config) {
                 config->cache_size_mb=atoi(value);
             else if(strcmp(key, "TIMEOUT_SECONDS") == 0)
                 config->timeout_seconds=atoi(value);
-            else if(strcmp(key, "LOG_LEVEL") == 0)
-                strncpy(config->log_level, value, sizeof(config->log_level));
             //nota: qualquer outro config a adicionar deve ser adicionado em config.h e aqui - M
         }
      } 
