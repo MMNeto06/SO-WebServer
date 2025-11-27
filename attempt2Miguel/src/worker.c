@@ -48,12 +48,12 @@ int recv_fd(int uds_sock) {
     return client_fd;
 }
 
-
-void worker_process_request(int client_fd, shared_data_t* shm, semaphores_t* sems){
+void worker_process_request(void* arg){
+    worker_task_args_t* args = (worker_task_args_t*) arg;
     clock_t start = clock();
     char buffer[4096];
 
-    int bytes = recv(client_fd, buffer, sizeof(buffer)-1, 0);
+    int bytes = recv(args->client_fd, buffer, sizeof(buffer)-1, 0);
     if (bytes <= 0){
         perror("recv");
         return; 
@@ -61,7 +61,7 @@ void worker_process_request(int client_fd, shared_data_t* shm, semaphores_t* sem
 
     buffer[bytes] = '\0';
 
-    update_active_connection(shm, sems);
+    update_active_connection(args->shm, args->sems);
 
     http_request_t* req = http_parse_request(buffer);
 
@@ -70,21 +70,16 @@ void worker_process_request(int client_fd, shared_data_t* shm, semaphores_t* sem
     char* response = http_build_response(req, &status_code, &response_size);
 
     if (response != NULL)
-        http_send_response(client_fd, response, response_size);
+        http_send_response(args->client_fd, response, response_size);
 
     clock_t end = clock(); 
     long response_time = (long) (end-start) / CLOCKS_PER_SEC;
-    update_atomic_stats(shm, sems, response_size, status_code, response_time);
+    update_atomic_stats(args->shm, args->sems, response_size, status_code, response_time);
     
-    close(client_fd);
+    update_connection_terminated(args->shm, args->sems);
+    close(args->client_fd);
     free(response);
     free(req);
-    update_connection_terminated(shm, sems);
-}
-
-void worker_process_request_wrapper(void* arg){
-    worker_task_args_t* args = (worker_task_args_t*) arg;
-    worker_process_request(args->client_fd, args->shm, args->sems);
     free(args);
 }
 
@@ -148,7 +143,7 @@ void worker_main(worker_t worker){
         args->shm = worker.shm;
         args->sems = worker.sems;
 
-        add_task(pool, worker_process_request_wrapper, args);
+        add_task(pool, worker_process_request, args);
     }
 
     destroy_thread_pool(pool);
