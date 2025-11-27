@@ -7,9 +7,7 @@
 #include "semaphores.h"
 
 void update_atomic_stats(shared_data_t* shm, semaphores_t* sems, long response_size, int status_code, long response_time){
-    printf("[Worker] waiting stats_mutex\n");
     sem_wait(sems->stats_mutex);
-    printf("[Worker] acquired stats_mutex\n");
 
     shm->stats.total_requests++;
     shm->stats.bytes_transferred += response_size;
@@ -34,7 +32,6 @@ void update_atomic_stats(shared_data_t* shm, semaphores_t* sems, long response_s
     }
 
     sem_post(sems->stats_mutex);
-    printf("[Worker] released stats_mutex\n");
 }
 
 void update_active_connection(shared_data_t* shm, semaphores_t* sems){
@@ -53,7 +50,7 @@ void print_stats(shared_data_t* shm, semaphores_t* sems) {
     sem_wait(sems->stats_mutex);
 
     long total = shm->stats.total_requests;
-    double avg_response = total ? shm->stats.total_response_time / total : 0.0;
+    double avg_response = (total > 0) ? shm->stats.total_response_time / total : 0.0;
 
     printf("Requests: %ld\n", shm->stats.total_requests);
     printf("Bytes: %ld\n", shm->stats.bytes_transferred);

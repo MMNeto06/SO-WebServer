@@ -22,7 +22,7 @@
 int recv_fd(int uds_sock) {
     struct msghdr msg = {0};
     struct iovec iov;
-    char buf[1];  // byte dummy
+    char buf[1];  
     iov.iov_base = buf;
     iov.iov_len = sizeof(buf);
     msg.msg_iov = &iov;

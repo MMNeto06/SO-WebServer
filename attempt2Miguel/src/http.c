@@ -63,6 +63,10 @@ http_request_t* http_parse_request(char *buffer) {
     sscanf(buffer, "%s %s %s", http_request->method, http_request->path, http_request->version);
     if (strcmp(http_request->path, "/") == 0){
         snprintf(http_request->path, sizeof(http_request->path), "%s/index.html", config.document_root);
+    } else {
+        char temp_path[strlen(http_request->path) + 512];
+        snprintf(temp_path, sizeof(temp_path), "%s%s", config.document_root, http_request->path);
+        strcpy(http_request->path, temp_path);
     }
     
     return http_request;
