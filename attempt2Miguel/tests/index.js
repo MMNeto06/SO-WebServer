@@ -1,0 +1,1 @@
+console.log("A consola certamente funciona")
