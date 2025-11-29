@@ -67,6 +67,7 @@
     "socket.h": "c",
     "http.h": "c",
     "shared_mem.h": "c",
-    "thread_pool.h": "c"
+    "thread_pool.h": "c",
+    "pthread.h": "c"
   }
 }

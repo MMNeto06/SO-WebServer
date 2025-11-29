@@ -3,6 +3,7 @@
 
 #include "shared_mem.h"
 #include "semaphores.h"
+#include "cache.h"
 
 #define SHM_NAME "/webserver_shm"
 
@@ -11,12 +12,14 @@ typedef struct worker {
     int uds_socket;       
     shared_data_t* shm;
     semaphores_t* sems;
+    cache_t* cache;
 } worker_t;
 
 typedef struct {
     int client_fd;
     shared_data_t* shm; 
     semaphores_t* sems;
+    cache_t* cache; 
 } worker_task_args_t;
 
 void* worker_thread(void *arg);

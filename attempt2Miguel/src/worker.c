@@ -18,6 +18,7 @@
 #include "worker.h"
 #include "http.h"
 #include "stats.h"
+#include "cache.h"
 
 int recv_fd(int uds_sock) {
     struct msghdr msg = {0};
@@ -65,13 +66,31 @@ void worker_process_request(void* arg){
 
     http_request_t* req = http_parse_request(buffer);
 
+    cache_entry_t* cached = cache_get(args->cache, req->path);
+    if(cached){ //se a request já existir em cache, usar isso diretamente
+        printf("Worker hit cache for %s\n", req->path);
+
+        http_send_response(args->client_fd, cached->data, cached->size);
+
+        update_connection_terminated(args->shm, args->sems);
+        close(args->client_fd);
+        free(req);
+        free(args);
+        return;
+    }
+    //se não existir, formular response
     long response_size;
     int status_code; 
     char* response = http_build_response(req, &status_code, &response_size);
+    void* cache_copy;
+    if (response != NULL){
+        //guardar response em cache
+        cache_copy = malloc(response_size);
+        memcpy(cache_copy, response, response_size);
+        cache_put(args->cache, req->path, cache_copy, response_size);
 
-    if (response != NULL)
         http_send_response(args->client_fd, response, response_size);
-
+    }
     clock_t end = clock(); 
     long response_time = (long) (end-start) / CLOCKS_PER_SEC;
     update_atomic_stats(args->shm, args->sems, response_size, status_code, response_time);
@@ -101,6 +120,8 @@ void worker_main(worker_t worker){
     server_config_t config;
     load_config("../server.conf", &config);
 
+    worker.cache = cache_init(config.cache_size_mb);
+
     thread_pool_t* pool = create_thread_pool(config.threads_per_worker);
 
     int uds_sock = socket(AF_UNIX, SOCK_STREAM, 0);
@@ -126,11 +147,13 @@ void worker_main(worker_t worker){
         args->client_fd = client_fd;
         args->shm = worker.shm;
         args->sems = worker.sems;
+        args->cache = worker.cache;
 
         add_task(pool, worker_process_request, args);
     }
 
     destroy_thread_pool(pool);
+    cache_destroy(worker.cache);
     close(uds_sock);
 }
 

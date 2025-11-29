@@ -1,5 +1,7 @@
 #include <stdint.h>
 #include <pthread.h>
+#include <stdlib.h>
+#include <string.h>
 #include "cache.h"
 
 static uint64_t hash_str(const char *s) {
@@ -109,6 +111,8 @@ void cache_put(cache_t *c, const char *key, void *data, size_t size) {
         prev = e;
         e = e->h_next;
     }
+
+    free(prev);
 
     if (e) {
         // Update size
