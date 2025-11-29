@@ -10,6 +10,7 @@ typedef struct {
     char log_file[256]; 
     int cache_size_mb; 
     int timeout_seconds; 
+    char log_level[8];
 } server_config_t; 
  
 int load_config(const char* filename, server_config_t* config); 

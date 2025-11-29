@@ -10,6 +10,7 @@
 #include <pthread.h>
 #include <sys/un.h>
 #include <time.h>
+#include <arpa/inet.h>
 
 #include "config.h"
 #include "shared_mem.h"
@@ -19,6 +20,9 @@
 #include "http.h"
 #include "stats.h"
 #include "cache.h"
+#include "logger.h"
+
+char logmsg[4096];
 
 int recv_fd(int uds_sock) {
     struct msghdr msg = {0};
@@ -57,6 +61,7 @@ void worker_process_request(void* arg){
     int bytes = recv(args->client_fd, buffer, sizeof(buffer)-1, 0);
     if (bytes <= 0){
         perror("recv");
+        log_message(args->sems->log_mutex, "ERROR", "recv error");
         return; 
     }
 
@@ -66,11 +71,21 @@ void worker_process_request(void* arg){
 
     http_request_t* req = http_parse_request(buffer);
 
+    char client_ip[64] = "unknown";
+    struct sockaddr_in addr;
+    socklen_t len = sizeof(addr);
+    if(getpeername(args->client_fd, (struct sockaddr*)&addr, &len) == 0){
+        inet_ntop(AF_INET, &addr.sin_addr, client_ip, sizeof(client_ip));
+    }
+
     cache_entry_t* cached = cache_get(args->cache, req->path);
     if(cached){ //se a request já existir em cache, usar isso diretamente
         printf("Worker hit cache for %s\n", req->path);
+        sprintf(logmsg, "Worker hit cache for %s\n", req->path);
+        log_message(args->log_sem, "INFO", logmsg);
 
         http_send_response(args->client_fd, cached->data, cached->size);
+        log_request(args->log_sem, client_ip, req->method, req->path, 200, cached->size);
 
         update_connection_terminated(args->shm, args->sems);
         close(args->client_fd);
@@ -90,6 +105,8 @@ void worker_process_request(void* arg){
         cache_put(args->cache, req->path, cache_copy, response_size);
 
         http_send_response(args->client_fd, response, response_size);
+
+        log_request(args->log_sem, client_ip, req->method, req->path, status_code, response_size);
     }
     clock_t end = clock(); 
     long response_time = (long) (end-start) / CLOCKS_PER_SEC;
@@ -116,6 +133,8 @@ void* worker_thread(void* arg) {
 
 void worker_main(worker_t worker){
     printf("Worker ID: %d\n", worker.id);
+    sprintf(logmsg, "Worker %d initiated", worker.id);
+    log_message(worker.sems->log_mutex, "INFO", logmsg);
 
     server_config_t config;
     load_config("../server.conf", &config);
@@ -139,6 +158,9 @@ void worker_main(worker_t worker){
     }
     printf("Worker %d conectado ao master via UDS\n", worker.id);
 
+    sprintf(logmsg, "Worker %d conectado ao master via UDS", worker.id);
+    log_message(worker.sems->log_mutex, "INFO", logmsg);
+
     while (worker.shm->stats.keep_running){
         int client_fd = recv_fd(uds_sock);
         if (client_fd < 0) continue;
@@ -148,10 +170,13 @@ void worker_main(worker_t worker){
         args->shm = worker.shm;
         args->sems = worker.sems;
         args->cache = worker.cache;
+        args->log_sem = worker.sems->log_mutex; //hopefully does not break
 
         add_task(pool, worker_process_request, args);
     }
 
+    sprintf(logmsg, "Worker %d is being destroyed", worker.id);
+    log_message(worker.sems->log_mutex, "INFO", logmsg);
     destroy_thread_pool(pool);
     cache_destroy(worker.cache);
     close(uds_sock);

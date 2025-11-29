@@ -1,0 +1,56 @@
+127.0.0.1 - - [29/Nov/2025:15:04:22 +0000] "GET ../tests/index.html HTTP/1.1" 200 814
+127.0.0.1 - - [29/Nov/2025:15:04:22 +0000] "GET ../tests/index.js HTTP/1.1" 200 121
+127.0.0.1 - - [29/Nov/2025:15:04:22 +0000] "GET ../tests/index.css HTTP/1.1" 200 98
+127.0.0.1 - - [29/Nov/2025:15:04:22 +0000] "GET ../tests/MainBefore.webp HTTP/1.1" 200 42962
+127.0.0.1 - - [29/Nov/2025:15:04:22 +0000] "GET ../tests/favicon.ico HTTP/1.1" 404 85
+127.0.0.1 - - [29/Nov/2025:15:04:38 +0000] "GET ../tests/page.html HTTP/1.1" 200 487
+127.0.0.1 - - [29/Nov/2025:15:04:38 +0000] "GET ../tests/MainBefore.webp HTTP/1.1" 200 42962
+127.0.0.1 - - [29/Nov/2025:15:04:38 +0000] "GET ../tests/favicon.ico HTTP/1.1" 404 85
+127.0.0.1 - - [29/Nov/2025:15:04:49 +0000] "GET ../tests/index.html HTTP/1.1" 200 814
+127.0.0.1 - - [29/Nov/2025:15:04:49 +0000] "GET ../tests/index.css HTTP/1.1" 200 98
+127.0.0.1 - - [29/Nov/2025:15:04:49 +0000] "GET ../tests/index.js HTTP/1.1" 200 121
+127.0.0.1 - - [29/Nov/2025:15:04:49 +0000] "GET ../tests/MainBefore.webp HTTP/1.1" 200 42962
+127.0.0.1 - - [29/Nov/2025:15:16:10 +0000] "GET ../tests/index.html HTTP/1.1" 200 814
+127.0.0.1 - - [29/Nov/2025:15:16:10 +0000] "GET ../tests/index.js HTTP/1.1" 200 121
+127.0.0.1 - - [29/Nov/2025:15:16:10 +0000] "GET ../tests/index.css HTTP/1.1" 200 98
+127.0.0.1 - - [29/Nov/2025:15:16:10 +0000] "GET ../tests/MainBefore.webp HTTP/1.1" 200 42962
+127.0.0.1 - - [29/Nov/2025:15:16:10 +0000] "GET ../tests/favicon.ico HTTP/1.1" 404 85
+127.0.0.1 - - [29/Nov/2025:15:25:14 +0000] "GET ../tests/index.html HTTP/1.1" 200 814
+127.0.0.1 - - [29/Nov/2025:15:25:15 +0000] "GET ../tests/index.js HTTP/1.1" 200 121
+127.0.0.1 - - [29/Nov/2025:15:25:15 +0000] "GET ../tests/index.css HTTP/1.1" 200 98
+127.0.0.1 - - [29/Nov/2025:15:25:15 +0000] "GET ../tests/MainBefore.webp HTTP/1.1" 200 42962
+127.0.0.1 - - [29/Nov/2025:15:25:15 +0000] "GET ../tests/favicon.ico HTTP/1.1" 404 85
+127.0.0.1 - - [29/Nov/2025:15:25:17 +0000] "GET ../tests/page.html HTTP/1.1" 200 487
+127.0.0.1 - - [29/Nov/2025:15:25:17 +0000] "GET ../tests/MainBefore.webp HTTP/1.1" 200 42962
+127.0.0.1 - - [29/Nov/2025:15:49:15 +0000] "GET ../tests/index.html HTTP/1.1" 200 814
+127.0.0.1 - - [29/Nov/2025:15:49:15 +0000] "GET ../tests/index.js HTTP/1.1" 200 121
+127.0.0.1 - - [29/Nov/2025:15:49:15 +0000] "GET ../tests/index.css HTTP/1.1" 200 98
+127.0.0.1 - - [29/Nov/2025:15:49:15 +0000] "GET ../tests/MainBefore.webp HTTP/1.1" 200 42962
+[INFO] [29/Nov/2025:16:06:07 +0000] - Worker 0 initiated
+[INFO] [29/Nov/2025:16:06:07 +0000] - Worker 1 initiated
+[INFO] [29/Nov/2025:16:06:07 +0000] - Worker 2 initiated
+[INFO] [29/Nov/2025:16:06:07 +0000] - Worker 3 initiated
+[INFO] [29/Nov/2025:16:06:07 +0000] - Worker 0 conectado ao master via UDS
+[INFO] [29/Nov/2025:16:06:07 +0000] - Worker 1 conectado ao master via UDS
+[INFO] [29/Nov/2025:16:06:07 +0000] - Worker 2 conectado ao master via UDS
+[INFO] [29/Nov/2025:16:06:07 +0000] - Worker 3 conectado ao master via UDS
+127.0.0.1 - - [29/Nov/2025:16:06:11 +0000] "GET ../tests/index.html HTTP/1.1" 200 814
+127.0.0.1 - - [29/Nov/2025:16:06:11 +0000] "GET ../tests/index.css HTTP/1.1" 200 98
+127.0.0.1 - - [29/Nov/2025:16:06:11 +0000] "GET ../tests/index.js HTTP/1.1" 200 121
+127.0.0.1 - - [29/Nov/2025:16:06:11 +0000] "GET ../tests/MainBefore.webp HTTP/1.1" 200 42962
+[INFO] [29/Nov/2025:16:16:07 +0000] - Worker 0 initiated
+[INFO] [29/Nov/2025:16:16:07 +0000] - Worker 1 initiated
+[INFO] [29/Nov/2025:16:16:07 +0000] - Worker 2 initiated
+[INFO] [29/Nov/2025:16:16:07 +0000] - Worker 3 initiated
+[INFO] [29/Nov/2025:16:16:07 +0000] - Worker 0 conectado ao master via UDS
+[INFO] [29/Nov/2025:16:16:07 +0000] - Worker 1 conectado ao master via UDS
+[INFO] [29/Nov/2025:16:16:07 +0000] - Worker 2 conectado ao master via UDS
+[INFO] [29/Nov/2025:16:16:07 +0000] - Worker 3 conectado ao master via UDS
+127.0.0.1 - - [29/Nov/2025:16:16:10 +0000] "GET ../tests/index.html HTTP/1.1" 200 814
+127.0.0.1 - - [29/Nov/2025:16:16:10 +0000] "GET ../tests/index.css HTTP/1.1" 200 98
+127.0.0.1 - - [29/Nov/2025:16:16:10 +0000] "GET ../tests/index.js HTTP/1.1" 200 121
+127.0.0.1 - - [29/Nov/2025:16:16:10 +0000] "GET ../tests/MainBefore.webp HTTP/1.1" 200 42962
+[INFO] [29/Nov/2025:16:16:18 +0000] - Worker 1 is being destroyed
+[INFO] [29/Nov/2025:16:16:18 +0000] - Worker 3 is being destroyed
+[INFO] [29/Nov/2025:16:16:18 +0000] - Worker 2 is being destroyed
+[INFO] [29/Nov/2025:16:16:18 +0000] - Worker 0 is being destroyed
