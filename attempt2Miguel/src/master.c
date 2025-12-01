@@ -21,7 +21,7 @@ shared_data_t* shm;
 worker_t* workers;
  
 void master_signal_handler(int signum) { 
-    printf("Signum: %d", signum);
+    printf("Signum: %d\n", signum);
     shm->stats.keep_running = 0;
 } 
  

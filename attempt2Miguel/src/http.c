@@ -68,15 +68,43 @@ http_request_t* http_parse_request(char *buffer) {
         snprintf(temp_path, sizeof(temp_path), "%s%s", config.document_root, http_request->path);
         strcpy(http_request->path, temp_path);
     }
-    
+
+    http_request->want_close = 0; // default HTTP/1.1
+
+    // HTTP/1.0 força close
+    if (strncmp(http_request->version, "HTTP/1.0", 8) == 0) {
+        http_request->want_close = 1;
+    }
+
+    char *header_line = strstr(buffer, "\r\n");
+    while (header_line && *(header_line += 2) != '\r') {
+        char key[64], value[256];
+        sscanf(header_line, "%63[^:]: %255[^\r\n]", key, value);
+
+        if (strcasecmp(key, "Connection") == 0) {
+            if (strcasecmp(value, "close") == 0)
+                http_request->want_close = 1;
+            if (strcasecmp(value, "keep-alive") == 0)
+                http_request->want_close = 0;
+        }
+    }
+        
     return http_request;
 } 
 
 char* http_build_response(http_request_t *req, int *status_code, long *out_size) { 
     server_config_t config;
     load_config("../server.conf", &config);
+
     char filepath[512];
     snprintf(filepath, sizeof(filepath), "%s", req->path);
+
+    char connection_header[128];
+    if (req->want_close){
+        sprintf(connection_header, "Connection: close\r\n");
+    } else {
+        sprintf(connection_header, "Connection: keep-alive\r\n" "Keep-Alive: timeout=5, max=100\r\n");
+    }
 
     char *response; 
     if (strcmp(req->method, "HEAD") == 0) {
@@ -84,8 +112,10 @@ char* http_build_response(http_request_t *req, int *status_code, long *out_size)
         response = malloc(256);
         sprintf(response,
             "HTTP/1.1 200 OK\r\n"
+            "%s"
             "Content-Type: text/plain\r\n"
-            "Content-Length: 0\r\n\r\n"
+            "Content-Length: 0\r\n\r\n", 
+            connection_header
         );
         *out_size = strlen(response);
         return response;
@@ -97,8 +127,10 @@ char* http_build_response(http_request_t *req, int *status_code, long *out_size)
             response = malloc(256);
             sprintf(response,
                 "HTTP/1.1 404 Not Found\r\n"
+                "%s"
                 "Content-Type: text/plain\r\n"
-                "Content-Length: 13\r\n\r\n404 Not Found"
+                "Content-Length: 13\r\n\r\n404 Not Found", 
+                connection_header
             );
             *out_size = strlen(response);
             return response; 
@@ -112,9 +144,10 @@ char* http_build_response(http_request_t *req, int *status_code, long *out_size)
         char header[512];
         sprintf(header,
             "HTTP/1.1 200 OK\r\n"
+            "%s"
             "Content-Type: %s\r\n"
             "Content-Length: %ld\r\n\r\n",
-            mime_type, f_size
+            connection_header, mime_type, f_size
         );
         *out_size = strlen(header) + f_size;
         response = malloc(*out_size+1);

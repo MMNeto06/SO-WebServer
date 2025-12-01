@@ -54,3 +54,300 @@
 [INFO] [29/Nov/2025:16:16:18 +0000] - Worker 3 is being destroyed
 [INFO] [29/Nov/2025:16:16:18 +0000] - Worker 2 is being destroyed
 [INFO] [29/Nov/2025:16:16:18 +0000] - Worker 0 is being destroyed
+[INFO] [01/Dec/2025:12:23:50 +0000] - Worker 0 initiated
+[INFO] [01/Dec/2025:12:23:50 +0000] - Worker 1 initiated
+[INFO] [01/Dec/2025:12:23:50 +0000] - Worker 3 initiated
+[INFO] [01/Dec/2025:12:23:50 +0000] - Worker 2 initiated
+[INFO] [01/Dec/2025:12:23:50 +0000] - Worker 0 conectado ao master via UDS
+[INFO] [01/Dec/2025:12:23:50 +0000] - Worker 1 conectado ao master via UDS
+[INFO] [01/Dec/2025:12:23:50 +0000] - Worker 3 conectado ao master via UDS
+[INFO] [01/Dec/2025:12:23:50 +0000] - Worker 2 conectado ao master via UDS
+127.0.0.1 - - [01/Dec/2025:12:23:53 +0000] "GET ../tests/index.html HTTP/1.1" 200 870
+127.0.0.1 - - [01/Dec/2025:12:23:53 +0000] "GET ../tests/index.css HTTP/1.1" 200 154
+127.0.0.1 - - [01/Dec/2025:12:23:53 +0000] "GET ../tests/index.js HTTP/1.1" 200 177
+127.0.0.1 - - [01/Dec/2025:12:23:53 +0000] "GET ../tests/MainBefore.webp HTTP/1.1" 200 43018
+[INFO] [01/Dec/2025:12:23:57 +0000] - Worker hit cache for ../tests/index.html
+
+127.0.0.1 - - [01/Dec/2025:12:23:57 +0000] "GET ../tests/index.html HTTP/1.1" 200 870
+127.0.0.1 - - [01/Dec/2025:12:23:57 +0000] "GET ../tests/index.css HTTP/1.1" 200 154
+[INFO] [01/Dec/2025:12:23:57 +0000] - Worker hit cache for ../tests/index.js
+
+127.0.0.1 - - [01/Dec/2025:12:23:57 +0000] "GET ../tests/index.js HTTP/1.1" 200 177
+127.0.0.1 - - [01/Dec/2025:12:23:57 +0000] "GET ../tests/MainBefore.webp HTTP/1.1" 200 43018
+127.0.0.1 - - [01/Dec/2025:12:24:01 +0000] "GET ../tests/index.html HTTP/1.1" 200 870
+127.0.0.1 - - [01/Dec/2025:12:24:01 +0000] "GET ../tests/index.js HTTP/1.1" 200 177
+127.0.0.1 - - [01/Dec/2025:12:24:01 +0000] "GET ../tests/index.css HTTP/1.1" 200 154
+[INFO] [01/Dec/2025:12:24:01 +0000] - Worker hit cache for ../tests/MainBefore.webp
+
+127.0.0.1 - - [01/Dec/2025:12:24:01 +0000] "GET ../tests/MainBefore.webp HTTP/1.1" 200 43018
+[INFO] [01/Dec/2025:12:24:11 +0000] - Worker hit cache for ../tests/index.html
+
+127.0.0.1 - - [01/Dec/2025:12:24:11 +0000] "GET ../tests/index.html HTTP/1.1" 200 870
+[INFO] [01/Dec/2025:12:24:11 +0000] - Worker hit cache for ../tests/index.js
+
+127.0.0.1 - - [01/Dec/2025:12:24:11 +0000] "GET ../tests/index.js HTTP/1.1" 200 177
+[INFO] [01/Dec/2025:12:24:11 +0000] - Worker hit cache for ../tests/index.css
+
+127.0.0.1 - - [01/Dec/2025:12:24:11 +0000] "GET ../tests/index.css HTTP/1.1" 200 154
+127.0.0.1 - - [01/Dec/2025:12:24:11 +0000] "GET ../tests/MainBefore.webp HTTP/1.1" 200 43018
+[INFO] [01/Dec/2025:12:24:14 +0000] - Worker 0 is being destroyed
+[INFO] [01/Dec/2025:12:24:14 +0000] - Worker 2 is being destroyed
+[INFO] [01/Dec/2025:12:24:14 +0000] - Worker 3 is being destroyed
+[INFO] [01/Dec/2025:12:24:14 +0000] - Worker 1 is being destroyed
+[INFO] [01/Dec/2025:12:26:40 +0000] - Worker 0 initiated
+[INFO] [01/Dec/2025:12:26:40 +0000] - Worker 2 initiated
+[INFO] [01/Dec/2025:12:26:40 +0000] - Worker 1 initiated
+[INFO] [01/Dec/2025:12:26:40 +0000] - Worker 3 initiated
+[INFO] [01/Dec/2025:12:26:40 +0000] - Worker 2 conectado ao master via UDS
+[INFO] [01/Dec/2025:12:26:40 +0000] - Worker 0 conectado ao master via UDS
+[INFO] [01/Dec/2025:12:26:40 +0000] - Worker 3 conectado ao master via UDS
+[INFO] [01/Dec/2025:12:26:40 +0000] - Worker 1 conectado ao master via UDS
+127.0.0.1 - - [01/Dec/2025:12:26:43 +0000] "GET ../tests/index.html HTTP/1.1" 200 870
+127.0.0.1 - - [01/Dec/2025:12:26:43 +0000] "GET ../tests/index.js HTTP/1.1" 200 177
+127.0.0.1 - - [01/Dec/2025:12:26:43 +0000] "GET ../tests/index.css HTTP/1.1" 200 154
+127.0.0.1 - - [01/Dec/2025:12:26:43 +0000] "GET ../tests/MainBefore.webp HTTP/1.1" 200 43018
+127.0.0.1 - - [01/Dec/2025:12:26:54 +0000] "GET ../tests/index.html HTTP/1.1" 200 870
+127.0.0.1 - - [01/Dec/2025:12:26:54 +0000] "GET ../tests/index.js HTTP/1.1" 200 177
+127.0.0.1 - - [01/Dec/2025:12:26:54 +0000] "GET ../tests/index.css HTTP/1.1" 200 154
+127.0.0.1 - - [01/Dec/2025:12:26:54 +0000] "GET ../tests/MainBefore.webp HTTP/1.1" 200 43018
+[INFO] [01/Dec/2025:12:27:05 +0000] - Worker 3 is being destroyed
+[INFO] [01/Dec/2025:12:27:05 +0000] - Worker 0 is being destroyed
+[INFO] [01/Dec/2025:12:27:05 +0000] - Worker 1 is being destroyed
+[INFO] [01/Dec/2025:12:27:05 +0000] - Worker 2 is being destroyed
+[INFO] [01/Dec/2025:12:27:23 +0000] - Worker 0 initiated
+[INFO] [01/Dec/2025:12:27:23 +0000] - Worker 2 initiated
+[INFO] [01/Dec/2025:12:27:23 +0000] - Worker 1 initiated
+[INFO] [01/Dec/2025:12:27:23 +0000] - Worker 3 initiated
+[INFO] [01/Dec/2025:12:27:23 +0000] - Worker 0 conectado ao master via UDS
+[INFO] [01/Dec/2025:12:27:23 +0000] - Worker 2 conectado ao master via UDS
+[INFO] [01/Dec/2025:12:27:23 +0000] - Worker 3 conectado ao master via UDS
+[INFO] [01/Dec/2025:12:27:23 +0000] - Worker 1 conectado ao master via UDS
+[INFO] [01/Dec/2025:12:27:25 +0000] - Worker 0 is being destroyed
+[INFO] [01/Dec/2025:12:27:25 +0000] - Worker 1 is being destroyed
+[INFO] [01/Dec/2025:12:27:25 +0000] - Worker 3 is being destroyed
+[INFO] [01/Dec/2025:12:27:25 +0000] - Worker 2 is being destroyed
+[INFO] [01/Dec/2025:12:27:34 +0000] - Worker 0 initiated
+[INFO] [01/Dec/2025:12:27:34 +0000] - Worker 2 initiated
+[INFO] [01/Dec/2025:12:27:34 +0000] - Worker 1 initiated
+[INFO] [01/Dec/2025:12:27:34 +0000] - Worker 3 initiated
+[INFO] [01/Dec/2025:12:27:34 +0000] - Worker 0 conectado ao master via UDS
+[INFO] [01/Dec/2025:12:27:34 +0000] - Worker 2 conectado ao master via UDS
+[INFO] [01/Dec/2025:12:27:34 +0000] - Worker 3 conectado ao master via UDS
+[INFO] [01/Dec/2025:12:27:34 +0000] - Worker 1 conectado ao master via UDS
+127.0.0.1 - - [01/Dec/2025:12:27:37 +0000] "GET ../tests/index.html HTTP/1.1" 200 870
+127.0.0.1 - - [01/Dec/2025:12:27:37 +0000] "GET ../tests/index.js HTTP/1.1" 200 177
+127.0.0.1 - - [01/Dec/2025:12:27:37 +0000] "GET ../tests/index.css HTTP/1.1" 200 154
+127.0.0.1 - - [01/Dec/2025:12:27:37 +0000] "GET ../tests/MainBefore.webp HTTP/1.1" 200 43018
+[INFO] [01/Dec/2025:12:27:42 +0000] - Worker hit cache for ../tests/index.html
+
+127.0.0.1 - - [01/Dec/2025:12:27:42 +0000] "GET ../tests/index.html HTTP/1.1" 200 870
+127.0.0.1 - - [01/Dec/2025:12:27:42 +0000] "GET ../tests/index.css HTTP/1.1" 200 154
+127.0.0.1 - - [01/Dec/2025:12:27:42 +0000] "GET ../tests/index.js HTTP/1.1" 200 177
+127.0.0.1 - - [01/Dec/2025:12:27:42 +0000] "GET ../tests/MainBefore.webp HTTP/1.1" 200 43018
+[INFO] [01/Dec/2025:12:27:47 +0000] - Worker 1 is being destroyed
+[INFO] [01/Dec/2025:12:27:47 +0000] - Worker 3 is being destroyed
+[INFO] [01/Dec/2025:12:27:47 +0000] - Worker 2 is being destroyed
+[INFO] [01/Dec/2025:12:27:47 +0000] - Worker 0 is being destroyed
+[INFO] [01/Dec/2025:12:28:40 +0000] - Worker 0 initiated
+[INFO] [01/Dec/2025:12:28:40 +0000] - Worker 1 initiated
+[INFO] [01/Dec/2025:12:28:40 +0000] - Worker 2 initiated
+[INFO] [01/Dec/2025:12:28:40 +0000] - Worker 3 initiated
+[INFO] [01/Dec/2025:12:28:40 +0000] - Worker 2 conectado ao master via UDS
+[INFO] [01/Dec/2025:12:28:40 +0000] - Worker 0 conectado ao master via UDS
+[INFO] [01/Dec/2025:12:28:40 +0000] - Worker 1 conectado ao master via UDS
+[INFO] [01/Dec/2025:12:28:40 +0000] - Worker 3 conectado ao master via UDS
+127.0.0.1 - - [01/Dec/2025:12:28:42 +0000] "GET ../tests/index.html HTTP/1.1" 200 870
+127.0.0.1 - - [01/Dec/2025:12:28:42 +0000] "GET ../tests/index.js HTTP/1.1" 200 177
+127.0.0.1 - - [01/Dec/2025:12:28:42 +0000] "GET ../tests/index.css HTTP/1.1" 200 154
+127.0.0.1 - - [01/Dec/2025:12:28:42 +0000] "GET ../tests/MainBefore.webp HTTP/1.1" 200 43018
+[INFO] [01/Dec/2025:12:28:54 +0000] - Worker 3 is being destroyed
+[INFO] [01/Dec/2025:12:28:54 +0000] - Worker 2 is being destroyed
+[INFO] [01/Dec/2025:12:28:54 +0000] - Worker 1 is being destroyed
+[INFO] [01/Dec/2025:12:28:54 +0000] - Worker 0 is being destroyed
+[INFO] [01/Dec/2025:12:28:59 +0000] - Worker 0 initiated
+[INFO] [01/Dec/2025:12:28:59 +0000] - Worker 1 initiated
+[INFO] [01/Dec/2025:12:28:59 +0000] - Worker 2 initiated
+[INFO] [01/Dec/2025:12:28:59 +0000] - Worker 3 initiated
+[INFO] [01/Dec/2025:12:28:59 +0000] - Worker 0 conectado ao master via UDS
+[INFO] [01/Dec/2025:12:28:59 +0000] - Worker 1 conectado ao master via UDS
+[INFO] [01/Dec/2025:12:28:59 +0000] - Worker 3 conectado ao master via UDS
+[INFO] [01/Dec/2025:12:28:59 +0000] - Worker 2 conectado ao master via UDS
+127.0.0.1 - - [01/Dec/2025:12:29:02 +0000] "GET ../tests/index.html HTTP/1.1" 200 870
+127.0.0.1 - - [01/Dec/2025:12:29:02 +0000] "GET ../tests/index.css HTTP/1.1" 200 154
+127.0.0.1 - - [01/Dec/2025:12:29:02 +0000] "GET ../tests/index.js HTTP/1.1" 200 177
+127.0.0.1 - - [01/Dec/2025:12:29:02 +0000] "GET ../tests/MainBefore.webp HTTP/1.1" 200 43018
+[INFO] [01/Dec/2025:12:29:07 +0000] - Worker 0 is being destroyed
+[INFO] [01/Dec/2025:12:29:07 +0000] - Worker 3 is being destroyed
+[INFO] [01/Dec/2025:12:29:07 +0000] - Worker 1 is being destroyed
+[INFO] [01/Dec/2025:12:29:07 +0000] - Worker 2 is being destroyed
+[INFO] [01/Dec/2025:12:29:10 +0000] - Worker 0 initiated
+[INFO] [01/Dec/2025:12:29:10 +0000] - Worker 1 initiated
+[INFO] [01/Dec/2025:12:29:10 +0000] - Worker 2 initiated
+[INFO] [01/Dec/2025:12:29:10 +0000] - Worker 3 initiated
+[INFO] [01/Dec/2025:12:29:10 +0000] - Worker 0 conectado ao master via UDS
+[INFO] [01/Dec/2025:12:29:10 +0000] - Worker 2 conectado ao master via UDS
+[INFO] [01/Dec/2025:12:29:10 +0000] - Worker 1 conectado ao master via UDS
+[INFO] [01/Dec/2025:12:29:10 +0000] - Worker 3 conectado ao master via UDS
+127.0.0.1 - - [01/Dec/2025:12:29:14 +0000] "GET ../tests/index.html HTTP/1.1" 200 870
+127.0.0.1 - - [01/Dec/2025:12:29:14 +0000] "GET ../tests/index.css HTTP/1.1" 200 154
+127.0.0.1 - - [01/Dec/2025:12:29:14 +0000] "GET ../tests/index.js HTTP/1.1" 200 177
+127.0.0.1 - - [01/Dec/2025:12:29:14 +0000] "GET ../tests/MainBefore.webp HTTP/1.1" 200 43018
+127.0.0.1 - - [01/Dec/2025:12:29:20 +0000] "GET ../tests/index.html HTTP/1.1" 200 870
+127.0.0.1 - - [01/Dec/2025:12:29:20 +0000] "GET ../tests/index.js HTTP/1.1" 200 177
+127.0.0.1 - - [01/Dec/2025:12:29:20 +0000] "GET ../tests/MainBefore.webp HTTP/1.1" 200 43018
+127.0.0.1 - - [01/Dec/2025:12:29:20 +0000] "GET ../tests/index.css HTTP/1.1" 200 154
+127.0.0.1 - - [01/Dec/2025:12:29:28 +0000] "GET ../tests/index.html HTTP/1.1" 200 870
+127.0.0.1 - - [01/Dec/2025:12:29:28 +0000] "GET ../tests/index.js HTTP/1.1" 200 177
+[INFO] [01/Dec/2025:12:29:28 +0000] - Worker hit cache for ../tests/index.css
+
+127.0.0.1 - - [01/Dec/2025:12:29:28 +0000] "GET ../tests/index.css HTTP/1.1" 200 154
+127.0.0.1 - - [01/Dec/2025:12:29:28 +0000] "GET ../tests/MainBefore.webp HTTP/1.1" 200 43018
+[INFO] [01/Dec/2025:12:29:37 +0000] - Worker 1 is being destroyed
+[INFO] [01/Dec/2025:12:29:37 +0000] - Worker 3 is being destroyed
+[INFO] [01/Dec/2025:12:29:37 +0000] - Worker 0 is being destroyed
+[INFO] [01/Dec/2025:12:29:37 +0000] - Worker 2 is being destroyed
+[INFO] [01/Dec/2025:12:31:33 +0000] - Worker 1 initiated
+[INFO] [01/Dec/2025:12:31:33 +0000] - Worker 2 initiated
+[INFO] [01/Dec/2025:12:31:33 +0000] - Worker 0 initiated
+[INFO] [01/Dec/2025:12:31:33 +0000] - Worker 3 initiated
+[INFO] [01/Dec/2025:12:31:33 +0000] - Worker 1 conectado ao master via UDS
+[INFO] [01/Dec/2025:12:31:33 +0000] - Worker 0 conectado ao master via UDS
+[INFO] [01/Dec/2025:12:31:33 +0000] - Worker 2 conectado ao master via UDS
+[INFO] [01/Dec/2025:12:31:33 +0000] - Worker 3 conectado ao master via UDS
+127.0.0.1 - - [01/Dec/2025:12:31:35 +0000] "GET ../tests/index.html HTTP/1.1" 200 870
+127.0.0.1 - - [01/Dec/2025:12:31:35 +0000] "GET ../tests/index.css HTTP/1.1" 200 154
+127.0.0.1 - - [01/Dec/2025:12:31:35 +0000] "GET ../tests/index.js HTTP/1.1" 200 177
+127.0.0.1 - - [01/Dec/2025:12:31:35 +0000] "GET ../tests/MainBefore.webp HTTP/1.1" 200 43018
+127.0.0.1 - - [01/Dec/2025:12:31:45 +0000] "GET ../tests/index.html HTTP/1.1" 200 870
+127.0.0.1 - - [01/Dec/2025:12:31:45 +0000] "GET ../tests/index.js HTTP/1.1" 200 177
+127.0.0.1 - - [01/Dec/2025:12:31:45 +0000] "GET ../tests/index.css HTTP/1.1" 200 154
+127.0.0.1 - - [01/Dec/2025:12:31:45 +0000] "GET ../tests/MainBefore.webp HTTP/1.1" 200 43018
+[INFO] [01/Dec/2025:12:31:48 +0000] - Worker 0 is being destroyed
+[INFO] [01/Dec/2025:12:31:48 +0000] - Worker 2 is being destroyed
+[INFO] [01/Dec/2025:12:31:48 +0000] - Worker 1 is being destroyed
+[INFO] [01/Dec/2025:12:31:48 +0000] - Worker 3 is being destroyed
+[INFO] [01/Dec/2025:12:31:56 +0000] - Worker 0 initiated
+[INFO] [01/Dec/2025:12:31:56 +0000] - Worker 2 initiated
+[INFO] [01/Dec/2025:12:31:56 +0000] - Worker 1 initiated
+[INFO] [01/Dec/2025:12:31:56 +0000] - Worker 3 initiated
+[INFO] [01/Dec/2025:12:31:56 +0000] - Worker 2 conectado ao master via UDS
+[INFO] [01/Dec/2025:12:31:56 +0000] - Worker 0 conectado ao master via UDS
+[INFO] [01/Dec/2025:12:31:56 +0000] - Worker 1 conectado ao master via UDS
+[INFO] [01/Dec/2025:12:31:56 +0000] - Worker 3 conectado ao master via UDS
+127.0.0.1 - - [01/Dec/2025:12:32:00 +0000] "GET ../tests/index.html HTTP/1.1" 200 870
+127.0.0.1 - - [01/Dec/2025:12:32:00 +0000] "GET ../tests/index.js HTTP/1.1" 200 177
+127.0.0.1 - - [01/Dec/2025:12:32:00 +0000] "GET ../tests/index.css HTTP/1.1" 200 154
+127.0.0.1 - - [01/Dec/2025:12:32:00 +0000] "GET ../tests/MainBefore.webp HTTP/1.1" 200 43018
+[INFO] [01/Dec/2025:12:33:01 +0000] - Worker 1 is being destroyed
+[INFO] [01/Dec/2025:12:33:01 +0000] - Worker 3 is being destroyed
+[INFO] [01/Dec/2025:12:33:01 +0000] - Worker 0 is being destroyed
+[INFO] [01/Dec/2025:12:33:01 +0000] - Worker 2 is being destroyed
+[INFO] [01/Dec/2025:12:34:39 +0000] - Worker 0 initiated
+[INFO] [01/Dec/2025:12:34:39 +0000] - Worker 2 initiated
+[INFO] [01/Dec/2025:12:34:39 +0000] - Worker 1 initiated
+[INFO] [01/Dec/2025:12:34:39 +0000] - Worker 3 initiated
+[INFO] [01/Dec/2025:12:34:39 +0000] - Worker 0 conectado ao master via UDS
+[INFO] [01/Dec/2025:12:34:39 +0000] - Worker 2 conectado ao master via UDS
+[INFO] [01/Dec/2025:12:34:39 +0000] - Worker 1 conectado ao master via UDS
+[INFO] [01/Dec/2025:12:34:39 +0000] - Worker 3 conectado ao master via UDS
+127.0.0.1 - - [01/Dec/2025:12:34:41 +0000] "GET ../tests/index.html HTTP/1.1" 200 870
+127.0.0.1 - - [01/Dec/2025:12:34:42 +0000] "GET ../tests/index.js HTTP/1.1" 200 177
+127.0.0.1 - - [01/Dec/2025:12:34:42 +0000] "GET ../tests/index.css HTTP/1.1" 200 154
+127.0.0.1 - - [01/Dec/2025:12:34:42 +0000] "GET ../tests/MainBefore.webp HTTP/1.1" 200 43018
+[INFO] [01/Dec/2025:12:34:43 +0000] - Worker 3 is being destroyed
+[INFO] [01/Dec/2025:12:34:43 +0000] - Worker 1 is being destroyed
+[INFO] [01/Dec/2025:12:34:43 +0000] - Worker 2 is being destroyed
+[INFO] [01/Dec/2025:12:34:43 +0000] - Worker 0 is being destroyed
+[INFO] [01/Dec/2025:12:34:45 +0000] - Worker hit cache for ../tests/index.html
+
+127.0.0.1 - - [01/Dec/2025:12:34:45 +0000] "GET ../tests/index.html HTTP/1.1" 200 870
+[INFO] [01/Dec/2025:12:34:53 +0000] - Worker 0 initiated
+[INFO] [01/Dec/2025:12:34:53 +0000] - Worker 2 initiated
+[INFO] [01/Dec/2025:12:34:53 +0000] - Worker 1 initiated
+[INFO] [01/Dec/2025:12:34:53 +0000] - Worker 3 initiated
+[INFO] [01/Dec/2025:12:34:53 +0000] - Worker 0 conectado ao master via UDS
+[INFO] [01/Dec/2025:12:34:53 +0000] - Worker 2 conectado ao master via UDS
+[INFO] [01/Dec/2025:12:34:53 +0000] - Worker 1 conectado ao master via UDS
+[INFO] [01/Dec/2025:12:34:53 +0000] - Worker 3 conectado ao master via UDS
+127.0.0.1 - - [01/Dec/2025:12:34:56 +0000] "GET ../tests/index.html HTTP/1.1" 200 870
+127.0.0.1 - - [01/Dec/2025:12:34:56 +0000] "GET ../tests/index.js HTTP/1.1" 200 177
+127.0.0.1 - - [01/Dec/2025:12:34:56 +0000] "GET ../tests/index.css HTTP/1.1" 200 154
+127.0.0.1 - - [01/Dec/2025:12:34:56 +0000] "GET ../tests/MainBefore.webp HTTP/1.1" 200 43018
+127.0.0.1 - - [01/Dec/2025:12:35:01 +0000] "GET ../tests/index.html HTTP/1.1" 200 870
+127.0.0.1 - - [01/Dec/2025:12:35:01 +0000] "GET ../tests/index.js HTTP/1.1" 200 177
+127.0.0.1 - - [01/Dec/2025:12:35:01 +0000] "GET ../tests/index.css HTTP/1.1" 200 154
+127.0.0.1 - - [01/Dec/2025:12:35:01 +0000] "GET ../tests/MainBefore.webp HTTP/1.1" 200 43018
+[INFO] [01/Dec/2025:12:35:03 +0000] - Worker hit cache for ../tests/index.html
+
+127.0.0.1 - - [01/Dec/2025:12:35:03 +0000] "GET ../tests/index.html HTTP/1.1" 200 870
+127.0.0.1 - - [01/Dec/2025:12:35:03 +0000] "GET ../tests/index.js HTTP/1.1" 200 177
+127.0.0.1 - - [01/Dec/2025:12:35:03 +0000] "GET ../tests/index.css HTTP/1.1" 200 154
+127.0.0.1 - - [01/Dec/2025:12:35:03 +0000] "GET ../tests/MainBefore.webp HTTP/1.1" 200 43018
+127.0.0.1 - - [01/Dec/2025:12:35:06 +0000] "GET ../tests/index.html HTTP/1.1" 200 870
+[INFO] [01/Dec/2025:12:35:06 +0000] - Worker hit cache for ../tests/index.css
+
+127.0.0.1 - - [01/Dec/2025:12:35:06 +0000] "GET ../tests/index.css HTTP/1.1" 200 154
+127.0.0.1 - - [01/Dec/2025:12:35:06 +0000] "GET ../tests/index.js HTTP/1.1" 200 177
+127.0.0.1 - - [01/Dec/2025:12:35:06 +0000] "GET ../tests/MainBefore.webp HTTP/1.1" 200 43018
+127.0.0.1 - - [01/Dec/2025:12:35:08 +0000] "GET ../tests/index.html HTTP/1.1" 200 870
+[INFO] [01/Dec/2025:12:35:08 +0000] - Worker hit cache for ../tests/index.js
+
+127.0.0.1 - - [01/Dec/2025:12:35:08 +0000] "GET ../tests/index.js HTTP/1.1" 200 177
+[INFO] [01/Dec/2025:12:35:08 +0000] - Worker hit cache for ../tests/index.css
+
+127.0.0.1 - - [01/Dec/2025:12:35:08 +0000] "GET ../tests/index.css HTTP/1.1" 200 154
+[INFO] [01/Dec/2025:12:35:08 +0000] - Worker hit cache for ../tests/MainBefore.webp
+
+127.0.0.1 - - [01/Dec/2025:12:35:08 +0000] "GET ../tests/MainBefore.webp HTTP/1.1" 200 43018
+[INFO] [01/Dec/2025:12:35:11 +0000] - Worker 0 is being destroyed
+[INFO] [01/Dec/2025:12:35:11 +0000] - Worker 1 is being destroyed
+[INFO] [01/Dec/2025:12:35:11 +0000] - Worker 3 is being destroyed
+[INFO] [01/Dec/2025:12:35:11 +0000] - Worker 2 is being destroyed
+[INFO] [01/Dec/2025:12:39:13 +0000] - Worker 0 initiated
+[INFO] [01/Dec/2025:12:39:13 +0000] - Worker 2 initiated
+[INFO] [01/Dec/2025:12:39:13 +0000] - Worker 1 initiated
+[INFO] [01/Dec/2025:12:39:13 +0000] - Worker 3 initiated
+[INFO] [01/Dec/2025:12:39:13 +0000] - Worker 2 conectado ao master via UDS
+[INFO] [01/Dec/2025:12:39:13 +0000] - Worker 0 conectado ao master via UDS
+[INFO] [01/Dec/2025:12:39:13 +0000] - Worker 1 conectado ao master via UDS
+[INFO] [01/Dec/2025:12:39:13 +0000] - Worker 3 conectado ao master via UDS
+127.0.0.1 - - [01/Dec/2025:12:39:16 +0000] "GET ../tests/index.html HTTP/1.1" 200 870
+127.0.0.1 - - [01/Dec/2025:12:39:16 +0000] "GET ../tests/index.css HTTP/1.1" 200 154
+127.0.0.1 - - [01/Dec/2025:12:39:16 +0000] "GET ../tests/MainBefore.webp HTTP/1.1" 200 43018
+127.0.0.1 - - [01/Dec/2025:12:39:16 +0000] "GET ../tests/index.js HTTP/1.1" 200 177
+[INFO] [01/Dec/2025:12:39:33 +0000] - Worker 2 is being destroyed
+[INFO] [01/Dec/2025:12:39:33 +0000] - Worker 1 is being destroyed
+[INFO] [01/Dec/2025:12:39:33 +0000] - Worker 3 is being destroyed
+[INFO] [01/Dec/2025:12:39:33 +0000] - Worker 0 is being destroyed
+[INFO] [01/Dec/2025:12:39:59 +0000] - Worker 0 initiated
+[INFO] [01/Dec/2025:12:39:59 +0000] - Worker 1 initiated
+[INFO] [01/Dec/2025:12:39:59 +0000] - Worker 2 initiated
+[INFO] [01/Dec/2025:12:39:59 +0000] - Worker 3 initiated
+[INFO] [01/Dec/2025:12:39:59 +0000] - Worker 0 conectado ao master via UDS
+[INFO] [01/Dec/2025:12:39:59 +0000] - Worker 3 conectado ao master via UDS
+[INFO] [01/Dec/2025:12:39:59 +0000] - Worker 1 conectado ao master via UDS
+[INFO] [01/Dec/2025:12:39:59 +0000] - Worker 2 conectado ao master via UDS
+127.0.0.1 - - [01/Dec/2025:12:40:02 +0000] "GET ../tests/index.html HTTP/1.1" 200 870
+127.0.0.1 - - [01/Dec/2025:12:40:02 +0000] "GET ../tests/index.js HTTP/1.1" 200 177
+127.0.0.1 - - [01/Dec/2025:12:40:02 +0000] "GET ../tests/index.css HTTP/1.1" 200 154
+127.0.0.1 - - [01/Dec/2025:12:40:02 +0000] "GET ../tests/MainBefore.webp HTTP/1.1" 200 43018
+[INFO] [01/Dec/2025:12:40:43 +0000] - Worker 2 is being destroyed
+[INFO] [01/Dec/2025:12:40:43 +0000] - Worker 0 is being destroyed
+[INFO] [01/Dec/2025:12:40:43 +0000] - Worker 3 is being destroyed
+[INFO] [01/Dec/2025:12:40:43 +0000] - Worker 1 is being destroyed
+[INFO] [01/Dec/2025:12:43:14 +0000] - Worker 0 initiated
+[INFO] [01/Dec/2025:12:43:14 +0000] - Worker 2 initiated
+[INFO] [01/Dec/2025:12:43:14 +0000] - Worker 1 initiated
+[INFO] [01/Dec/2025:12:43:14 +0000] - Worker 3 initiated
+[INFO] [01/Dec/2025:12:43:14 +0000] - Worker 0 conectado ao master via UDS
+[INFO] [01/Dec/2025:12:43:14 +0000] - Worker 2 conectado ao master via UDS
+[INFO] [01/Dec/2025:12:43:14 +0000] - Worker 1 conectado ao master via UDS
+[INFO] [01/Dec/2025:12:43:14 +0000] - Worker 3 conectado ao master via UDS
+127.0.0.1 - - [01/Dec/2025:12:43:16 +0000] "GET ../tests/index.html HTTP/1.1" 200 870
+127.0.0.1 - - [01/Dec/2025:12:43:16 +0000] "GET ../tests/index.js HTTP/1.1" 200 177
+127.0.0.1 - - [01/Dec/2025:12:43:16 +0000] "GET ../tests/index.css HTTP/1.1" 200 154
+127.0.0.1 - - [01/Dec/2025:12:43:16 +0000] "GET ../tests/MainBefore.webp HTTP/1.1" 200 43018
+[INFO] [01/Dec/2025:12:43:30 +0000] - Worker 3 is being destroyed
+[INFO] [01/Dec/2025:12:43:30 +0000] - Worker 2 is being destroyed
+[INFO] [01/Dec/2025:12:43:30 +0000] - Worker 0 is being destroyed
+[INFO] [01/Dec/2025:12:43:30 +0000] - Worker 1 is being destroyed

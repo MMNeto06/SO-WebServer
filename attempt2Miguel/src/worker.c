@@ -56,66 +56,79 @@ int recv_fd(int uds_sock) {
 void worker_process_request(void* arg){
     worker_task_args_t* args = (worker_task_args_t*) arg;
     clock_t start = clock();
-    char buffer[4096];
-
-    int bytes = recv(args->client_fd, buffer, sizeof(buffer)-1, 0);
-    if (bytes <= 0){
-        perror("recv");
-        log_message(args->sems->log_mutex, "ERROR", "recv error");
-        return; 
-    }
-
-    buffer[bytes] = '\0';
-
     update_active_connection(args->shm, args->sems);
 
-    http_request_t* req = http_parse_request(buffer);
+    struct timeval tv;
+    tv.tv_sec = 5;
+    tv.tv_usec = 0;
+    setsockopt(args->client_fd, SOL_SOCKET, SO_RCVTIMEO, &tv, sizeof(tv));
 
-    char client_ip[64] = "unknown";
-    struct sockaddr_in addr;
-    socklen_t len = sizeof(addr);
-    if(getpeername(args->client_fd, (struct sockaddr*)&addr, &len) == 0){
-        inet_ntop(AF_INET, &addr.sin_addr, client_ip, sizeof(client_ip));
-    }
+    while (1){
+        char buffer[4096];
 
-    cache_entry_t* cached = cache_get(args->cache, req->path);
-    if(cached){ //se a request já existir em cache, usar isso diretamente
-        printf("Worker hit cache for %s\n", req->path);
-        sprintf(logmsg, "Worker hit cache for %s\n", req->path);
-        log_message(args->log_sem, "INFO", logmsg);
+        int bytes = recv(args->client_fd, buffer, sizeof(buffer)-1, 0);
+        if (bytes <= 0){
+            perror("recv");
+            log_message(args->sems->log_mutex, "ERROR", "recv error");
+            break; 
+        } 
+        
+        buffer[bytes] = '\0';
 
-        http_send_response(args->client_fd, cached->data, cached->size);
-        log_request(args->log_sem, client_ip, req->method, req->path, 200, cached->size);
+        http_request_t* req = http_parse_request(buffer);
 
-        update_connection_terminated(args->shm, args->sems);
-        close(args->client_fd);
+        char client_ip[64] = "unknown";
+        struct sockaddr_in addr;
+        socklen_t len = sizeof(addr);
+        if(getpeername(args->client_fd, (struct sockaddr*)&addr, &len) == 0){
+            inet_ntop(AF_INET, &addr.sin_addr, client_ip, sizeof(client_ip));
+        }
+
+        cache_entry_t* cached = cache_get(args->cache, req->path);
+        if(cached){ //se a request já existir em cache, usar isso diretamente
+            printf("Worker hit cache for %s\n", req->path);
+            sprintf(logmsg, "Worker hit cache for %s\n", req->path);
+            log_message(args->log_sem, "INFO", logmsg);
+
+            http_send_response(args->client_fd, cached->data, cached->size);
+            log_request(args->log_sem, client_ip, req->method, req->path, 200, cached->size);
+
+            update_connection_terminated(args->shm, args->sems);
+            close(args->client_fd);
+            free(req);
+            free(args);
+            return;
+        }
+        //se não existir, formular response
+        long response_size;
+        int status_code; 
+        char* response = http_build_response(req, &status_code, &response_size);
+        void* cache_copy;
+        if (response != NULL){
+            //guardar response em cache
+            cache_copy = malloc(response_size);
+            memcpy(cache_copy, response, response_size);
+            cache_put(args->cache, req->path, cache_copy, response_size);
+
+            http_send_response(args->client_fd, response, response_size);
+
+            log_request(args->log_sem, client_ip, req->method, req->path, status_code, response_size);
+            free(response);
+        }
+        clock_t end = clock(); 
+        long response_time = (long) (end-start) / CLOCKS_PER_SEC;
+        update_atomic_stats(args->shm, args->sems, response_size, status_code, response_time);
+
+        if (req->want_close){
+            free(req);
+            break;
+        }
+
         free(req);
-        free(args);
-        return;
     }
-    //se não existir, formular response
-    long response_size;
-    int status_code; 
-    char* response = http_build_response(req, &status_code, &response_size);
-    void* cache_copy;
-    if (response != NULL){
-        //guardar response em cache
-        cache_copy = malloc(response_size);
-        memcpy(cache_copy, response, response_size);
-        cache_put(args->cache, req->path, cache_copy, response_size);
-
-        http_send_response(args->client_fd, response, response_size);
-
-        log_request(args->log_sem, client_ip, req->method, req->path, status_code, response_size);
-    }
-    clock_t end = clock(); 
-    long response_time = (long) (end-start) / CLOCKS_PER_SEC;
-    update_atomic_stats(args->shm, args->sems, response_size, status_code, response_time);
     
-    update_connection_terminated(args->shm, args->sems);
     close(args->client_fd);
-    free(response);
-    free(req);
+    update_connection_terminated(args->shm, args->sems);
     free(args);
 }
 
