@@ -121,6 +121,12 @@ char* http_build_response(http_request_t *req, int *status_code, long *out_size)
         return response;
     }
 
+    if (strcmp(req->path, "/stats") == 0) {
+        *status_code = 200;
+        *out_size = -1; // flag SSE
+        return NULL;
+    }
+
     if (strcmp(req->method, "GET") == 0){
         if (file_exists(filepath) != 1){
             *status_code = 404; 

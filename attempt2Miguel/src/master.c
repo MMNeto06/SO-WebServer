@@ -151,6 +151,7 @@ int master_init(server_config_t config){
     }
  
     printf("HTTP server running on http://localhost:%d\n", config.port); 
+    printf("Server RealTime Stats available on http://localhost:%d/stats.html\n", config.port);
 
     shm = create_shared_memory();
     if (shm == NULL){

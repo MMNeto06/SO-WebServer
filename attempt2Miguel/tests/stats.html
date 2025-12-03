@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>WebServer IPC — Real-Time Statistics</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+    body { background-color: #1b1e23; color: #f0f0f0; font-family: "Segoe UI", sans-serif; margin: 0; padding: 0; }
+    header { background-color: #111317; padding: 20px; text-align: center; border-bottom: 2px solid #282c34; }
+    h1 { margin: 0; font-size: 28px; font-weight: 400; }
+    .container { max-width: 1200px; margin: 30px auto; padding: 20px; }
+    .stats-cards { display: flex; gap: 20px; margin-bottom: 40px; flex-wrap: wrap; }
+    .card { flex: 1; background-color: #242830; padding: 20px; border-radius: 10px; min-width: 200px; text-align: center; border: 1px solid #2e333b; }
+    .card h2 { margin: 0; font-size: 16px; color: #9da5b4; font-weight: 500; }
+    .card p { margin: 10px 0 0; font-size: 24px; font-weight: bold; color: #fff; }
+    canvas { background-color: #242830; padding: 10px; border-radius: 10px; border: 1px solid #2e333b; margin-bottom: 40px; }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>WebServer IPC — Real-Time Dashboard</h1>
+</header>
+
+<div class="container">
+
+    <!-- CARDS -->
+    <div class="stats-cards">
+        <div class="card"><h2>Total Requests</h2><p id="totalRequests">0</p></div>
+        <div class="card"><h2>Total Bytes</h2><p id="totalBytes">0</p></div>
+        <div class="card"><h2>Status 200</h2><p id="status200">0</p></div>
+        <div class="card"><h2>Status 404</h2><p id="status404">0</p></div>
+        <div class="card"><h2>Status 500</h2><p id="status500">0</p></div>
+        <div class="card"><h2>Active Connections</h2><p id="activeConnections">0</p></div>
+        <div class="card"><h2>Requests / sec</h2><p id="rps">0</p></div>
+    </div>
+
+    <!-- GRÁFICOS -->
+    <canvas id="chartRPS" height="120"></canvas>
+    <canvas id="chartActive" height="120"></canvas>
+    <canvas id="chartStatus" height="120"></canvas>
+
+</div>
+
+<script>
+// --- Chart Setup ---
+function createChart(ctx, label, color) {
+    return new Chart(ctx, {
+        type: 'line',
+        data: { labels: [], datasets: [{ label: label, data: [], fill: false, borderColor: color, borderWidth: 2, tension: 0.2 }] },
+        options: {
+            scales: { x: { ticks: { color: "#c7c7c7" } }, y: { ticks: { color: "#c7c7c7" } } },
+            plugins: { legend: { labels: { color: "#fff" } } }
+        }
+    });
+}
+
+const chartRPS = createChart(document.getElementById("chartRPS"), "Requests per Second", "#4bc0c0");
+const chartActive = createChart(document.getElementById("chartActive"), "Active Connections", "#ffcc56");
+const chartStatus = createChart(document.getElementById("chartStatus"), "Status 200", "#ff6384");
+
+// --- DOM elements ---
+const elTotal = document.getElementById("totalRequests");
+const elBytes = document.getElementById("totalBytes");
+const el200 = document.getElementById("status200");
+const el404 = document.getElementById("status404");
+const el500 = document.getElementById("status500");
+const elActive = document.getElementById("activeConnections");
+const elRPS = document.getElementById("rps");
+
+let lastTotal = 0;
+
+const evt = new EventSource("/stats");
+evt.onmessage = (event) => {
+    const data = JSON.parse(event.data);
+
+    // --- update cards ---
+    elTotal.textContent = data.total_requests;
+    elBytes.textContent = data.total_bytes;
+    el200.textContent = data.status_200;
+    el404.textContent = data.status_404;
+    el500.textContent = data.status_500;
+    elActive.textContent = data.active_connections;
+
+    // --- calculate RPS ---
+    const rps = data.total_requests - lastTotal;
+    lastTotal = data.total_requests;
+    elRPS.textContent = rps;
+
+    const timestamp = new Date().toLocaleTimeString();
+
+    function addData(chart, value) {
+        chart.data.labels.push(timestamp);
+        chart.data.datasets[0].data.push(value);
+        if(chart.data.labels.length > 20) {
+            chart.data.labels.shift();
+            chart.data.datasets[0].data.shift();
+        }
+        chart.update();
+    }
+
+    addData(chartRPS, rps);
+    addData(chartActive, data.active_connections);
+    addData(chartStatus, data.status_200); // só 200 por enquanto
+};
+
+evt.onerror = () => { console.error("SSE connection lost."); };
+</script>
+
+</body>
+</html>

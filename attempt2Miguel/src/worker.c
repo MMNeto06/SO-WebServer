@@ -21,6 +21,7 @@
 #include "stats.h"
 #include "cache.h"
 #include "logger.h"
+#include "sse.h"
 
 char logmsg[4096];
 
@@ -99,11 +100,23 @@ void worker_process_request(void* arg){
             free(args);
             return;
         }
+        printf("DEBUG: %s\n", req->path);
+
         //se não existir, formular response
         long response_size;
         int status_code; 
         char* response = http_build_response(req, &status_code, &response_size);
         void* cache_copy;
+
+        if (response_size == -1) {
+            printf("DEBUG: SSE connected.\n");
+            handle_sse(args->client_fd, args->shm, args->sems);
+            free(req);
+            close(args->client_fd);
+            free(args);
+            return;
+        }
+
         if (response != NULL){
             //guardar response em cache
             cache_copy = malloc(response_size);
@@ -114,7 +127,7 @@ void worker_process_request(void* arg){
 
             log_request(args->log_sem, client_ip, req->method, req->path, status_code, response_size);
             free(response);
-        }
+        } 
         clock_t end = clock(); 
         long response_time = (long) (end-start) / CLOCKS_PER_SEC;
         update_atomic_stats(args->shm, args->sems, response_size, status_code, response_time);
