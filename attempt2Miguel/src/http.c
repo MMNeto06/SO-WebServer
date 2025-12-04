@@ -120,8 +120,10 @@ char* http_build_response(http_request_t *req, int *status_code, long *out_size)
         *out_size = strlen(response);
         return response;
     }
-
-    if (strcmp(req->path, "/stats") == 0) {
+    char *full_stats_path = malloc(strlen(config.document_root) + strlen("/stats") + 1);
+    sprintf(full_stats_path, "%s/stats", config.document_root);
+    if (strcmp(req->path, full_stats_path) == 0) {
+        printf("DEBUG: Stats detected!\n");
         *status_code = 200;
         *out_size = -1; // flag SSE
         return NULL;

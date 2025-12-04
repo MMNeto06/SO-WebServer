@@ -101,7 +101,9 @@ evt.onmessage = (event) => {
 
     addData(chartRPS, rps);
     addData(chartActive, data.active_connections);
-    addData(chartStatus, data.status_200); // só 200 por enquanto
+    addData(chartStatus, data.status_200); 
+    addData(chartStatus, data.status_404);
+    addData(chartStatus, data.status_500);
 };
 
 evt.onerror = () => { console.error("SSE connection lost."); };
