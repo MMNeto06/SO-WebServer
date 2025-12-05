@@ -193405,3 +193405,65 @@
 [INFO] [05/Dec/2025:15:50:10 +0000] - Worker 2 is being destroyed
 [INFO] [05/Dec/2025:15:50:10 +0000] - Worker 3 is being destroyed
 [INFO] [05/Dec/2025:15:50:10 +0000] - Worker 1 is being destroyed
+[INFO] [05/Dec/2025:16:13:21 +0000] - HTTP server running
+[INFO] [05/Dec/2025:16:13:21 +0000] - Server RealTime Stats available
+[INFO] [05/Dec/2025:16:13:21 +0000] - Worker 0 initiated
+[INFO] [05/Dec/2025:16:13:21 +0000] - Worker 1 initiated
+[INFO] [05/Dec/2025:16:13:21 +0000] - Worker 2 initiated
+[INFO] [05/Dec/2025:16:13:21 +0000] - Worker 3 initiated
+[INFO] [05/Dec/2025:16:13:21 +0000] - Worker 0 conectado ao master via UDS
+[INFO] [05/Dec/2025:16:13:21 +0000] - Worker 1 conectado ao master via UDS
+[INFO] [05/Dec/2025:16:13:21 +0000] - Worker 2 conectado ao master via UDS
+[INFO] [05/Dec/2025:16:13:21 +0000] - Worker 3 conectado ao master via UDS
+[DEBUG] [05/Dec/2025:16:13:26 +0000] - Accepted a client_fd
+127.0.0.1 - - [05/Dec/2025:16:13:26 +0000] "GET ../tests/index.html HTTP/1.1" 200 902
+127.0.0.1 - - [05/Dec/2025:16:13:26 +0000] "GET ../tests/index.css HTTP/1.1" 200 154
+127.0.0.1 - - [05/Dec/2025:16:13:26 +0000] "GET ../tests/index.js HTTP/1.1" 200 177
+127.0.0.1 - - [05/Dec/2025:16:13:26 +0000] "GET ../tests/MainBefore.webp HTTP/1.1" 200 43018
+127.0.0.1 - - [05/Dec/2025:16:13:26 +0000] "GET ../tests/favicon.ico HTTP/1.1" 404 141
+[INFO] [05/Dec/2025:16:14:26 +0000] - Worker 0 is being destroyed
+[INFO] [05/Dec/2025:16:14:26 +0000] - Worker 2 is being destroyed
+[INFO] [05/Dec/2025:16:14:26 +0000] - Worker 1 is being destroyed
+[INFO] [05/Dec/2025:16:14:26 +0000] - Worker 3 is being destroyed
+[INFO] [05/Dec/2025:17:00:58 +0000] - HTTP server running
+[INFO] [05/Dec/2025:17:00:58 +0000] - Server RealTime Stats available
+[INFO] [05/Dec/2025:17:00:58 +0000] - Worker 0 initiated
+[INFO] [05/Dec/2025:17:00:58 +0000] - Worker 1 initiated
+[INFO] [05/Dec/2025:17:00:58 +0000] - Worker 2 initiated
+[INFO] [05/Dec/2025:17:00:58 +0000] - Worker 3 initiated
+[INFO] [05/Dec/2025:17:00:58 +0000] - Worker 0 conectado ao master via UDS
+[INFO] [05/Dec/2025:17:00:58 +0000] - Worker 1 conectado ao master via UDS
+[INFO] [05/Dec/2025:17:00:58 +0000] - Worker 2 conectado ao master via UDS
+[INFO] [05/Dec/2025:17:00:58 +0000] - Worker 3 conectado ao master via UDS
+[DEBUG] [05/Dec/2025:17:01:01 +0000] - Accepted a client_fd
+127.0.0.1 - - [05/Dec/2025:17:01:01 +0000] "GET ../tests/index.html HTTP/1.1" 200 902
+127.0.0.1 - - [05/Dec/2025:17:01:01 +0000] "GET ../tests/index.css HTTP/1.1" 200 154
+[DEBUG] [05/Dec/2025:17:01:01 +0000] - Accepted a client_fd
+127.0.0.1 - - [05/Dec/2025:17:01:01 +0000] "GET ../tests/index.js HTTP/1.1" 200 177
+127.0.0.1 - - [05/Dec/2025:17:01:01 +0000] "GET ../tests/MainBefore.webp HTTP/1.1" 200 43018
+127.0.0.1 - - [05/Dec/2025:17:01:01 +0000] "GET ../tests/favicon.ico HTTP/1.1" 404 141
+[INFO] [05/Dec/2025:17:01:08 +0000] - Worker 0 is being destroyed
+[INFO] [05/Dec/2025:17:01:08 +0000] - Worker 2 is being destroyed
+[INFO] [05/Dec/2025:17:01:08 +0000] - Worker 1 is being destroyed
+[INFO] [05/Dec/2025:17:01:08 +0000] - Worker 3 is being destroyed
+[INFO] [05/Dec/2025:17:09:03 +0000] - HTTP server running
+[INFO] [05/Dec/2025:17:09:03 +0000] - Server RealTime Stats available
+[INFO] [05/Dec/2025:17:09:03 +0000] - Worker 0 initiated
+[INFO] [05/Dec/2025:17:09:03 +0000] - Worker 1 initiated
+[INFO] [05/Dec/2025:17:09:03 +0000] - Worker 0 conectado ao master via UDS
+[INFO] [05/Dec/2025:17:09:03 +0000] - Worker 1 conectado ao master via UDS
+[INFO] [05/Dec/2025:17:09:03 +0000] - Worker 2 initiated
+[INFO] [05/Dec/2025:17:09:03 +0000] - Worker 3 initiated
+[INFO] [05/Dec/2025:17:09:03 +0000] - Worker 2 conectado ao master via UDS
+[INFO] [05/Dec/2025:17:09:03 +0000] - Worker 3 conectado ao master via UDS
+[INFO] [05/Dec/2025:17:09:04 +0000] - Worker 2 is being destroyed
+[INFO] [05/Dec/2025:17:09:04 +0000] - Worker 0 is being destroyed
+[INFO] [05/Dec/2025:17:09:04 +0000] - Worker 1 is being destroyed
+[INFO] [05/Dec/2025:17:09:04 +0000] - Worker 3 is being destroyed
+[DEBUG] [05/Dec/2025:17:09:16 +0000] - Accepted a client_fd
+127.0.0.1 - - [05/Dec/2025:17:09:16 +0000] "GET ../tests/index.html HTTP/1.1" 200 902
+127.0.0.1 - - [05/Dec/2025:17:09:16 +0000] "GET ../tests/index.js HTTP/1.1" 200 177
+127.0.0.1 - - [05/Dec/2025:17:09:16 +0000] "GET ../tests/index.css HTTP/1.1" 200 154
+[DEBUG] [05/Dec/2025:17:09:16 +0000] - Accepted a client_fd
+127.0.0.1 - - [05/Dec/2025:17:09:16 +0000] "GET ../tests/MainBefore.webp HTTP/1.1" 200 43018
+127.0.0.1 - - [05/Dec/2025:17:09:16 +0000] "GET ../tests/favicon.ico HTTP/1.1" 404 141

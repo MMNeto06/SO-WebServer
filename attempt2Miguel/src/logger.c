@@ -30,9 +30,9 @@ void log_rotation(FILE* log_file, char* name){ //função interna!!!
     }
 }
 
-void log_request(sem_t* log_sem, const char* client_ip, const char* method, const char* path, int status, size_t bytes) {
-    server_config_t config;
-    load_config("../server.conf", &config);
+void log_request(sem_t* log_sem, const char* client_ip, const char* method, const char* path, int status, size_t bytes, server_config_t config) {
+    /*server_config_t config;
+    load_config("../server.conf", &config);*/
 
     if(convertLogLevel(config.log_level) > 1){
         return;
@@ -53,9 +53,9 @@ void log_request(sem_t* log_sem, const char* client_ip, const char* method, cons
     sem_post(log_sem); 
 }
 
-void log_message(sem_t* log_sem, char* log_level, char* message){
-    server_config_t config;
-    load_config("../server.conf", &config);
+void log_message(sem_t* log_sem, char* log_level, char* message, server_config_t config){
+    /*server_config_t config;
+    load_config("../server.conf", &config);*/
 
     if(convertLogLevel(log_level) > convertLogLevel(config.log_level)){
         return;

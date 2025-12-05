@@ -55,10 +55,10 @@ char* read_file(const char *path){
     return buffer;
 }
 
-http_request_t* http_parse_request(char *buffer) { 
+http_request_t* http_parse_request(char *buffer, server_config_t config) { 
     http_request_t* http_request = malloc(sizeof(http_request_t));
-    server_config_t config;
-    load_config("../server.conf", &config);
+    /*server_config_t config;
+    load_config("../server.conf", &config);*/
 
     sscanf(buffer, "%s %s %s", http_request->method, http_request->path, http_request->version);
     if (strcmp(http_request->path, "/") == 0){
@@ -92,9 +92,9 @@ http_request_t* http_parse_request(char *buffer) {
     return http_request;
 } 
 
-char* http_build_response(http_request_t *req, int *status_code, long *out_size) { 
-    server_config_t config;
-    load_config("../server.conf", &config);
+char* http_build_response(http_request_t *req, int *status_code, long *out_size, server_config_t config) { 
+    /*server_config_t config;
+    load_config("../server.conf", &config);*/
 
     char filepath[512];
     snprintf(filepath, sizeof(filepath), "%s", req->path);

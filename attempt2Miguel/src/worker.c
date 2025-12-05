@@ -70,13 +70,13 @@ void worker_process_request(void* arg){
         int bytes = recv(args->client_fd, buffer, sizeof(buffer)-1, 0);
         if (bytes <= 0){
             perror("recv");
-            log_message(args->sems->log_mutex, "ERROR", "recv error");
+            log_message(args->sems->log_mutex, "ERROR", "recv error", args->config);
             break; 
         } 
         
         buffer[bytes] = '\0';
 
-        http_request_t* req = http_parse_request(buffer);
+        http_request_t* req = http_parse_request(buffer, args->config);
 
         char client_ip[64] = "unknown";
         struct sockaddr_in addr;
@@ -89,10 +89,10 @@ void worker_process_request(void* arg){
         if(cached){ //se a request já existir em cache, usar isso diretamente
             printf("Worker hit cache for %s\n", req->path);
             sprintf(logmsg, "Worker hit cache for %s\n", req->path);
-            log_message(args->log_sem, "INFO", logmsg);
+            log_message(args->log_sem, "INFO", logmsg, args->config);
 
             http_send_response(args->client_fd, cached->data, cached->size);
-            log_request(args->log_sem, client_ip, req->method, req->path, 200, cached->size);
+            log_request(args->log_sem, client_ip, req->method, req->path, 200, cached->size, args->config);
 
             update_connection_terminated(args->shm, args->sems);
             close(args->client_fd);
@@ -105,10 +105,11 @@ void worker_process_request(void* arg){
         //se não existir, formular response
         long response_size;
         int status_code; 
-        char* response = http_build_response(req, &status_code, &response_size);
+        char* response = http_build_response(req, &status_code, &response_size, args->config);
         void* cache_copy;
 
         if (response_size == -1) {
+            log_message(args->log_sem, "DEBUG", "SSE connected", args->config);
             printf("DEBUG: SSE connected.\n");
             handle_sse(args->client_fd, args->shm, args->sems);
             free(req);
@@ -125,7 +126,7 @@ void worker_process_request(void* arg){
 
             http_send_response(args->client_fd, response, response_size);
 
-            log_request(args->log_sem, client_ip, req->method, req->path, status_code, response_size);
+            log_request(args->log_sem, client_ip, req->method, req->path, status_code, response_size, args->config);
             free(response);
         } 
         clock_t end = clock(); 
@@ -157,13 +158,13 @@ void* worker_thread(void* arg) {
     return NULL;
 }
 
-void worker_main(worker_t worker){
+void worker_main(worker_t worker, server_config_t config){
     printf("Worker ID: %d\n", worker.id);
     sprintf(logmsg, "Worker %d initiated", worker.id);
-    log_message(worker.sems->log_mutex, "INFO", logmsg);
+    log_message(worker.sems->log_mutex, "INFO", logmsg, config);
 
-    server_config_t config;
-    load_config("../server.conf", &config);
+    /*server_config_t config;
+    load_config("../server.conf", &config);*/
 
     worker.cache = cache_init(config.cache_size_mb);
 
@@ -185,7 +186,7 @@ void worker_main(worker_t worker){
     printf("Worker %d conectado ao master via UDS\n", worker.id);
 
     sprintf(logmsg, "Worker %d conectado ao master via UDS", worker.id);
-    log_message(worker.sems->log_mutex, "INFO", logmsg);
+    log_message(worker.sems->log_mutex, "INFO", logmsg, config);
 
     while (worker.shm->stats.keep_running){
         int client_fd = recv_fd(uds_sock);
@@ -197,12 +198,12 @@ void worker_main(worker_t worker){
         args->sems = worker.sems;
         args->cache = worker.cache;
         args->log_sem = worker.sems->log_mutex; //hopefully does not break
-
+        args->config = config;
         add_task(pool, worker_process_request, args);
     }
 
     sprintf(logmsg, "Worker %d is being destroyed", worker.id);
-    log_message(worker.sems->log_mutex, "INFO", logmsg);
+    log_message(worker.sems->log_mutex, "INFO", logmsg, config);
     destroy_thread_pool(pool);
     cache_destroy(worker.cache);
     close(uds_sock);

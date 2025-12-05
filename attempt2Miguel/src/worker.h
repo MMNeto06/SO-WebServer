@@ -4,6 +4,7 @@
 #include "shared_mem.h"
 #include "semaphores.h"
 #include "cache.h"
+#include "config.h"
 
 #define SHM_NAME "/webserver_shm"
 
@@ -21,11 +22,12 @@ typedef struct {
     semaphores_t* sems;
     cache_t* cache; 
     sem_t* log_sem;
+    server_config_t config;
 } worker_task_args_t;
 
 void* worker_thread(void *arg);
 void worker_process_request(void* arg);
-void worker_main(worker_t worker);
+void worker_main(worker_t worker, server_config_t config);
 
 
 
