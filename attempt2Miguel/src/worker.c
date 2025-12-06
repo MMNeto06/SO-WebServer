@@ -166,7 +166,7 @@ void worker_main(worker_t worker, server_config_t config){
     /*server_config_t config;
     load_config("../server.conf", &config);*/
 
-    worker.cache = cache_init(config.cache_size_mb);
+    //worker.cache = cache_init(config.cache_size_mb);
 
     thread_pool_t* pool = create_thread_pool(config.threads_per_worker);
 
@@ -205,7 +205,7 @@ void worker_main(worker_t worker, server_config_t config){
     sprintf(logmsg, "Worker %d is being destroyed", worker.id);
     log_message(worker.sems->log_mutex, "INFO", logmsg, config);
     destroy_thread_pool(pool);
-    cache_destroy(worker.cache);
+    //cache_destroy(worker.cache);
     close(uds_sock);
 }
 

@@ -12,6 +12,7 @@
 #include <getopt.h>
 
 #include "config.h"
+#include "cache.h"
 #include "shared_mem.h"
 #include "semaphores.h"
 #include "worker.h"
@@ -21,6 +22,7 @@
 semaphores_t* sems; 
 shared_data_t* shm;
 worker_t* workers;
+cache_t* cache;
  
 void master_signal_handler(int signum) { 
     printf("Signum: %d\n", signum);
@@ -94,6 +96,7 @@ void create_workers(int num_workers, server_config_t config){
         workers[i].id = i;
         workers[i].shm = shm;
         workers[i].sems = sems;
+        workers[i].cache = cache;
 
         char path[108];
         snprintf(path, sizeof(path), "/tmp/worker_socket_%d", i);
@@ -149,6 +152,7 @@ void create_workers(int num_workers, server_config_t config){
 void master_cleanup(void){
     destroy_semaphores(sems);
     destroy_shared_memory(shm);
+    cache_destroy(cache);
 }
 
 int master_init(server_config_t config){
@@ -162,6 +166,12 @@ int master_init(server_config_t config){
     sems = malloc(sizeof(semaphores_t));
     if (init_semaphores(sems, config.max_queue_size) != 0){
         perror("init_semaphores");
+        return -1;
+    }
+
+    cache = cache_init(config.cache_size_mb * config.num_workers);
+    if(cache == NULL){
+        perror("cache_init");
         return -1;
     }
 
