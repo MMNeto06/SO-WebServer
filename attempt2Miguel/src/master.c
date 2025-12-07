@@ -261,7 +261,6 @@ int main(int argc, char *argv[]){
             {     "port", required_argument, 0, 'p'},
             {  "workers", required_argument, 0, 'w'},
             {  "threads", required_argument, 0, 't'},
-            {   "daemon", no_argument, 0, 'd'},
             {  "verbose", no_argument, 0, 'v'},
             {     "help", no_argument, 0, 'h'},
             {  "version", no_argument, 0, 'V'},

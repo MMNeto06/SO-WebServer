@@ -78,28 +78,61 @@ void worker_process_request(void* arg){
     setsockopt(args->client_fd, SOL_SOCKET, SO_RCVTIMEO, &tv, sizeof(tv));
 
     SSL *ssl = SSL_new(args->ssl_ctx);
+    if (!ssl) {
+        log_message(args->sems->log_mutex, "ERROR", "SSL_new() failed", args->config);
+        close(args->client_fd);
+        free(args);
+        return;
+    }
+
     SSL_set_fd(ssl, args->client_fd);
 
     if (SSL_accept(ssl) <= 0) {
-        ERR_print_errors_fp(stderr);
+        /* Only print errors for real SSL problems */
+        int err = SSL_get_error(ssl, -1);
+        if (err != SSL_ERROR_ZERO_RETURN && err != SSL_ERROR_SYSCALL) {
+            ERR_print_errors_fp(stderr);
+        }
         SSL_free(ssl);
         close(args->client_fd);
+        free(args);
         return;
     }
+
     while (1){
         char buffer[4096];
 
-        //int bytes = recv(args->client_fd, buffer, sizeof(buffer)-1, 0);
         int bytes = SSL_read(ssl, buffer, sizeof(buffer)-1);
         if (bytes <= 0){
-            perror("recv");
-            log_message(args->sems->log_mutex, "ERROR", "recv error", args->config);
-            break; 
-        } 
-        
+            int ssl_err = SSL_get_error(ssl, bytes);
+
+            if (ssl_err == SSL_ERROR_ZERO_RETURN) {
+                /* clean TLS shutdown by peer */
+                break;
+            } else if (ssl_err == SSL_ERROR_SYSCALL && bytes == 0) {
+                /* peer closed connection without close_notify (common with ab) */
+                /* treat as normal termination, do not spam ERR_print_errors_fp */
+                break;
+            } else if (ssl_err == SSL_ERROR_WANT_READ || ssl_err == SSL_ERROR_WANT_WRITE) {
+                /* non-blocking want; for simplicity try again (or continue) */
+                /* Here sockets are blocking with a recv timeout, so retry once */
+                continue;
+            } else {
+                /* real SSL error: log stack */
+                ERR_print_errors_fp(stderr);
+                sprintf(logmsg, "SSL_read() error on fd %d (ssl_err=%d)", args->client_fd, ssl_err);
+                log_message(args->sems->log_mutex, "ERROR", logmsg, args->config);
+                break;
+            }
+        }
+
         buffer[bytes] = '\0';
 
         http_request_t* req = http_parse_request(buffer, args->config);
+        if (!req) {
+            log_message(args->sems->log_mutex, "ERROR", "Failed to parse HTTP request", args->config);
+            break;
+        }
 
         char client_ip[64] = "unknown";
         struct sockaddr_in addr;
@@ -109,26 +142,30 @@ void worker_process_request(void* arg){
         }
 
         cache_entry_t* cached = cache_get(args->cache, req->path);
-        if(cached){ //se a request já existir em cache, usar isso diretamente
+        if(cached){
             printf("Worker hit cache for %s\n", req->path);
             sprintf(logmsg, "Worker hit cache for %s\n", req->path);
             log_message(args->log_sem, "INFO", logmsg, args->config);
 
-            //http_send_response(args->client_fd, cached->data, cached->size);
             http_send_response(ssl, cached->data, cached->size);
             log_request(args->log_sem, client_ip, req->method, req->path, 200, cached->size, args->config);
 
             update_connection_terminated(args->shm, args->sems);
-            close(args->client_fd);
+
             free(req);
+
+            /* clean SSL teardown for this connection */
+            SSL_shutdown(ssl);
+            SSL_free(ssl);
+            close(args->client_fd);
             free(args);
             return;
         }
+
         printf("DEBUG: %s\n", req->path);
 
-        //se não existir, formular response
         long response_size;
-        int status_code; 
+        int status_code;
         char* response = http_build_response(req, &status_code, &response_size, args->config);
         void* cache_copy;
 
@@ -136,25 +173,30 @@ void worker_process_request(void* arg){
             log_message(args->log_sem, "DEBUG", "SSE connected", args->config);
             printf("DEBUG: SSE connected.\n");
             handle_sse(ssl, args->shm, args->sems);
+
             free(req);
+            /* clean SSL teardown for SSE path (handle_sse may return when done) */
+            SSL_shutdown(ssl);
+            SSL_free(ssl);
             close(args->client_fd);
             free(args);
             return;
         }
 
         if (response != NULL){
-            //guardar response em cache
             cache_copy = malloc(response_size);
-            memcpy(cache_copy, response, response_size);
-            cache_put(args->cache, req->path, cache_copy, response_size);
+            if (cache_copy) {
+                memcpy(cache_copy, response, response_size);
+                cache_put(args->cache, req->path, cache_copy, response_size);
+            }
 
-            //http_send_response(args->client_fd, response, response_size);
             http_send_response(ssl, response, response_size);
             log_request(args->log_sem, client_ip, req->method, req->path, status_code, response_size, args->config);
             free(response);
-        } 
-        clock_t end = clock(); 
-        long response_time = (long) (end-start) / CLOCKS_PER_SEC;
+        }
+
+        clock_t end = clock();
+        long response_time = (long) (end - start) / CLOCKS_PER_SEC;
         update_atomic_stats(args->shm, args->sems, response_size, status_code, response_time);
 
         if (req->want_close){
@@ -164,13 +206,29 @@ void worker_process_request(void* arg){
 
         free(req);
     }
-    
-    SSL_shutdown(ssl);
+
+    /* Graceful SSL shutdown, but do not spam errors on unclean shutdowns */
+    int s = SSL_shutdown(ssl);
+    if (s == 0) {
+        /* bidirectional shutdown needs a second call (try once) */
+        s = SSL_shutdown(ssl);
+    }
+    if (s < 0) {
+        int err = SSL_get_error(ssl, s);
+        /* ignore common EOF/unexpected-eof conditions */
+        if (!(err == SSL_ERROR_SYSCALL || err == SSL_ERROR_ZERO_RETURN)) {
+            ERR_print_errors_fp(stderr);
+            sprintf(logmsg, "SSL_shutdown() error on fd %d (err=%d)", args->client_fd, err);
+            log_message(args->sems->log_mutex, "ERROR", logmsg, args->config);
+        }
+    }
+
     SSL_free(ssl);
     close(args->client_fd);
     update_connection_terminated(args->shm, args->sems);
     free(args);
 }
+
 
 void* worker_thread(void* arg) {
     thread_pool_t* pool = (thread_pool_t*)arg;
