@@ -4,8 +4,10 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <unistd.h>
+#include <openssl/ssl.h>
+#include <openssl/err.h>
 
-static void send_snapshot_to_client(int client_fd, shared_data_t *shm) {
+static void send_snapshot_to_client(SSL *ssl, shared_data_t *shm) {
     char msg[512];
     int len = snprintf(msg, sizeof(msg),
         "data: {\"total_requests\": %ld, \"total_bytes\": %ld, \"status_200\": %ld, \"status_404\": %ld, \"status_500\": %ld, \"active_connections\": %d}\n\n",
@@ -18,11 +20,12 @@ static void send_snapshot_to_client(int client_fd, shared_data_t *shm) {
     );
 
     if (len > 0) {
-        send(client_fd, msg, (size_t)len, 0);
+        //send(client_fd, msg, (size_t)len, 0);
+        SSL_write(ssl, msg, len);
     }
 }
 
-void handle_sse(int client_fd, shared_data_t *shm, semaphores_t *sems) {
+void handle_sse(SSL *ssl, shared_data_t *shm, semaphores_t *sems) {
     const char *headers =
         "HTTP/1.1 200 OK\r\n"
         "Content-Type: text/event-stream\r\n"
@@ -31,13 +34,14 @@ void handle_sse(int client_fd, shared_data_t *shm, semaphores_t *sems) {
         "Access-Control-Allow-Origin: *\r\n"
         "\r\n";
 
-    if (send(client_fd, headers, strlen(headers), 0) <= 0) {
-        close(client_fd);
+    if (SSL_write(ssl, headers, strlen(headers)) <= 0) {
+        //close(client_fd);
+        SSL_shutdown(ssl); 
         return;
     }
 
     sem_wait(sems->stats_mutex);
-    send_snapshot_to_client(client_fd, shm);
+    send_snapshot_to_client(ssl, shm);
     sem_post(sems->stats_mutex);
 
     // Loop: enviar eventos enquanto o servidor estiver a correr
@@ -67,7 +71,8 @@ void handle_sse(int client_fd, shared_data_t *shm, semaphores_t *sems) {
 
         if (len <= 0) break;
 
-        ssize_t sent = send(client_fd, msg, (size_t)len, 0);
+        //ssize_t sent = send(client_fd, msg, (size_t)len, 0);
+        int sent = SSL_write(ssl, msg, len);
         if (sent <= 0) break;
 
         // flush best-effort: send is enough
@@ -76,5 +81,5 @@ void handle_sse(int client_fd, shared_data_t *shm, semaphores_t *sems) {
         sleep(1);
     }
 
-    close(client_fd);
+    SSL_shutdown(ssl); 
 }

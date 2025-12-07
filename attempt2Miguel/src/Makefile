@@ -1,6 +1,7 @@
 #source: https://makefiletutorial.com/#commands-and-execution + trab1aed
 
-CFLAGS = -Wall -Wextra -pthread
+CFLAGS = -Wall -Wextra -pthread -lssl -lcrypto 
+LDLIBS += -lssl -lcrypto
 
 PROGS = master
 

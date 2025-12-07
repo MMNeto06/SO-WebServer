@@ -5,6 +5,8 @@
 #include "semaphores.h"
 #include "cache.h"
 #include "config.h"
+#include <openssl/ssl.h>
+#include <openssl/err.h>
 
 #define SHM_NAME "/webserver_shm"
 
@@ -23,6 +25,8 @@ typedef struct {
     cache_t* cache; 
     sem_t* log_sem;
     server_config_t config;
+    SSL_CTX *ssl_ctx;
+    SSL *ssl;
 } worker_task_args_t;
 
 void* worker_thread(void *arg);

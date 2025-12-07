@@ -11,6 +11,8 @@
 #include <sys/un.h>
 #include <time.h>
 #include <arpa/inet.h>
+#include <openssl/ssl.h>
+#include <openssl/err.h>
 
 #include "config.h"
 #include "shared_mem.h"
@@ -22,6 +24,17 @@
 #include "cache.h"
 #include "logger.h"
 #include "sse.h"
+
+SSL_CTX *ssl_ctx;
+
+void ssl_init(char* cert, char* key) {
+    SSL_load_error_strings();
+    OpenSSL_add_ssl_algorithms();
+    ssl_ctx = SSL_CTX_new(TLS_server_method());
+
+    SSL_CTX_use_certificate_file(ssl_ctx, cert, SSL_FILETYPE_PEM);
+    SSL_CTX_use_PrivateKey_file(ssl_ctx, key, SSL_FILETYPE_PEM);
+}
 
 char logmsg[4096];
 
@@ -64,10 +77,20 @@ void worker_process_request(void* arg){
     tv.tv_usec = 0;
     setsockopt(args->client_fd, SOL_SOCKET, SO_RCVTIMEO, &tv, sizeof(tv));
 
+    SSL *ssl = SSL_new(args->ssl_ctx);
+    SSL_set_fd(ssl, args->client_fd);
+
+    if (SSL_accept(ssl) <= 0) {
+        ERR_print_errors_fp(stderr);
+        SSL_free(ssl);
+        close(args->client_fd);
+        return;
+    }
     while (1){
         char buffer[4096];
 
-        int bytes = recv(args->client_fd, buffer, sizeof(buffer)-1, 0);
+        //int bytes = recv(args->client_fd, buffer, sizeof(buffer)-1, 0);
+        int bytes = SSL_read(ssl, buffer, sizeof(buffer)-1);
         if (bytes <= 0){
             perror("recv");
             log_message(args->sems->log_mutex, "ERROR", "recv error", args->config);
@@ -91,7 +114,8 @@ void worker_process_request(void* arg){
             sprintf(logmsg, "Worker hit cache for %s\n", req->path);
             log_message(args->log_sem, "INFO", logmsg, args->config);
 
-            http_send_response(args->client_fd, cached->data, cached->size);
+            //http_send_response(args->client_fd, cached->data, cached->size);
+            http_send_response(ssl, cached->data, cached->size);
             log_request(args->log_sem, client_ip, req->method, req->path, 200, cached->size, args->config);
 
             update_connection_terminated(args->shm, args->sems);
@@ -111,7 +135,7 @@ void worker_process_request(void* arg){
         if (response_size == -1) {
             log_message(args->log_sem, "DEBUG", "SSE connected", args->config);
             printf("DEBUG: SSE connected.\n");
-            handle_sse(args->client_fd, args->shm, args->sems);
+            handle_sse(ssl, args->shm, args->sems);
             free(req);
             close(args->client_fd);
             free(args);
@@ -124,8 +148,8 @@ void worker_process_request(void* arg){
             memcpy(cache_copy, response, response_size);
             cache_put(args->cache, req->path, cache_copy, response_size);
 
-            http_send_response(args->client_fd, response, response_size);
-
+            //http_send_response(args->client_fd, response, response_size);
+            http_send_response(ssl, response, response_size);
             log_request(args->log_sem, client_ip, req->method, req->path, status_code, response_size, args->config);
             free(response);
         } 
@@ -141,6 +165,8 @@ void worker_process_request(void* arg){
         free(req);
     }
     
+    SSL_shutdown(ssl);
+    SSL_free(ssl);
     close(args->client_fd);
     update_connection_terminated(args->shm, args->sems);
     free(args);
@@ -167,6 +193,7 @@ void worker_main(worker_t worker, server_config_t config){
     load_config("../server.conf", &config);*/
 
     //worker.cache = cache_init(config.cache_size_mb);
+    ssl_init(config.certificate, config.key);
 
     thread_pool_t* pool = create_thread_pool(config.threads_per_worker);
 
@@ -199,6 +226,7 @@ void worker_main(worker_t worker, server_config_t config){
         args->cache = worker.cache;
         args->log_sem = worker.sems->log_mutex; //hopefully does not break
         args->config = config;
+        args->ssl_ctx = ssl_ctx;
         add_task(pool, worker_process_request, args);
     }
 

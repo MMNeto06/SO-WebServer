@@ -5,6 +5,8 @@
 #include <netinet/in.h> 
 #include <signal.h> 
 #include <stdlib.h>
+#include <openssl/ssl.h>
+#include <openssl/err.h>
 #include "http.h"
 #include "config.h"
 
@@ -233,10 +235,11 @@ char* http_build_response(http_request_t *req, int *status_code, long *out_size,
     }
 }
 
-void http_send_response(int fd, char *response, long size){
+void http_send_response(SSL* ssl, char *response, long size){
     long sent = 0;
     while (sent < size){
-        long n = send(fd, response, size, 0);
+        //long n = send(fd, response, size, 0);
+        long n = SSL_write(ssl, response + sent, size - sent);
         if (n<=0){
             perror("send");
             return;

@@ -30,6 +30,10 @@ int load_config(const char* filename, server_config_t* config) {
                 config->timeout_seconds=atoi(value);
             else if(strcmp(key,"LOG_LEVEL") == 0)
                 strncpy(config->log_level, value, sizeof(config->log_level));
+            else if(strcmp(key,"CERTIFICATE") == 0)
+                strncpy(config->certificate, value, sizeof(config->certificate));
+            else if(strcmp(key,"KEY") == 0)
+                strncpy(config->key, value, sizeof(config->key));
             //nota: qualquer outro config a adicionar deve ser adicionado em config.h e aqui - M
         }
      } 
