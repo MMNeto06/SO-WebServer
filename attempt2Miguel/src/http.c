@@ -70,23 +70,48 @@ http_request_t* http_parse_request(char *buffer, server_config_t config) {
     }
 
     http_request->want_close = 0; // default HTTP/1.1
+    http_request->has_range = 0;
+    http_request->range_start = 0;
+    http_request->range_end = -1;
 
     // HTTP/1.0 força close
     if (strncmp(http_request->version, "HTTP/1.0", 8) == 0) {
         http_request->want_close = 1;
     }
 
-    char *header_line = strstr(buffer, "\r\n");
-    while (header_line && *(header_line += 2) != '\r') {
-        char key[64], value[256];
-        sscanf(header_line, "%63[^:]: %255[^\r\n]", key, value);
+    char *line = strstr(buffer, "\r\n") + 2;  // first header line
 
-        if (strcasecmp(key, "Connection") == 0) {
-            if (strcasecmp(value, "close") == 0)
-                http_request->want_close = 1;
-            if (strcasecmp(value, "keep-alive") == 0)
-                http_request->want_close = 0;
+    while (line && *line != '\r') {
+        char key[64] = {0};
+        char value[256] = {0};
+
+        sscanf(line, "%63[^:]: %255[^\r\n]", key, value);
+
+        if (key[0] != '\0') {
+            if (strcasecmp(key, "Connection") == 0) {
+                if (strcasecmp(value, "close") == 0)
+                    http_request->want_close = 1;
+                if (strcasecmp(value, "keep-alive") == 0)
+                    http_request->want_close = 0;
+            }
+
+            if (strcasecmp(key, "Range") == 0) {
+                long start = 0, end = -1;
+
+                char *eq = strchr(value, '=');
+                if (eq) {
+                    sscanf(eq + 1, "%ld-%ld", &start, &end);
+                    http_request->range_start = start;
+                    http_request->range_end = end;
+                    http_request->has_range = 1;
+                }
+            }
         }
+
+        // move to next header line
+        line = strstr(line, "\r\n");
+        if (line)
+            line += 2;
     }
         
     return http_request;
@@ -148,6 +173,42 @@ char* http_build_response(http_request_t *req, int *status_code, long *out_size,
         char* f_data = read_file(filepath);
         
         const char* mime_type = get_mime_type(filepath);
+        
+        if (req->has_range) {
+            
+            long start = req->range_start;
+            long end   = (req->range_end == -1) ? (f_size - 1) : req->range_end;
+
+            if (start < 0) start = 0;
+            if (end >= f_size) end = f_size - 1;
+            if (start > end) start = end;
+
+            long chunk_size = end - start + 1;
+
+            char header[512];
+            sprintf(header,
+                "HTTP/1.1 206 Partial Content\r\n"
+                "%s"
+                "Content-Type: %s\r\n"
+                "Content-Length: %ld\r\n"
+                "Content-Range: bytes %ld-%ld/%ld\r\n\r\n",
+                connection_header,
+                mime_type,
+                chunk_size,
+                start, end, f_size
+            );
+
+            *out_size = strlen(header) + chunk_size;
+
+            char* response = malloc(*out_size + 1);
+            memcpy(response, header, strlen(header));
+            memcpy(response + strlen(header), f_data + start, chunk_size);
+
+            free(f_data);
+
+            *status_code = 206;
+            return response;
+        }
 
         char header[512];
         sprintf(header,

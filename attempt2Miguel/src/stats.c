@@ -26,7 +26,8 @@ void update_atomic_stats(shared_data_t* shm, semaphores_t* sems, long response_s
     case 500: 
         shm->stats.status_500++;
         break;
-
+    case 206:
+        shm->stats.status_206++;
     default:
         break;
     }
@@ -57,6 +58,7 @@ void print_stats(shared_data_t* shm, semaphores_t* sems) {
     printf("Status 200: %ld\n", shm->stats.status_200);
     printf("Status 404: %ld\n", shm->stats.status_404);
     printf("Status 500: %ld\n", shm->stats.status_500);
+    printf("Status 206: %ld\n", shm->stats.status_206);
     printf("Active connections: %d\n", shm->stats.active_connections);
     printf("Average response time: %.8f s\n", avg_response);
 

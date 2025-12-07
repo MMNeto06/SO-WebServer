@@ -7,6 +7,9 @@ typedef struct {
     char path[512]; 
     char version[16]; 
     int want_close;
+    long range_start;
+    long range_end;
+    int has_range;
 } http_request_t; 
  
 const char* get_mime_type(const char *filename);
