@@ -10,17 +10,17 @@
 static void send_snapshot_to_client(SSL *ssl, shared_data_t *shm) {
     char msg[512];
     int len = snprintf(msg, sizeof(msg),
-        "data: {\"total_requests\": %ld, \"total_bytes\": %ld, \"status_200\": %ld, \"status_404\": %ld, \"status_500\": %ld, \"active_connections\": %d}\n\n",
+        "data: {\"total_requests\": %ld, \"total_bytes\": %ld, \"status_200\": %ld, \"status_206\": %ld, \"status_404\": %ld, \"status_500\": %ld, \"active_connections\": %d}\n\n",
         shm->stats.total_requests,
         shm->stats.bytes_transferred,
         shm->stats.status_200,
+        shm->stats.status_206,
         shm->stats.status_404,
         shm->stats.status_500,
         shm->stats.active_connections
     );
 
     if (len > 0) {
-        //send(client_fd, msg, (size_t)len, 0);
         SSL_write(ssl, msg, len);
     }
 }
@@ -44,26 +44,26 @@ void handle_sse(SSL *ssl, shared_data_t *shm, semaphores_t *sems) {
     send_snapshot_to_client(ssl, shm);
     sem_post(sems->stats_mutex);
 
-    // Loop: enviar eventos enquanto o servidor estiver a correr
     while (shm->stats.keep_running) {
         sem_wait(sems->stats_mutex);
 
-        // --- Ler snapshot das estatísticas (sem lock aqui; se tiveres mutex/sem, usa) ---
-        long total_requests    = shm->stats.total_requests;
-        long total_bytes       = shm->stats.bytes_transferred;
-        long status_200        = shm->stats.status_200;
-        long status_404        = shm->stats.status_404;
-        long status_500        = shm->stats.status_500;
+        long total_requests = shm->stats.total_requests;
+        long total_bytes = shm->stats.bytes_transferred;
+        long status_200 = shm->stats.status_200;
+        long status_206 = shm->stats.status_206;
+        long status_404 = shm->stats.status_404;
+        long status_500 = shm->stats.status_500;
         long active_connections = shm->stats.active_connections;
 
         sem_post(sems->stats_mutex);
 
         char msg[512];
         int len = snprintf(msg, sizeof(msg),
-            "data: {\"total_requests\": %ld, \"total_bytes\": %ld, \"status_200\": %ld, \"status_404\": %ld, \"status_500\": %ld, \"active_connections\": %ld}\n\n",
+            "data: {\"total_requests\": %ld, \"total_bytes\": %ld, \"status_200\": %ld, \"status_206\": %ld, \"status_404\": %ld, \"status_500\": %ld, \"active_connections\": %ld}\n\n",
             total_requests,
             total_bytes,
             status_200,
+            status_206,
             status_404,
             status_500,
             active_connections
@@ -71,12 +71,8 @@ void handle_sse(SSL *ssl, shared_data_t *shm, semaphores_t *sems) {
 
         if (len <= 0) break;
 
-        //ssize_t sent = send(client_fd, msg, (size_t)len, 0);
         int sent = SSL_write(ssl, msg, len);
         if (sent <= 0) break;
-
-        // flush best-effort: send is enough
-        // intervalo entre eventos (ajusta se quiseres mais/menos frequência)
 
         sleep(1);
     }

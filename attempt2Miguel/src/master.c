@@ -182,8 +182,8 @@ int master_init(server_config_t config){
         return -1;
     }
  
-    printf("HTTP server running on http://localhost:%d\n", config.port); 
-    printf("Server RealTime Stats available on http://localhost:%d/stats.html\n", config.port);
+    printf("HTTPS server running on https://localhost:%d\n", config.port); 
+    printf("Server RealTime Stats available on https://localhost:%d/stats.html\n", config.port);
     log_message(sems->log_mutex, "INFO", "HTTP server running", config);
     log_message(sems->log_mutex, "INFO", "Server RealTime Stats available", config);
 

@@ -162,14 +162,17 @@ void worker_process_request(void* arg){
             return;
         }
 
-        printf("DEBUG: %s\n", req->path);
-
         long response_size;
         int status_code;
         char* response = http_build_response(req, &status_code, &response_size, args->config);
         void* cache_copy;
 
+        if (status_code == 404){
+            printf("DEBUG: 404 %s", req->path);
+        }
+
         if (response_size == -1) {
+            update_connection_terminated(args->shm, args->sems); // evita que stats conte como request
             log_message(args->log_sem, "DEBUG", "SSE connected", args->config);
             printf("DEBUG: SSE connected.\n");
             handle_sse(ssl, args->shm, args->sems);

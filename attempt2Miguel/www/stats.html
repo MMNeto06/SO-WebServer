@@ -24,26 +24,23 @@
 
 <div class="container">
 
-    <!-- CARDS -->
     <div class="stats-cards">
         <div class="card"><h2>Total Requests</h2><p id="totalRequests">0</p></div>
         <div class="card"><h2>Total Bytes</h2><p id="totalBytes">0</p></div>
         <div class="card"><h2>Status 200</h2><p id="status200">0</p></div>
+        <div class="card"><h2>Status 206</h2><p id="status206">0</p></div>
         <div class="card"><h2>Status 404</h2><p id="status404">0</p></div>
         <div class="card"><h2>Status 500</h2><p id="status500">0</p></div>
         <div class="card"><h2>Active Connections</h2><p id="activeConnections">0</p></div>
         <div class="card"><h2>Requests / sec</h2><p id="rps">0</p></div>
     </div>
 
-    <!-- GRÁFICOS -->
     <canvas id="chartRPS" height="120"></canvas>
     <canvas id="chartActive" height="120"></canvas>
-    <canvas id="chartStatus" height="120"></canvas>
 
 </div>
 
 <script>
-// --- Chart Setup ---
 function createChart(ctx, label, color) {
     return new Chart(ctx, {
         type: 'line',
@@ -57,12 +54,11 @@ function createChart(ctx, label, color) {
 
 const chartRPS = createChart(document.getElementById("chartRPS"), "Requests per Second", "#4bc0c0");
 const chartActive = createChart(document.getElementById("chartActive"), "Active Connections", "#ffcc56");
-const chartStatus = createChart(document.getElementById("chartStatus"), "Status 200", "#ff6384");
 
-// --- DOM elements ---
 const elTotal = document.getElementById("totalRequests");
 const elBytes = document.getElementById("totalBytes");
 const el200 = document.getElementById("status200");
+const el206 = document.getElementById("status206");
 const el404 = document.getElementById("status404");
 const el500 = document.getElementById("status500");
 const elActive = document.getElementById("activeConnections");
@@ -74,15 +70,14 @@ const evt = new EventSource("/stats");
 evt.onmessage = (event) => {
     const data = JSON.parse(event.data);
 
-    // --- update cards ---
     elTotal.textContent = data.total_requests;
     elBytes.textContent = data.total_bytes;
     el200.textContent = data.status_200;
+    el206.textContent = data.status_206;
     el404.textContent = data.status_404;
     el500.textContent = data.status_500;
     elActive.textContent = data.active_connections;
 
-    // --- calculate RPS ---
     const rps = data.total_requests - lastTotal;
     lastTotal = data.total_requests;
     elRPS.textContent = rps;
@@ -101,9 +96,6 @@ evt.onmessage = (event) => {
 
     addData(chartRPS, rps);
     addData(chartActive, data.active_connections);
-    addData(chartStatus, data.status_200); 
-    addData(chartStatus, data.status_404);
-    addData(chartStatus, data.status_500);
 };
 
 evt.onerror = () => { console.error("SSE connection lost."); };
