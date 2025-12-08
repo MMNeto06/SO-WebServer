@@ -10,6 +10,8 @@
 #include <fcntl.h>
 #include <errno.h>
 #include <getopt.h>
+#include <sys/wait.h>
+#include <malloc.h>
 
 #include "config.h"
 #include "cache.h"
@@ -18,6 +20,7 @@
 #include "worker.h"
 #include "stats.h"
 #include "logger.h"
+#include "uds.h"
  
 semaphores_t* sems; 
 shared_data_t* shm;
@@ -26,7 +29,9 @@ cache_t* cache;
  
 void master_signal_handler(int signum) { 
     printf("Signum: %d\n", signum);
+    sem_wait(sems->stats_mutex);
     shm->stats.keep_running = 0;
+    sem_post(sems->stats_mutex);
 } 
  
 int create_server_socket(int port, server_config_t config) { 
@@ -61,38 +66,8 @@ int create_server_socket(int port, server_config_t config) {
     return sockfd; 
 } 
 
-void send_fd(int socket, int fd_to_send, server_config_t config) {
-    struct msghdr msg = {0};
-    struct iovec iov;
-    char buf[1] = {0};
-    iov.iov_base = buf;
-    iov.iov_len = sizeof(buf);
-    msg.msg_iov = &iov;
-    msg.msg_iovlen = 1;
-
-    char cbuf[CMSG_SPACE(sizeof(int))];
-    msg.msg_control = cbuf;
-    msg.msg_controllen = sizeof(cbuf);
-
-    struct cmsghdr *cmsg = CMSG_FIRSTHDR(&msg);
-    cmsg->cmsg_level = SOL_SOCKET;
-    cmsg->cmsg_type = SCM_RIGHTS;
-    cmsg->cmsg_len = CMSG_LEN(sizeof(int));
-    memcpy(CMSG_DATA(cmsg), &fd_to_send, sizeof(int));
-
-    if (sendmsg(socket, &msg, 0) < 0) {
-        perror("sendmsg");
-        log_message(sems->log_mutex, "ERROR", "send_fd sendmsg error", config);
-        return;
-    }
-}
-
-void create_workers(int num_workers, server_config_t config){
-    int i;
-
-    workers = malloc(sizeof(worker_t)*num_workers);
-
-    for (i = 0; i < num_workers; i++) {
+void initialize_workers_structure(int num_workers, server_config_t config){
+    for (int i = 0; i < num_workers; i++) {
         workers[i].id = i;
         workers[i].shm = shm;
         workers[i].sems = sems;
@@ -100,6 +75,8 @@ void create_workers(int num_workers, server_config_t config){
 
         char path[108];
         snprintf(path, sizeof(path), "/tmp/worker_socket_%d", i);
+
+        strncpy(workers[i].socket_path, path, sizeof(workers[i].socket_path));
 
         int sock = socket(AF_UNIX, SOCK_STREAM, 0);
         if (sock < 0) { perror("socket"); exit(1); }
@@ -122,9 +99,11 @@ void create_workers(int num_workers, server_config_t config){
 
         workers[i].uds_socket = sock; 
     }
+}
 
-    for (i = 0; i < num_workers; i++){
-        switch (fork())
+void fork_workers(int num_workers, server_config_t config){
+    for (int i = 0; i < num_workers; i++){
+        switch (workers[i].pid = fork())
         {
         case -1:
             log_message(sems->log_mutex, "ERROR", "Fork error in create_workers", config);
@@ -132,6 +111,7 @@ void create_workers(int num_workers, server_config_t config){
             continue;
 
         case 0: 
+            signal(SIGPIPE, SIG_IGN);
             worker_main(workers[i], config);
             exit(0);
 
@@ -139,8 +119,10 @@ void create_workers(int num_workers, server_config_t config){
             break;
         }
     }
+}
 
-    for (i = 0; i < num_workers; i++) {
+void set_workers_uds(int num_workers, server_config_t config){
+    for (int i = 0; i < num_workers; i++) {
         int conn_fd = accept(workers[i].uds_socket, NULL, NULL);
         if (conn_fd < 0) { log_message(sems->log_mutex, "ERROR", "Create_workers accept error", config); perror("accept"); exit(1); }
 
@@ -149,10 +131,28 @@ void create_workers(int num_workers, server_config_t config){
     }
 }
 
-void master_cleanup(void){
+void create_workers(int num_workers, server_config_t config){
+    workers = malloc(sizeof(worker_t)*num_workers);
+
+    initialize_workers_structure(num_workers, config);
+    fork_workers(num_workers, config);
+    set_workers_uds(num_workers, config);
+}
+
+void kill_workers(int num_workers){
+    for (int i = 0; i < num_workers; i++){
+        shutdown(workers[i].uds_socket, SHUT_RDWR);
+        waitpid(workers[i].pid, NULL, 0);
+    }
+}
+
+void master_cleanup(int num_workers){
     destroy_semaphores(sems);
+    free(sems);
     destroy_shared_memory(shm);
     cache_destroy(cache);
+    kill_workers(num_workers);
+    free(workers);
 }
 
 int master_init(server_config_t config){
@@ -184,7 +184,7 @@ int master_init(server_config_t config){
  
     printf("HTTPS server running on https://localhost:%d\n", config.port); 
     printf("Server RealTime Stats available on https://localhost:%d/stats.html\n", config.port);
-    log_message(sems->log_mutex, "INFO", "HTTP server running", config);
+    log_message(sems->log_mutex, "INFO", "HTTPS server running", config);
     log_message(sems->log_mutex, "INFO", "Server RealTime Stats available", config);
 
     create_workers(config.num_workers, config);
@@ -193,8 +193,6 @@ int master_init(server_config_t config){
 }
 
 void master_accept_loop(int listen_fd, server_config_t config){
-    /*server_config_t config;
-    load_config("../server.conf", &config);*/
     int flags = fcntl(listen_fd, F_GETFL, 0);
     fcntl(listen_fd, F_SETFL, flags | O_NONBLOCK);
     int next_worker = 0; 
@@ -206,14 +204,13 @@ void master_accept_loop(int listen_fd, server_config_t config){
             printf("DEBUG: Accepted client_fd = %d\n", client_fd);
             log_message(sems->log_mutex, "DEBUG", "Accepted a client_fd", config);
             int worker_idx = next_worker % config.num_workers;
-            send_fd(workers[worker_idx].uds_socket, client_fd, config);
+            send_fd(workers[worker_idx].uds_socket, client_fd, sems, config);
             next_worker++;    
             close(client_fd);
         }else {
             if (errno != EAGAIN && errno != EWOULDBLOCK){
                 log_message(sems->log_mutex, "ERROR", "master_accept_loop accept error", config);
                 perror("accept");
-            
             }
         }
 
@@ -223,7 +220,7 @@ void master_accept_loop(int listen_fd, server_config_t config){
             last_stats = now;
         }
     }  
-    master_cleanup();
+    master_cleanup(config.num_workers);
     close(listen_fd);
 }
 
@@ -247,8 +244,6 @@ int main(int argc, char *argv[]){
         perror("Rotina de atendimento não instalada\n");
         return EXIT_FAILURE;
     }
-
-    
 
     int opt;
     char opt_path[512] = "no";

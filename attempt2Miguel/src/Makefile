@@ -8,9 +8,9 @@ PROGS = master
 # Default rule
 all: $(PROGS)
 
-master: config.o semaphores.o shared_mem.o thread_pool.o worker.o http.o stats.o cache.o logger.o sse.o master.o
+master: config.o semaphores.o shared_mem.o thread_pool.o worker.o http.o stats.o cache.o logger.o sse.o uds.o master.o
 
-master.o: config.h semaphores.h shared_mem.h thread_pool.h worker.h http.h stats.h cache.h logger.h sse.h master.c
+master.o: config.h semaphores.h shared_mem.h thread_pool.h worker.h http.h stats.h cache.h logger.h sse.h uds.h master.c
 
 # Rule to make any .o file dependent upon corresponding .h file
 %.o: %.h

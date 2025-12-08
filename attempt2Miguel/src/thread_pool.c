@@ -72,6 +72,16 @@ void destroy_thread_pool(thread_pool_t* pool) {
         pthread_join(pool->threads[i], NULL);
     }
 
+    task_t* task = pool->head;
+    while (task) {
+        task_t* next = task->next;
+        free(task);
+        task = next;
+    }
+
+    pthread_mutex_destroy(&pool->mutex);
+    pthread_cond_destroy(&pool->cond);
+
     free(pool->threads);
     free(pool);
 }

@@ -120,9 +120,6 @@ http_request_t* http_parse_request(char *buffer, server_config_t config) {
 } 
 
 char* http_build_response(http_request_t *req, int *status_code, long *out_size, server_config_t config) { 
-    /*server_config_t config;
-    load_config("../server.conf", &config);*/
-
     char filepath[512];
     snprintf(filepath, sizeof(filepath), "%s", req->path);
 
@@ -153,9 +150,12 @@ char* http_build_response(http_request_t *req, int *status_code, long *out_size,
         printf("DEBUG: Stats detected!\n");
         *status_code = 200;
         *out_size = -1; // flag SSE
+        free(full_stats_path);
         return NULL;
     }
 
+    free(full_stats_path);
+    
     if (strcmp(req->method, "GET") == 0){
         if (file_exists(filepath) != 1){
             *status_code = 404; 

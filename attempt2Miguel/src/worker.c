@@ -24,8 +24,10 @@
 #include "cache.h"
 #include "logger.h"
 #include "sse.h"
+#include "uds.h"
 
 SSL_CTX *ssl_ctx;
+extern worker_t* workers;
 
 void ssl_init(char* cert, char* key) {
     SSL_load_error_strings();
@@ -37,35 +39,6 @@ void ssl_init(char* cert, char* key) {
 }
 
 char logmsg[4096];
-
-int recv_fd(int uds_sock) {
-    struct msghdr msg = {0};
-    struct iovec iov;
-    char buf[1];  
-    iov.iov_base = buf;
-    iov.iov_len = sizeof(buf);
-    msg.msg_iov = &iov;
-    msg.msg_iovlen = 1;
-
-    char cbuf[CMSG_SPACE(sizeof(int))];
-    msg.msg_control = cbuf;
-    msg.msg_controllen = sizeof(cbuf);
-
-    if (recvmsg(uds_sock, &msg, 0) < 0) {
-        perror("recvmsg");
-        return -1;
-    }
-
-    struct cmsghdr *cmsg = CMSG_FIRSTHDR(&msg);
-    if (cmsg == NULL || cmsg->cmsg_type != SCM_RIGHTS) {
-        fprintf(stderr, "No FD received\n");
-        return -1;
-    }
-
-    int client_fd;
-    memcpy(&client_fd, CMSG_DATA(cmsg), sizeof(int));
-    return client_fd;
-}
 
 void worker_process_request(void* arg){
     worker_task_args_t* args = (worker_task_args_t*) arg;
@@ -245,18 +218,29 @@ void* worker_thread(void* arg) {
     return NULL;
 }
 
+void worker_cleanup(worker_t worker){
+    destroy_thread_pool(worker.pool);
+    cache_destroy(worker.cache);
+    destroy_semaphores(worker.sems);
+    free(worker.sems);
+    destroy_shared_memory(worker.shm);
+    close(worker.uds_socket);
+    unlink(worker.socket_path);
+}
+
 void worker_main(worker_t worker, server_config_t config){
     printf("Worker ID: %d\n", worker.id);
     sprintf(logmsg, "Worker %d initiated", worker.id);
     log_message(worker.sems->log_mutex, "INFO", logmsg, config);
 
-    /*server_config_t config;
-    load_config("../server.conf", &config);*/
+    if (workers != NULL){
+        free(workers);
+        workers = NULL;
+    }
 
-    //worker.cache = cache_init(config.cache_size_mb);
     ssl_init(config.certificate, config.key);
 
-    thread_pool_t* pool = create_thread_pool(config.threads_per_worker);
+    worker.pool = create_thread_pool(config.threads_per_worker);
 
     int uds_sock = socket(AF_UNIX, SOCK_STREAM, 0);
     if (uds_sock < 0) { perror("socket"); exit(1); }
@@ -285,16 +269,17 @@ void worker_main(worker_t worker, server_config_t config){
         args->shm = worker.shm;
         args->sems = worker.sems;
         args->cache = worker.cache;
-        args->log_sem = worker.sems->log_mutex; //hopefully does not break
+        args->log_sem = worker.sems->log_mutex; 
         args->config = config;
         args->ssl_ctx = ssl_ctx;
-        add_task(pool, worker_process_request, args);
+        add_task(worker.pool, worker_process_request, args);
     }
 
     sprintf(logmsg, "Worker %d is being destroyed", worker.id);
     log_message(worker.sems->log_mutex, "INFO", logmsg, config);
-    destroy_thread_pool(pool);
-    //cache_destroy(worker.cache);
-    close(uds_sock);
+    worker_cleanup(worker);
+    SSL_CTX_free(ssl_ctx);
+    ssl_ctx = NULL;
+
 }
 

@@ -40,7 +40,17 @@ cache_t* cache_init(size_t max_size_mb){
     c->table_size = 4096;
     c->table = calloc(c->table_size, sizeof(cache_entry_t*));
 
-    pthread_rwlock_init(&c->lock, NULL);
+    if (!c->table) {
+        free(c);
+        return NULL;
+    }
+
+    if (pthread_rwlock_init(&c->lock, NULL) != 0) {
+        free(c->table);
+        free(c);
+        return NULL;
+    }
+
     return c;
 }
 
