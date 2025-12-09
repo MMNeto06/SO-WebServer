@@ -43,7 +43,8 @@ void update_active_connection(shared_data_t* shm, semaphores_t* sems){
 
 void update_connection_terminated(shared_data_t* shm, semaphores_t* sems){
     sem_wait(sems->stats_mutex);
-    shm->stats.active_connections--;
+    if (shm->stats.active_connections > 0)
+        shm->stats.active_connections--;
     sem_post(sems->stats_mutex);
 }
 
@@ -60,7 +61,7 @@ void print_stats(shared_data_t* shm, semaphores_t* sems) {
     printf("Status 500: %ld\n", shm->stats.status_500);
     printf("Status 206: %ld\n", shm->stats.status_206);
     printf("Active connections: %d\n", shm->stats.active_connections);
-    printf("Average response time: %.8f s\n", avg_response);
+    printf("Average response time: %.3f ms\n", avg_response);
 
     sem_post(sems->stats_mutex);
 }
