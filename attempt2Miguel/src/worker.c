@@ -43,7 +43,6 @@ char logmsg[4096];
 void worker_process_request(void* arg){
     worker_task_args_t* args = (worker_task_args_t*) arg;
     clock_t start = clock();
-    update_active_connection(args->shm, args->sems);
 
     struct timeval tv;
     tv.tv_sec = 5;
@@ -71,6 +70,8 @@ void worker_process_request(void* arg){
         free(args);
         return;
     }
+
+    update_active_connection(args->shm, args->sems);
 
     while (1){
         char buffer[4096];
@@ -121,6 +122,9 @@ void worker_process_request(void* arg){
             log_message(args->log_sem, "INFO", logmsg, args->config);
 
             http_send_response(ssl, cached->data, cached->size);
+            //clock_t end = clock();
+            //double response_time = ((double)(end - start) * 1000.0) / CLOCKS_PER_SEC;
+            //update_atomic_stats(args->shm, args->sems, response_size, status_code, response_time);
             log_request(args->log_sem, client_ip, req->method, req->path, 200, cached->size, args->config);
 
             update_connection_terminated(args->shm, args->sems);
@@ -172,7 +176,7 @@ void worker_process_request(void* arg){
         }
 
         clock_t end = clock();
-        long response_time = (long) (end - start) / CLOCKS_PER_SEC;
+        double response_time = ((double)(end - start) * 1000.0) / CLOCKS_PER_SEC;
         update_atomic_stats(args->shm, args->sems, response_size, status_code, response_time);
 
         if (req->want_close){
