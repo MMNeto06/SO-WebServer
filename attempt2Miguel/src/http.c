@@ -231,6 +231,7 @@ char* http_build_response(http_request_t *req, int *status_code, long *out_size,
         return response;
     } else {
         printf("ERROR: Invalid Method!\n");
+        // 500 aqui     
         return NULL; 
     }
 }
