@@ -5,9 +5,10 @@ vandalismo
 fuck this shit
 fuck servers
 fuck c
+fuck this shit
 
 Lista de coisas que faltam fazer:
--technical doc
+-technical doc -> STARTED 
 -preencher buracos do readme
 -meter screenshots no user guide
 -ver novamente a cache, pois está a cachar mal
