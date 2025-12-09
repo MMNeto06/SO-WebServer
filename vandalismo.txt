@@ -5,3 +5,12 @@ vandalismo
 fuck this shit
 fuck servers
 fuck c
+
+Lista de coisas que faltam fazer:
+-technical doc
+-preencher buracos do readme
+-meter screenshots no user guide
+-ver novamente a cache, pois está a cachar mal
+-fix novamente real time stats
+-refactor de worker_process_request
+-status 503 e 403
