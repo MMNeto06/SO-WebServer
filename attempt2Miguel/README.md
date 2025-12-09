@@ -128,10 +128,7 @@ concurrent-http-server/
 │   ├── index.html              # Main page 
 │   ├── index.css               # Stylesheets 
 │   ├── index.js                # JavaScript files 
-│   ├── images/                 # Image/video assets 
-│   └── errors/                 # Custom error pages //VER ISTO MELHOR
-│       ├── 404.html 
-│       └── 500.html 
+│   └── images/                 # Image/video assets 
 │ 
 ├── tests/                      # Test suite 
 │   ├── test_load.sh            # Load testing script 
@@ -496,7 +493,7 @@ pid,ppid,nlwp,cmd'
 - Accept incoming TCP connections 
 - Enqueue connections in shared queue 
 - Handle signals (SIGINT, SIGTERM) for graceful shutdown 
-- Display statistics periodically //VER ISTO MELHOR
+- Display statistics periodically
  
  
 **Key Functions:** 
@@ -518,7 +515,7 @@ void create_workers(int num_workers, server_config_t config);
 - Create thread pool with M threads 
 - Initialize thread-safe LRU cache 
 - Threads dequeue connections from shared queue 
-- Parse HTTP requests //VER ISTO MELHOR
+- Parse HTTPS requests
 - Serve files from document root 
 - Update shared statistics 
 - Handle graceful shutdown 
