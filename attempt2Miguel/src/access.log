@@ -32052,3 +32052,26 @@
 [INFO] [09/Dec/2025:15:44:55 +0000] - Worker 1 is being destroyed
 [INFO] [09/Dec/2025:15:44:55 +0000] - Worker 3 is being destroyed
 [INFO] [09/Dec/2025:15:44:55 +0000] - Worker 0 is being destroyed
+[INFO] [09/Dec/2025:21:10:41 +0000] - HTTPS server running
+[INFO] [09/Dec/2025:21:10:41 +0000] - Server RealTime Stats available
+[INFO] [09/Dec/2025:21:10:41 +0000] - Worker 0 initiated
+[INFO] [09/Dec/2025:21:10:41 +0000] - Worker 1 initiated
+[INFO] [09/Dec/2025:21:10:41 +0000] - Worker 2 initiated
+[INFO] [09/Dec/2025:21:10:41 +0000] - Worker 3 initiated
+[INFO] [09/Dec/2025:21:10:41 +0000] - Worker 3 conectado ao master via UDS
+[INFO] [09/Dec/2025:21:10:41 +0000] - Worker 1 conectado ao master via UDS
+[INFO] [09/Dec/2025:21:10:41 +0000] - Worker 0 conectado ao master via UDS
+[INFO] [09/Dec/2025:21:10:41 +0000] - Worker 2 conectado ao master via UDS
+[DEBUG] [09/Dec/2025:21:10:46 +0000] - Accepted a client_fd
+[DEBUG] [09/Dec/2025:21:10:46 +0000] - Accepted a client_fd
+127.0.0.1 - - [09/Dec/2025:21:10:46 +0000] "GET ../www/index.html HTTP/1.1" 403 141
+127.0.0.1 - - [09/Dec/2025:21:10:47 +0000] "GET ../www/favicon.ico HTTP/1.1" 403 141
+[DEBUG] [09/Dec/2025:21:11:13 +0000] - Accepted a client_fd
+[DEBUG] [09/Dec/2025:21:11:23 +0000] - Accepted a client_fd
+[DEBUG] [09/Dec/2025:21:11:26 +0000] - Accepted a client_fd
+[DEBUG] [09/Dec/2025:21:11:48 +0000] - Accepted a client_fd
+127.0.0.1 - - [09/Dec/2025:21:11:48 +0000] "GET ../www/www HTTP/1.1" 403 141
+[INFO] [09/Dec/2025:21:17:37 +0000] - Worker 0 is being destroyed
+[INFO] [09/Dec/2025:21:17:37 +0000] - Worker 3 is being destroyed
+[INFO] [09/Dec/2025:21:17:37 +0000] - Worker 2 is being destroyed
+[INFO] [09/Dec/2025:21:17:37 +0000] - Worker 1 is being destroyed

@@ -204,7 +204,12 @@ void master_accept_loop(int listen_fd, server_config_t config){
             printf("DEBUG: Accepted client_fd = %d\n", client_fd);
             log_message(sems->log_mutex, "DEBUG", "Accepted a client_fd", config);
             int worker_idx = next_worker % config.num_workers;
-            send_fd(workers[worker_idx].uds_socket, client_fd, sems, config);
+            int sent = send_fd(workers[worker_idx].uds_socket, client_fd, sems, config);
+            if (sent != 0){
+                log_message(sems->log_mutex, "WARN", "FD send failed", config);
+                // 503 aqui
+            }
+                
             next_worker++;    
             close(client_fd);
         }else {

@@ -10,7 +10,7 @@
 #include "semaphores.h"
 #include "logger.h"
 
-void send_fd(int socket, int fd_to_send, semaphores_t* sems, server_config_t config) {
+int send_fd(int socket, int fd_to_send, semaphores_t* sems, server_config_t config) {
     struct msghdr msg = {0};
     struct iovec iov;
     char buf[1] = {0};
@@ -33,8 +33,10 @@ void send_fd(int socket, int fd_to_send, semaphores_t* sems, server_config_t con
     if (sendmsg(socket, &msg, 0) < 0) {
         perror("sendmsg");
         log_message(sems->log_mutex, "ERROR", "send_fd sendmsg error", config);
-        return;
+        return 1;
     }
+
+    return 0;
 }
 
 int recv_fd(int uds_sock) {

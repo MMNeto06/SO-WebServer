@@ -119,6 +119,26 @@ http_request_t* http_parse_request(char *buffer, server_config_t config) {
     return http_request;
 } 
 
+char* build_error_response(int code, const char* message, const char* connection_header, long* out_size) {
+    char body[128];
+    sprintf(body, "%d %s", code, message);
+
+    char header[512];
+    sprintf(header,
+        "HTTP/1.1 %d %s\r\n"
+        "%s"
+        "Content-Type: text/plain\r\n"
+        "Content-Length: %ld\r\n\r\n",
+        code, message, connection_header, strlen(body));
+
+    *out_size = strlen(header) + strlen(body);
+
+    char *resp = malloc(*out_size + 1);
+    memcpy(resp, header, strlen(header));
+    memcpy(resp + strlen(header), body, strlen(body));
+    return resp;
+}
+
 char* http_build_response(http_request_t *req, int *status_code, long *out_size, server_config_t config) { 
     char filepath[512];
     snprintf(filepath, sizeof(filepath), "%s", req->path);
@@ -128,6 +148,11 @@ char* http_build_response(http_request_t *req, int *status_code, long *out_size,
         sprintf(connection_header, "Connection: close\r\n");
     } else {
         sprintf(connection_header, "Connection: keep-alive\r\n" "Keep-Alive: timeout=5, max=100\r\n");
+    }
+
+    if (strstr(req->path, "..")) {
+        *status_code = 403;
+        return build_error_response(403, "Forbidden", connection_header, out_size);
     }
 
     char *response; 
@@ -144,6 +169,7 @@ char* http_build_response(http_request_t *req, int *status_code, long *out_size,
         *out_size = strlen(response);
         return response;
     }
+
     char *full_stats_path = malloc(strlen(config.document_root) + strlen("/stats") + 1);
     sprintf(full_stats_path, "%s/stats", config.document_root);
     if (strcmp(req->path, full_stats_path) == 0) {
@@ -153,26 +179,21 @@ char* http_build_response(http_request_t *req, int *status_code, long *out_size,
         free(full_stats_path);
         return NULL;
     }
-
     free(full_stats_path);
     
     if (strcmp(req->method, "GET") == 0){
         if (file_exists(filepath) != 1){
             *status_code = 404; 
-            response = malloc(256);
-            sprintf(response,
-                "HTTP/1.1 404 Not Found\r\n"
-                "%s"
-                "Content-Type: text/plain\r\n"
-                "Content-Length: 13\r\n\r\n404 Not Found", 
-                connection_header
-            );
-            *out_size = strlen(response);
-            return response; 
+            return build_error_response(404, "Not Found", connection_header, out_size);
         }
 
         long f_size = file_size(filepath);
         char* f_data = read_file(filepath);
+
+        if (f_data == NULL){
+            *status_code = 500; 
+            return build_error_response(500, "Internal Server Error", connection_header, out_size);
+        }
         
         const char* mime_type = get_mime_type(filepath);
         
@@ -229,11 +250,9 @@ char* http_build_response(http_request_t *req, int *status_code, long *out_size,
         *status_code = 200; 
 
         return response;
-    } else {
-        printf("ERROR: Invalid Method!\n");
-        // 500 aqui     
-        return NULL; 
-    }
+    } 
+    *status_code = 500;
+    return build_error_response(500, "Internal Server Error", connection_header, out_size);
 }
 
 void http_send_response(SSL* ssl, char *response, long size){
