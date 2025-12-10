@@ -45,7 +45,7 @@ void worker_process_request(void* arg){
     clock_t start = clock();
 
     struct timeval tv;
-    tv.tv_sec = 5;
+    tv.tv_sec = args->config.timeout_seconds;
     tv.tv_usec = 0;
     setsockopt(args->client_fd, SOL_SOCKET, SO_RCVTIMEO, &tv, sizeof(tv));
 
@@ -244,7 +244,7 @@ void worker_main(worker_t worker, server_config_t config){
 
     ssl_init(config.certificate, config.key);
 
-    worker.pool = create_thread_pool(config.threads_per_worker);
+    worker.pool = create_thread_pool(config.threads_per_worker, config.max_queue_size);
 
     int uds_sock = socket(AF_UNIX, SOCK_STREAM, 0);
     if (uds_sock < 0) { perror("socket"); exit(1); }
@@ -276,7 +276,25 @@ void worker_main(worker_t worker, server_config_t config){
         args->log_sem = worker.sems->log_mutex; 
         args->config = config;
         args->ssl_ctx = ssl_ctx;
-        add_task(worker.pool, worker_process_request, args);
+        if (add_task(worker.pool, worker_process_request, args) != 0){
+            log_message(worker.sems->log_mutex, "WARN", "Queue is full. Handling 503 error.", config);
+            SSL *ssl = SSL_new(args->ssl_ctx);
+            if (ssl) {
+                SSL_set_fd(ssl, client_fd);
+
+                if (SSL_accept(ssl) > 0) {
+                    long response_size = http_send_503(ssl);
+                    int status_code = 503;
+                    update_atomic_stats(worker.shm, worker.sems, response_size, status_code, 0); // 0 = response time, não iremos contabilizar 
+                    
+                    SSL_shutdown(ssl);
+                }
+
+                SSL_free(ssl);
+            }
+            free(args); 
+            continue;
+        }
     }
 
     sprintf(logmsg, "Worker %d is being destroyed", worker.id);

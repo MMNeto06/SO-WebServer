@@ -16,6 +16,7 @@ typedef struct {
  
 const char* get_mime_type(const char *filename);
 http_request_t* http_parse_request(char *buffer, server_config_t config);
+long http_send_503(SSL *ssl);
 char* http_build_response(http_request_t *req, int *status_code, long *out_size, server_config_t config);
 void http_send_response(SSL *ssl, char *response, long size);
 

@@ -22,17 +22,6 @@ const char* get_mime_type(const char *filename) {
     return "application/octet-stream";
 }
 
-int file_exists(const char *path){
-    FILE* file = fopen(path, "rb");
-    if (file == NULL){
-        return 0; 
-    }
-
-    fclose(file);
-
-    return 1;
-}
-
 long file_size(const char *path){
     FILE* file = fopen(path, "rb");
     if (!file) return -1;
@@ -119,6 +108,21 @@ http_request_t* http_parse_request(char *buffer, server_config_t config) {
     return http_request;
 } 
 
+long http_send_503(SSL *ssl) {
+    const char *resp =
+        "HTTP/1.1 503 Service Unavailable\r\n"
+        "Content-Type: text/html\r\n"
+        "Retry-After: 5\r\n"
+        "Connection: close\r\n"
+        "\r\n"
+        "<h1>503 Service Unavailable</h1>";
+
+    long response_size = strlen(resp);
+    SSL_write(ssl, resp, response_size);
+    
+    return response_size;
+}
+
 char* build_error_response(int code, const char* message, const char* connection_header, long* out_size) {
     char body[128];
     sprintf(body, "%d %s", code, message);
@@ -150,7 +154,7 @@ char* http_build_response(http_request_t *req, int *status_code, long *out_size,
         sprintf(connection_header, "Connection: keep-alive\r\n" "Keep-Alive: timeout=5, max=100\r\n");
     }
 
-    if (strstr(req->path, "..")) {
+    if (strncmp(req->path, "../www/", strlen("../www/")) != 0) {
         *status_code = 403;
         return build_error_response(403, "Forbidden", connection_header, out_size);
     }
@@ -182,9 +186,14 @@ char* http_build_response(http_request_t *req, int *status_code, long *out_size,
     free(full_stats_path);
     
     if (strcmp(req->method, "GET") == 0){
-        if (file_exists(filepath) != 1){
+        if (access(req->path, F_OK) != 0){
             *status_code = 404; 
-            return build_error_response(404, "Not Found", connection_header, out_size);
+            return build_error_response(*status_code, "Not Found", connection_header, out_size);
+        }
+
+        if (access(req->path, R_OK) != 0) {
+            *status_code = 403;
+            return build_error_response(403, "Forbidden", connection_header, out_size);
         }
 
         long f_size = file_size(filepath);
@@ -192,7 +201,7 @@ char* http_build_response(http_request_t *req, int *status_code, long *out_size,
 
         if (f_data == NULL){
             *status_code = 500; 
-            return build_error_response(500, "Internal Server Error", connection_header, out_size);
+            return build_error_response(*status_code, "Forbidden", connection_header, out_size);
         }
         
         const char* mime_type = get_mime_type(filepath);
