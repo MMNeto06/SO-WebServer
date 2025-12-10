@@ -57,9 +57,11 @@ void print_stats(shared_data_t* shm, semaphores_t* sems) {
     printf("Requests: %ld\n", shm->stats.total_requests);
     printf("Bytes: %ld\n", shm->stats.bytes_transferred);
     printf("Status 200: %ld\n", shm->stats.status_200);
+    printf("Status 206: %ld\n", shm->stats.status_206);
+    printf("Status 403: %ld\n", shm->stats.status_403);
     printf("Status 404: %ld\n", shm->stats.status_404);
     printf("Status 500: %ld\n", shm->stats.status_500);
-    printf("Status 206: %ld\n", shm->stats.status_206);
+    printf("Status 503: %ld\n", shm->stats.status_503);
     printf("Active connections: %d\n", shm->stats.active_connections);
     printf("Average response time: %.3f ms\n", avg_response);
 

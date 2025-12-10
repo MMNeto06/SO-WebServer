@@ -9,6 +9,7 @@
 #include <openssl/err.h>
 #include "http.h"
 #include "config.h"
+#include "logger.h"
 
 const char* get_mime_type(const char *filename) {
     if (strstr(filename, ".html")) return "text/html";
@@ -48,10 +49,8 @@ char* read_file(const char *path){
 
 http_request_t* http_parse_request(char *buffer, server_config_t config) { 
     http_request_t* http_request = malloc(sizeof(http_request_t));
-    /*server_config_t config;
-    load_config("../server.conf", &config);*/
-
     sscanf(buffer, "%s %s %s", http_request->method, http_request->path, http_request->version);
+
     if (strcmp(http_request->path, "/") == 0){
         snprintf(http_request->path, sizeof(http_request->path), "%s/index.html", config.document_root);
     } else {
@@ -177,7 +176,6 @@ char* http_build_response(http_request_t *req, int *status_code, long *out_size,
     char *full_stats_path = malloc(strlen(config.document_root) + strlen("/stats") + 1);
     sprintf(full_stats_path, "%s/stats", config.document_root);
     if (strcmp(req->path, full_stats_path) == 0) {
-        printf("DEBUG: Stats detected!\n");
         *status_code = 200;
         *out_size = -1; // flag SSE
         free(full_stats_path);
@@ -267,10 +265,8 @@ char* http_build_response(http_request_t *req, int *status_code, long *out_size,
 void http_send_response(SSL* ssl, char *response, long size){
     long sent = 0;
     while (sent < size){
-        //long n = send(fd, response, size, 0);
         long n = SSL_write(ssl, response + sent, size - sent);
         if (n<=0){
-            perror("send");
             return;
         }
         sent += n;

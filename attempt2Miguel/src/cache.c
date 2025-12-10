@@ -98,8 +98,6 @@ cache_entry_t* cache_get(cache_t *c, const char *key) {
         return NULL;
     }
 
-    // Upgrade to write lock if wanted OR move later outside
-    // but simplest: release read, lock write:
     pthread_rwlock_unlock(&c->lock);
     pthread_rwlock_wrlock(&c->lock);
 

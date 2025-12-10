@@ -7,9 +7,11 @@ typedef struct {
     long total_requests; 
     long bytes_transferred; 
     long status_200; 
+    long status_206;
+    long status_403; 
     long status_404; 
     long status_500; 
-    long status_206;
+    long status_503;
     double total_response_time;
     int active_connections; 
     int keep_running;

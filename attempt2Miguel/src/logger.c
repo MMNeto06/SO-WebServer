@@ -20,7 +20,7 @@ int convertLogLevel(char* log_level){
     }
 }
 
-void log_rotation(const char* filename) { //função interna!!!
+void log_rotation(const char* filename) { 
     FILE* f = fopen(filename, "r");
     if (!f) return;
     fseek(f, 0, SEEK_END);
@@ -36,9 +36,6 @@ void log_rotation(const char* filename) { //função interna!!!
 }
 
 void log_request(sem_t* log_sem, const char* client_ip, const char* method, const char* path, int status, size_t bytes, server_config_t config) {
-    /*server_config_t config;
-    load_config("../server.conf", &config);*/
-
     if(convertLogLevel(config.log_level) > 1){
         return;
     }
@@ -59,9 +56,6 @@ void log_request(sem_t* log_sem, const char* client_ip, const char* method, cons
 }
 
 void log_message(sem_t* log_sem, char* log_level, char* message, server_config_t config){
-    /*server_config_t config;
-    load_config("../server.conf", &config);*/
-
     if(convertLogLevel(log_level) > convertLogLevel(config.log_level)){
         return;
     }

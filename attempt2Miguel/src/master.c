@@ -27,8 +27,7 @@ shared_data_t* shm;
 worker_t* workers;
 cache_t* cache;
  
-void master_signal_handler(int signum) { 
-    printf("Signum: %d\n", signum);
+void master_signal_handler() { 
     sem_wait(sems->stats_mutex);
     shm->stats.keep_running = 0;
     sem_post(sems->stats_mutex);
@@ -38,7 +37,6 @@ int create_server_socket(int port, server_config_t config) {
     int sockfd = socket(AF_INET, SOCK_STREAM, 0); 
 
     if (sockfd < 0){
-        perror("socket");
         log_message(sems->log_mutex, "ERROR", "Socket error", config);
         return -1; 
     }
@@ -79,7 +77,10 @@ void initialize_workers_structure(int num_workers, server_config_t config){
         strncpy(workers[i].socket_path, path, sizeof(workers[i].socket_path));
 
         int sock = socket(AF_UNIX, SOCK_STREAM, 0);
-        if (sock < 0) { perror("socket"); exit(1); }
+        if (sock < 0) { 
+            log_message(sems->log_mutex, "ERROR", "Worker Socket Error!", config);
+            exit(1); 
+        }
 
         struct sockaddr_un addr;
         memset(&addr, 0, sizeof(addr));
@@ -89,12 +90,12 @@ void initialize_workers_structure(int num_workers, server_config_t config){
         unlink(path); // garante que não existe socket antigo
         if (bind(sock, (struct sockaddr*)&addr, sizeof(addr)) < 0) {
             log_message(sems->log_mutex, "ERROR", "Create workers bind error", config);
-            perror("bind"); exit(1);
+            exit(1);
         }
 
         if (listen(sock, 10) < 0) {
             log_message(sems->log_mutex, "ERROR", "Creater workers listen error", config);
-            perror("listen"); exit(1);
+            exit(1);
         }
 
         workers[i].uds_socket = sock; 
@@ -107,7 +108,6 @@ void fork_workers(int num_workers, server_config_t config){
         {
         case -1:
             log_message(sems->log_mutex, "ERROR", "Fork error in create_workers", config);
-            perror("fork");
             continue;
 
         case 0: 
@@ -124,7 +124,10 @@ void fork_workers(int num_workers, server_config_t config){
 void set_workers_uds(int num_workers, server_config_t config){
     for (int i = 0; i < num_workers; i++) {
         int conn_fd = accept(workers[i].uds_socket, NULL, NULL);
-        if (conn_fd < 0) { log_message(sems->log_mutex, "ERROR", "Create_workers accept error", config); perror("accept"); exit(1); }
+        if (conn_fd < 0) { 
+            log_message(sems->log_mutex, "ERROR", "Create_workers accept error", config);
+            exit(1); 
+        }
 
         close(workers[i].uds_socket);
         workers[i].uds_socket = conn_fd;
@@ -147,6 +150,7 @@ void kill_workers(int num_workers){
 }
 
 void master_cleanup(int num_workers){
+    printf("\nShutting down... \n");
     destroy_semaphores(sems);
     free(sems);
     destroy_shared_memory(shm);
@@ -158,27 +162,27 @@ void master_cleanup(int num_workers){
 int master_init(server_config_t config){
     shm = create_shared_memory();
     if (shm == NULL){
-        perror("create_shared_memory");
+        log_message(sems->log_mutex, "ERROR", "Shared Memory creation failed!", config);
         return -1;
     }
     shm->stats.keep_running = 1;
 
     sems = malloc(sizeof(semaphores_t));
     if (init_semaphores(sems, config.max_queue_size) != 0){
-        perror("init_semaphores");
+        log_message(sems->log_mutex, "ERROR", "Semaphores creation failed!", config);
         return -1;
     }
 
     cache = cache_init(config.cache_size_mb * config.num_workers);
     if(cache == NULL){
-        perror("cache_init");
+        log_message(sems->log_mutex, "ERROR", "Cache initialization failed!", config);
         return -1;
     }
 
-    int server_fd = create_server_socket(config.port, config); //está no master.c, inicializa a socket, pode não ficar aqui? idk
+    int server_fd = create_server_socket(config.port, config); 
     
     if (server_fd < 0) {
-        perror("create_server_socket");
+        log_message(sems->log_mutex, "ERROR", "Server Socket creation failed!", config);
         return -1;
     }
  
@@ -201,16 +205,14 @@ void master_accept_loop(int listen_fd, server_config_t config){
         int client_fd = accept(listen_fd, NULL, NULL); 
         
         if (client_fd >= 0){
-            printf("DEBUG: Accepted client_fd = %d\n", client_fd);
             log_message(sems->log_mutex, "DEBUG", "Accepted a client_fd", config);
             int worker_idx = next_worker % config.num_workers;
-            send_fd(workers[worker_idx].uds_socket, client_fd, sems, config);                
+            send_fd(workers[worker_idx].uds_socket, client_fd, sems, config);           
             next_worker++;    
             close(client_fd);
         }else {
             if (errno != EAGAIN && errno != EWOULDBLOCK){
                 log_message(sems->log_mutex, "ERROR", "master_accept_loop accept error", config);
-                perror("accept");
             }
         }
 
@@ -220,31 +222,12 @@ void master_accept_loop(int listen_fd, server_config_t config){
             last_stats = now;
         }
     }  
+    log_message(sems->log_mutex, "INFO", "Shutting down...", config);
     master_cleanup(config.num_workers);
     close(listen_fd);
 }
 
 int main(int argc, char *argv[]){
-    struct sigaction sigact;
-
-    /* altera a rotina de atendimento ao ^C */
-    sigact.sa_handler = master_signal_handler;
-    sigemptyset (&sigact.sa_mask);
-    sigact.sa_flags = 0;
-    if (sigaction(SIGINT, &sigact, NULL) < 0) { 
-        perror("Rotina de atendimento não instalada\n");
-        return EXIT_FAILURE;
-    }
-
-    /* altera a rotina de atendimento ao ^Z */
-    sigact.sa_handler = master_signal_handler;
-    sigemptyset (&sigact.sa_mask);
-    sigact.sa_flags = 0;
-    if (sigaction(SIGTERM, &sigact, NULL) < 0) { 
-        perror("Rotina de atendimento não instalada\n");
-        return EXIT_FAILURE;
-    }
-
     int opt;
     char opt_path[512] = "no";
     int opt_port = -1;
@@ -317,13 +300,33 @@ int main(int argc, char *argv[]){
     if(opt_verbose == 0){
         strcpy(config.log_level, "DEBUG");
     }
+
+    struct sigaction sigact;
+
+    /* altera a rotina de atendimento ao ^C */
+    sigact.sa_handler = master_signal_handler;
+    sigemptyset (&sigact.sa_mask);
+    sigact.sa_flags = 0;
+    if (sigaction(SIGINT, &sigact, NULL) < 0) { 
+        log_message(sems->log_mutex, "ERROR", "Rotina de atendimento não instalada!", config);
+        return EXIT_FAILURE;
+    }
+
+    /* altera a rotina de atendimento ao ^Z */
+    sigact.sa_handler = master_signal_handler;
+    sigemptyset (&sigact.sa_mask);
+    sigact.sa_flags = 0;
+    if (sigaction(SIGTERM, &sigact, NULL) < 0) { 
+        log_message(sems->log_mutex, "ERROR", "Rotina de atendimento não instalada!", config);
+        return EXIT_FAILURE;
+    }
     
     int server_fd = master_init(config);
     if (server_fd < 0){
         log_message(sems->log_mutex, "ERROR", "main reports master_init error", config);
-        perror("master_init");
         exit(1);
     }
+    
     master_accept_loop(server_fd, config);
 
     return 0; 

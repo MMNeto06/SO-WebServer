@@ -31,7 +31,6 @@ int send_fd(int socket, int fd_to_send, semaphores_t* sems, server_config_t conf
     memcpy(CMSG_DATA(cmsg), &fd_to_send, sizeof(int));
 
     if (sendmsg(socket, &msg, 0) < 0) {
-        perror("sendmsg");
         log_message(sems->log_mutex, "ERROR", "send_fd sendmsg error", config);
         return 1;
     }
@@ -39,7 +38,7 @@ int send_fd(int socket, int fd_to_send, semaphores_t* sems, server_config_t conf
     return 0;
 }
 
-int recv_fd(int uds_sock) {
+int recv_fd(int uds_sock, semaphores_t* sems, server_config_t config) {
     struct msghdr msg = {0};
     struct iovec iov;
     char buf[1];  
@@ -53,13 +52,13 @@ int recv_fd(int uds_sock) {
     msg.msg_controllen = sizeof(cbuf);
 
     if (recvmsg(uds_sock, &msg, 0) < 0) {
-        perror("recvmsg");
+        log_message(sems->log_mutex, "ERROR", "recvmsg failed", config);
         return -1;
     }
 
     struct cmsghdr *cmsg = CMSG_FIRSTHDR(&msg);
     if (cmsg == NULL || cmsg->cmsg_type != SCM_RIGHTS) {
-        fprintf(stderr, "No FD received\n");
+        log_message(sems->log_mutex, "WARN", "No FD received!", config);
         return -1;
     }
 

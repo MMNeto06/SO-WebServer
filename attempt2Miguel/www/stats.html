@@ -29,10 +29,12 @@
         <div class="card"><h2>Total Bytes</h2><p id="totalBytes">0</p></div>
         <div class="card"><h2>Status 200</h2><p id="status200">0</p></div>
         <div class="card"><h2>Status 206</h2><p id="status206">0</p></div>
+        <div class="card"><h2>Status 403</h2><p id="status403">0</p></div>
         <div class="card"><h2>Status 404</h2><p id="status404">0</p></div>
         <div class="card"><h2>Status 500</h2><p id="status500">0</p></div>
+        <div class="card"><h2>Status 503</h2><p id="status503">0</p></div>
         <div class="card"><h2>Active Connections</h2><p id="activeConnections">0</p></div>
-        <div class="card"><h2>Requests / sec</h2><p id="rps">0</p></div>
+        <div class="card"><h2>Avg Response Time (ms)</h2><p id="avgRespTime">0</p></div>
     </div>
 
     <canvas id="chartRPS" height="120"></canvas>
@@ -59,10 +61,12 @@ const elTotal = document.getElementById("totalRequests");
 const elBytes = document.getElementById("totalBytes");
 const el200 = document.getElementById("status200");
 const el206 = document.getElementById("status206");
+const el403 = document.getElementById("status403");
 const el404 = document.getElementById("status404");
 const el500 = document.getElementById("status500");
+const el503 = document.getElementById("status503");
 const elActive = document.getElementById("activeConnections");
-const elRPS = document.getElementById("rps");
+const elAvgRT = document.getElementById("avgRespTime");
 
 let lastTotal = 0;
 
@@ -74,13 +78,15 @@ evt.onmessage = (event) => {
     elBytes.textContent = data.total_bytes;
     el200.textContent = data.status_200;
     el206.textContent = data.status_206;
+    el403.textContent = data.status_403;
     el404.textContent = data.status_404;
     el500.textContent = data.status_500;
+    el503.textContent = data.status_503;
     elActive.textContent = data.active_connections;
+    elAvgRT.textContent = data.average_response_time.toFixed(2);
 
     const rps = data.total_requests - lastTotal;
     lastTotal = data.total_requests;
-    elRPS.textContent = rps;
 
     const timestamp = new Date().toLocaleTimeString();
 
