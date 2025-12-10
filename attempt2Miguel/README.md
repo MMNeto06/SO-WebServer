@@ -48,7 +48,7 @@ server that demonstrates:
 -      **Multi-Process Architecture**: 1 master + N workers (default: 4) 
 -      **Thread Pools**: M threads per worker (default: 10) 
 -      **HTTP/1.1 Support**: GET and HEAD methods 
--      **Status Codes**: 200, 404, 403, 500, 503 // VER ISTO MELHOR
+-      **Status Codes**: 200, 404, 403, 500, 503
 -      **MIME Types**: HTML, CSS, JavaScript, images (PNG, JPG), PDF 
 -      **Directory Index**: Automatic index.html serving 
 -      **Custom Error Pages**: Branded 404 and 500 pages 
@@ -135,7 +135,7 @@ concurrent-http-server/
 │   ├── test_concurrent.c       # Concurrency tests 
 │   └── README.md               # Test documentation 
 │ 
-├── docs/                       # Documentation //VER ISTO MELHOR - AINDA NÃO EXISTE
+├── docs/                       # Documentation
 │   ├── design.pdf              # Architecture and design 
 │   ├── report.pdf              # Technical report 
 │   └── user_manual.pdf         # User guide 
@@ -669,6 +669,7 @@ sem_post(&stats_semaphore);
  
 //VER ISTO MELHOR
 isto tem que ser atualizado no fim, não sei o que meter
+podemos meter aqui o facto de ser uma cache por worker, e justificar essa escolha - Miguel
  
 ### Platform-Specific Issues 
  
