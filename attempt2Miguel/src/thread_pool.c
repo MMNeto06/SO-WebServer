@@ -66,12 +66,12 @@ int thread_pool_dequeue(thread_pool_t* pool){
     task_t* task = pool->head;
     pool->head = task->next;
     if (pool->head == NULL) pool->tail = NULL;
-    
+    pool->task_count--;
     pthread_mutex_unlock(&pool->mutex);
 
     task->function(task->arg);
     free(task);
-    pool->task_count-=1;
+    
     return 1;
 }
 
