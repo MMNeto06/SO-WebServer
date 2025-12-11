@@ -271,7 +271,7 @@ int main(int argc, char *argv[]){
                 printf("Here is some help about server options\n-c, --config PATH : Configuration file path (default: ./server.conf)\n-p, --port PORT : Override port to listen on\n-w, --workers NUM : Override number of worker processes\n-t, --threads NUM : Override number of threads per worker\n-d, --daemon : Run in background\n-v, --verbose : Enable verbose logging\n-h, --help : Shows a help message with these options\n-V, --version : Show version information\n");
                 break;
             case 'V':
-                printf("ConcurrentHTTP Server System Version 33"); //MUDAR ISTO ANTES DE ENTREGAR
+                printf("ConcurrentHTTP Server System Version 60\n"); 
                 break;
             default:
                 break;

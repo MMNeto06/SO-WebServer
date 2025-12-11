@@ -18,16 +18,21 @@ void update_atomic_stats(shared_data_t* shm, semaphores_t* sems, long response_s
     case 200:
         shm->stats.status_200++;
         break;
-
+    case 206:
+        shm->stats.status_206++;
+        break;
+    case 403: 
+        shm->stats.status_403++;
+        break;
     case 404: 
         shm->stats.status_404++;
         break;
-    
     case 500: 
         shm->stats.status_500++;
         break;
-    case 206:
-        shm->stats.status_206++;
+    case 503: 
+        shm->stats.status_503++;
+        break;
     default:
         break;
     }

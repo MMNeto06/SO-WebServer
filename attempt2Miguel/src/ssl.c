@@ -28,7 +28,7 @@ void log_ssl_errors(worker_task_args_t* args){
 }
 
 SSL* ssl_setup(worker_task_args_t* args){
-    struct timeval tv = {args->config.timeout_seconds, 0 };
+    struct timeval tv = {args->config.timeout_seconds, 0 }; // timeout for keep-alive
     setsockopt(args->client_fd, SOL_SOCKET, SO_RCVTIMEO, &tv, sizeof(tv));
 
     SSL *ssl = SSL_new(args->ssl_ctx);
