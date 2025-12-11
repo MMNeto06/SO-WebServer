@@ -1,4 +1,5 @@
 #include "sse.h"
+#include "stats.h"
 #include <stdio.h>
 #include <string.h>
 #include <sys/types.h>
@@ -26,6 +27,8 @@ static void send_snapshot_to_client(SSL *ssl, shared_data_t *shm) {
 }
 
 void handle_sse(SSL *ssl, shared_data_t *shm, semaphores_t *sems) {
+    update_active_connection(shm, sems);
+
     const char *headers =
         "HTTP/1.1 200 OK\r\n"
         "Content-Type: text/event-stream\r\n"
@@ -83,4 +86,5 @@ void handle_sse(SSL *ssl, shared_data_t *shm, semaphores_t *sems) {
     }
 
     SSL_shutdown(ssl); 
+    update_connection_terminated(shm, sems);
 }

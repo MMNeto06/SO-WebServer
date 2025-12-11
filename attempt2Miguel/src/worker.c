@@ -58,21 +58,28 @@ static void cache_response(worker_task_args_t* args, const char* path, char* res
 }
 
 static void handle_request(worker_task_args_t* args, SSL* ssl, http_request_t* req, clock_t start){
-    if (strstr(req->path, ".html") != NULL) {
+    char stats_path[512];
+    snprintf(stats_path, sizeof(stats_path), "%sstats.html", args->config.document_root);
+
+    if (strstr(req->path, ".html") != NULL && strcmp(req->path, stats_path) != 0) {
         update_active_connection(args->shm, args->sems);
     }
 
     char client_ip[64] = "unknown";
     get_client_ip(args->client_fd, client_ip);
 
+    long response_size;
+    int status_code;
+
     cache_entry_t* cached = cache_get(args->cache, req->path);
     if (cached){
         send_cached_response(args, ssl, req, cached, client_ip, start);
+        status_code = 200; 
+        response_size = cached->size;
+        log_request(args->log_sem, client_ip, req->method, req->path, status_code, response_size, args->config); 
         return;
     }
 
-    long response_size;
-    int status_code;
     char* response = http_build_response(req, &status_code, &response_size, args->config);
 
     if (response_size == -1){

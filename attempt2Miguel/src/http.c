@@ -146,11 +146,15 @@ char* http_build_response(http_request_t *req, int *status_code, long *out_size,
     char filepath[512];
     snprintf(filepath, sizeof(filepath), "%s", req->path);
 
+    if (strstr(req->path, "favicon.ico") != NULL) {
+        return NULL; // ignorar pedidos de favicon pelo browser
+    }
+
     char connection_header[128];
     if (req->want_close){
         sprintf(connection_header, "Connection: close\r\n");
     } else {
-        sprintf(connection_header, "Connection: keep-alive\r\n" "Keep-Alive: timeout=5, max=100\r\n");
+        sprintf(connection_header, "Connection: keep-alive\r\n" "Keep-Alive: timeout=%d, max=100\r\n", config.timeout_seconds);
     }
 
     if (strncmp(req->path, "../www/", strlen("../www/")) != 0) {
