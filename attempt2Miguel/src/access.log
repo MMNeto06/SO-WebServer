@@ -154473,3 +154473,1910 @@
 [INFO] [10/Dec/2025:19:41:09 +0000] - Worker 0 is being destroyed
 [INFO] [10/Dec/2025:19:41:09 +0000] - Shutting down...
 [INFO] [10/Dec/2025:19:41:09 +0000] - Worker 3 is being destroyed
+[INFO] [11/Dec/2025:14:40:00 +0000] - HTTPS server running
+[INFO] [11/Dec/2025:14:40:00 +0000] - Server RealTime Stats available
+[INFO] [11/Dec/2025:14:40:00 +0000] - Worker 0 initiated
+[INFO] [11/Dec/2025:14:40:00 +0000] - Worker 1 initiated
+[INFO] [11/Dec/2025:14:40:00 +0000] - Worker 2 initiated
+[INFO] [11/Dec/2025:14:40:00 +0000] - Worker 3 initiated
+[INFO] [11/Dec/2025:14:40:00 +0000] - Worker 2 conectado ao master via UDS
+[INFO] [11/Dec/2025:14:40:00 +0000] - Worker 1 conectado ao master via UDS
+[INFO] [11/Dec/2025:14:40:00 +0000] - Worker 0 conectado ao master via UDS
+[INFO] [11/Dec/2025:14:40:00 +0000] - Worker 3 conectado ao master via UDS
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:20 +0000] - Accepted a client_fd
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:40:21 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:40:21 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[DEBUG] [11/Dec/2025:14:40:21 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:21 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:21 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:21 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:21 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:21 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:21 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:21 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:21 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:21 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:21 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:21 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:21 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:21 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:21 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:21 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:21 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:21 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:21 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:21 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:21 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:21 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:21 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:21 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:21 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:21 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:21 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:21 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:21 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:21 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:21 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:21 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:21 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:21 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:21 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:21 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:21 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:21 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:21 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:21 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:21 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:21 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:21 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:21 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:21 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:21 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:21 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:21 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:21 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:40:21 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[INFO] [11/Dec/2025:14:41:04 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:04 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:04 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:04 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[INFO] [11/Dec/2025:14:41:04 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:04 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[INFO] [11/Dec/2025:14:41:04 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:04 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[INFO] [11/Dec/2025:14:41:04 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:04 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[INFO] [11/Dec/2025:14:41:04 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:04 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:04 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:04 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:04 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:05 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:05 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:05 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:05 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:05 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:05 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:05 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:05 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:05 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:05 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:05 +0000] - Accepted a client_fd
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[DEBUG] [11/Dec/2025:14:41:05 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:05 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:05 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:05 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:05 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:05 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:05 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:05 +0000] - Accepted a client_fd
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[DEBUG] [11/Dec/2025:14:41:05 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:05 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:41:05 +0000] - Accepted a client_fd
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:41:05 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:41:05 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:42 +0000] - Worker 0 is being destroyed
+[INFO] [11/Dec/2025:14:42:42 +0000] - Shutting down...
+[INFO] [11/Dec/2025:14:42:42 +0000] - Worker 1 is being destroyed
+[INFO] [11/Dec/2025:14:42:42 +0000] - Worker 2 is being destroyed
+[INFO] [11/Dec/2025:14:42:42 +0000] - Worker 3 is being destroyed
+[INFO] [11/Dec/2025:14:42:46 +0000] - HTTPS server running
+[INFO] [11/Dec/2025:14:42:46 +0000] - Server RealTime Stats available
+[INFO] [11/Dec/2025:14:42:46 +0000] - Worker 0 initiated
+[INFO] [11/Dec/2025:14:42:46 +0000] - Worker 1 initiated
+[INFO] [11/Dec/2025:14:42:46 +0000] - Worker 2 initiated
+[INFO] [11/Dec/2025:14:42:46 +0000] - Worker 3 initiated
+[INFO] [11/Dec/2025:14:42:46 +0000] - Worker 3 conectado ao master via UDS
+[INFO] [11/Dec/2025:14:42:46 +0000] - Worker 2 conectado ao master via UDS
+[INFO] [11/Dec/2025:14:42:46 +0000] - Worker 0 conectado ao master via UDS
+[INFO] [11/Dec/2025:14:42:46 +0000] - Worker 1 conectado ao master via UDS
+[DEBUG] [11/Dec/2025:14:42:50 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:50 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:50 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:50 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:50 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[DEBUG] [11/Dec/2025:14:42:51 +0000] - Accepted a client_fd
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:51 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:51 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:52 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:52 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:52 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:52 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:42:52 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:42:52 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[INFO] [11/Dec/2025:14:43:18 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:18 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[INFO] [11/Dec/2025:14:43:18 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:18 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[INFO] [11/Dec/2025:14:43:18 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:18 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:18 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:18 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[INFO] [11/Dec/2025:14:43:18 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:18 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:18 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:18 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:18 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:18 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:18 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:18 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[INFO] [11/Dec/2025:14:43:18 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:18 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:18 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:18 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:18 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:18 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[INFO] [11/Dec/2025:14:43:18 +0000] - Worker hit cache for ../www/index.html
+
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:18 +0000] - Accepted a client_fd
+127.0.0.1 - - [11/Dec/2025:14:43:18 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[INFO] [11/Dec/2025:14:43:19 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:19 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[INFO] [11/Dec/2025:14:43:19 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:19 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[INFO] [11/Dec/2025:14:43:19 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:19 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:19 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:19 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[INFO] [11/Dec/2025:14:43:19 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:19 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[INFO] [11/Dec/2025:14:43:19 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:19 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:19 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:19 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[INFO] [11/Dec/2025:14:43:19 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:19 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:19 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:19 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[INFO] [11/Dec/2025:14:43:19 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:19 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[INFO] [11/Dec/2025:14:43:19 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:19 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[INFO] [11/Dec/2025:14:43:19 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:19 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:19 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:19 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:19 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:19 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[INFO] [11/Dec/2025:14:43:19 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:19 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:19 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:19 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:19 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:19 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:19 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:19 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[DEBUG] [11/Dec/2025:14:43:19 +0000] - Accepted a client_fd
+[INFO] [11/Dec/2025:14:43:19 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:19 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/page6.html HTTP/1.1" 200 450
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/page1.html HTTP/1.1" 200 450
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/page2.html HTTP/1.1" 200 450
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/page8.html HTTP/1.1" 200 450
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/page3.html HTTP/1.1" 200 439
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/page4.html HTTP/1.1" 200 450
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/page2.html HTTP/1.1" 200 450
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/page8.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/page8.html HTTP/1.1" 200 450
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/page7.html HTTP/1.1" 200 450
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/page9.html HTTP/1.1" 200 450
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/page5.html HTTP/1.1" 200 450
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/page8.html HTTP/1.1" 200 450
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/page9.html HTTP/1.1" 200 450
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/page2.html HTTP/1.1" 200 450
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/page3.html HTTP/1.1" 200 439
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/page7.html HTTP/1.1" 200 450
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/page5.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/page5.html HTTP/1.1" 200 450
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/page9.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/page9.html HTTP/1.1" 200 450
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/page0.html HTTP/1.1" 200 450
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/page1.html HTTP/1.1" 200 450
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/page0.html HTTP/1.1" 200 450
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/page5.html HTTP/1.1" 200 450
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/page5.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/page5.html HTTP/1.1" 200 450
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/page3.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/page3.html HTTP/1.1" 200 439
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/page8.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/page8.html HTTP/1.1" 200 450
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/page4.html HTTP/1.1" 200 450
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/page4.html HTTP/1.1" 200 450
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/page3.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/page3.html HTTP/1.1" 200 439
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/page6.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/page6.html HTTP/1.1" 200 450
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/page6.html HTTP/1.1" 200 450
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/page0.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/page0.html HTTP/1.1" 200 450
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/page2.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/page2.html HTTP/1.1" 200 450
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/page4.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/page4.html HTTP/1.1" 200 450
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/page0.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/page0.html HTTP/1.1" 200 450
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/page4.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/page4.html HTTP/1.1" 200 450
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/page6.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/page1.html HTTP/1.1" 200 450
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/page6.html HTTP/1.1" 200 450
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/page9.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/page9.html HTTP/1.1" 200 450
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/index.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/index.html HTTP/1.1" 200 1038
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/page6.html HTTP/1.1" 200 450
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/page3.html HTTP/1.1" 200 439
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/page8.html HTTP/1.1" 200 450
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/page1.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/page1.html HTTP/1.1" 200 450
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/page0.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/page0.html HTTP/1.1" 200 450
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/page7.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/page7.html HTTP/1.1" 200 450
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/page1.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/page1.html HTTP/1.1" 200 450
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/page9.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/page9.html HTTP/1.1" 200 450
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/page2.html
+
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/page7.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/page7.html HTTP/1.1" 200 450
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/page2.html HTTP/1.1" 200 450
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/page7.html
+
+[INFO] [11/Dec/2025:14:43:20 +0000] - Worker hit cache for ../www/page5.html
+
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/page7.html HTTP/1.1" 200 450
+127.0.0.1 - - [11/Dec/2025:14:43:20 +0000] "GET ../www/page5.html HTTP/1.1" 200 450
