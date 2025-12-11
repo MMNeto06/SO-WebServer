@@ -222,7 +222,7 @@ directory:
  
 # Network settings 
 PORT=8080                          # Port to listen on 
-TIMEOUT_SECONDS=30                 # Connection timeout 
+TIMEOUT_SECONDS=10                 # Connection timeout 
  
 # File system 
 DOCUMENT_ROOT=/var/www/html        # Root directory for serving files 
@@ -253,7 +253,7 @@ LOG_LEVEL=INFO                     # Log level: DEBUG, INFO, WARN, ERROR
 | MAX_QUEUE_SIZE     | 100        | Connection queue capacity        | 
 | CACHE_SIZE_MB      | 10         | Maximum cache size per worker    | 
 | LOG_FILE           | access.log | Path to access log               | 
-| TIMEOUT_SECONDS    | 30         | Connection timeout               | 
+| TIMEOUT_SECONDS    | 10         | Connection timeout               | 
  
 ### Environment Variables 
  
@@ -667,14 +667,12 @@ sem_post(&stats_semaphore);
  
 ### Current Limitations 
  
-//VER ISTO MELHOR
-isto tem que ser atualizado no fim, não sei o que meter
-podemos meter aqui o facto de ser uma cache por worker, e justificar essa escolha - Miguel
- 
+- With the current implementation of the server, base HTTP connections are no longer supported. All requests must be directed through HTTPS.
+- With too many concurrent requests, the server will eventually fail to serve some of them. We have found that the safe limit is a maximum of 440 concurrent requests. Beyond that level of concurrency, up to 10% of requests will fail.
+
 ### Platform-Specific Issues 
  
-- **macOS**: Limited support due to differences in POSIX semaphore 
-implementation 
+- **macOS**: Limited support due to differences in POSIX semaphore implementation 
 - **Windows**: Not supported (requires POSIX APIs) 
  
 ### Performance Considerations 
